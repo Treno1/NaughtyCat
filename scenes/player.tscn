@@ -1,7 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://co1pxrnjscwd0"]
+[gd_scene load_steps=33 format=3 uid="uid://co1pxrnjscwd0"]
 
 [ext_resource type="Texture2D" uid="uid://bvyv0scsn42oe" path="res://assets/sprites/cat/Cat_spritesheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://ba7tci2t72b7h" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://2vqr51w2nexa" path="res://assets/sprites/interact_key.png" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://bbdr6dcr86dao" path="res://scenes/interact_area.gd" id="4_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("1_3vyb7")
@@ -178,7 +180,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 radius = 7.9999995
-height = 20.0
+height = 18.0
 
 [sub_resource type="Animation" id="Animation_g2els"]
 resource_name = "poke"
@@ -191,12 +193,23 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"poke_animation"
-}, {
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteractSprite/InteractArea")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
 "args": [],
 "method": &"interact"
 }]
@@ -207,11 +220,37 @@ _data = {
 &"poke": SubResource("Animation_g2els")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(0, 0, 11, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(11, 0, 11, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1ej7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qlg0r"]
+radius = 5.0
+height = 20.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_g2els")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_smehm")
 animation = &"poke"
@@ -221,7 +260,7 @@ frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5
-position = Vector2(2, -9)
+position = Vector2(0, -9)
 rotation = 4.712389
 shape = SubResource("CapsuleShape2D_g2els")
 
@@ -230,5 +269,25 @@ libraries = {
 &"": SubResource("AnimationLibrary_qhqgy")
 }
 
-[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="InteractSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 10
+position = Vector2(0, -27)
+sprite_frames = SubResource("SpriteFrames_f1ej7")
+autoplay = "default"
+frame = 1
+frame_progress = 0.51671565
+
+[node name="InteractArea" type="Area2D" parent="InteractSprite"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_dqkch")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractSprite/InteractArea"]
+position = Vector2(10, 13)
+shape = SubResource("CapsuleShape2D_qlg0r")
+
+[connection signal="animation_changed" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_shape_entered" from="InteractSprite/InteractArea" to="InteractSprite/InteractArea" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="InteractSprite/InteractArea" to="InteractSprite/InteractArea" method="_on_area_shape_exited"]

@@ -4,15 +4,15 @@ class_name CatPlayer
 const SPEED = 130.0
 const JUMP_VELOCITY = -200.0
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite: AnimatedSprite2D = $PlayerSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 var _is_poking := false
-var _landings := []
-var _interactables := []
 
-#region linking
+#region landings
+var _landings := []
+
 func add_landing(instance_id: int):
 	if not _landings.has(instance_id):
 		_landings.append(instance_id)
@@ -20,20 +20,9 @@ func add_landing(instance_id: int):
 func remove_landing(instance_id: int):
 	_landings.erase(instance_id)
 	
-func add_interactable(instance: Interactable):
-	if not _interactables.has(instance):
-		_interactables.append(instance)
-		
-func remove_interactable(instance: Interactable):
-	_interactables.erase(instance)
-#endregion 
-	
-
 func is_in_landing_zone():
 	return !_landings.is_empty()
-	
-func is_near_interactable():
-	return !_interactables.is_empty()
+#endregion 
 
 func _ready() -> void:
 	Game.player = self
@@ -90,38 +79,13 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _on_animated_sprite_2d_animation_finished() -> void:
+	_is_poking = false
+
+func _on_animated_sprite_2d_animation_changed() -> void:
+	_is_poking = false
+	
 func poke_animation() -> void:
-	poke_collision_enable()
 	animated_sprite.play("poke")
 	_is_poking = true
 	
-func interact() -> void:
-	if is_near_interactable():
-		_interactables[0].interact()
-
-
-func _on_animated_sprite_2d_animation_finished() -> void:
-	if _is_poking:
-		poke_collision_disable()
-	_is_poking = false
-
-
-func _on_animated_sprite_2d_animation_changed() -> void:
-	if _is_poking:
-		poke_collision_disable()
-	_is_poking = false
-	
-func poke_collision_enable() -> void:
-	var capsule = collision_shape.shape as CapsuleShape2D
-	if capsule:
-		capsule.height = 20
-		if !animated_sprite.flip_h:
-			collision_shape.position.x = 2		
-		else:
-			collision_shape.position.x = -2
-		
-func poke_collision_disable() -> void:
-	var capsule = collision_shape.shape as CapsuleShape2D
-	if capsule:
-		capsule.height = 18
-		collision_shape.position.x = 0		

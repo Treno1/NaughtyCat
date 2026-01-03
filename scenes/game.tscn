@@ -57,7 +57,7 @@ position = Vector2(206, 20)
 texture = ExtResource("1_yqjtg")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(62, 27)
+position = Vector2(42, 30)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -36)
@@ -169,8 +169,8 @@ shape = SubResource("WorldBoundaryShape2D_kvpfn")
 
 [node name="LampSwitch" type="Area2D" parent="Lamp" node_paths=PackedStringArray("target_sprite")]
 position = Vector2(76, 18)
-collision_layer = 0
-collision_mask = 2
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("5_iywne")
 target_sprite = NodePath("../LampLight")
 
