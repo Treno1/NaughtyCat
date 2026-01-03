@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://b5b28wckvo4ot" path="res://assets/sprites/lvl1/Room.png" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://dswlqj6p7vtxg" path="res://scenes/interactable.gd" id="5_iywne"]
+[ext_resource type="Script" uid="uid://ctt0lym4c002t" path="res://scripts/interactable_sprite.gd" id="5_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dcmvcs5mo5ski" path="res://assets/sprites/lvl1/Lamp On.png" id="6_p57ef"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
@@ -171,7 +171,7 @@ shape = SubResource("WorldBoundaryShape2D_kvpfn")
 position = Vector2(76, 18)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("5_iywne")
+script = ExtResource("5_p57ef")
 target_sprite = NodePath("../LampLight")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp/LampSwitch"]

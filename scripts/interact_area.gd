@@ -12,7 +12,6 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 		return
 		
 	if !interactables.has(interactable):
-		print("1")
 		interactables.append(interactable)
 		
 	interact_sprite.visible = true
