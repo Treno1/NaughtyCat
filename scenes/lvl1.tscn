@@ -1,7 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://c8i4g673wuxt1"]
+[gd_scene load_steps=31 format=3 uid="uid://c8i4g673wuxt1"]
 
 [ext_resource type="Script" uid="uid://bao8i56q8jlrq" path="res://scripts/game_manager.gd" id="1_kylad"]
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="2_28l0p"]
+[ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="2_yq2hi"]
+[ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="3_2tpkn"]
 [ext_resource type="Texture2D" uid="uid://b42f1ayg7sfar" path="res://assets/sprites/lvl1/Room.png" id="3_yq2hi"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="4_2tpkn"]
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="5_6oc1e"]
@@ -11,6 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://dbmrc5i2ah281" path="res://assets/sprites/lvl1/Scratches - Couch scratch 1.png" id="9_cpkqi"]
 [ext_resource type="Texture2D" uid="uid://clfenjtshp1ie" path="res://assets/sprites/lvl1/Scratches - Couch scratch 2.png" id="10_tpdyh"]
 [ext_resource type="Texture2D" uid="uid://ck7e81bgj6d2p" path="res://assets/sprites/lvl1/Scratches - Couch scratch 3.png" id="11_sx06d"]
+
+[sub_resource type="Resource" id="Resource_6oc1e"]
+script = ExtResource("3_2tpkn")
+interactables_to_complete = Array[NodePath]([NodePath("../Interactables/CouchScratchArea")])
+task_ui_text = "Scratch the couch"
+metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
 distance = -11.0
@@ -90,8 +98,11 @@ height = 16.0
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_kylad")
-is_in_level = true
-time_limit_seconds = 15
+
+[node name="LevelData" type="Node" parent="."]
+script = ExtResource("2_yq2hi")
+tasks = Array[ExtResource("3_2tpkn")]([SubResource("Resource_6oc1e")])
+timer_limit_seconds = 197
 
 [node name="IngameUI" parent="." instance=ExtResource("2_28l0p")]
 

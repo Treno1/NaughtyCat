@@ -3,7 +3,7 @@ class_name IngameUI
 
 signal system_ready
 
-@onready var timer: Timer = $Timer
+@onready var timer: Timer = $CountdownLabel/Timer
 @onready var countdown_label: Label = $CountdownLabel
 
 func set_timer(total_seconds: int) -> void:

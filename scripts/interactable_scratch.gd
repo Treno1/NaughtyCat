@@ -20,3 +20,5 @@ func interact() -> void:
 	if scratch_cnt >= animations_count:
 		self.monitorable = false
 		self.monitoring = false
+		
+		complete_interaction()
