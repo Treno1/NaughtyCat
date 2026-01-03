@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://c8i4g673wuxt1"]
+[gd_scene load_steps=28 format=3 uid="uid://c8i4g673wuxt1"]
 
 [ext_resource type="Script" uid="uid://bao8i56q8jlrq" path="res://scripts/game_manager.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://b42f1ayg7sfar" path="res://assets/sprites/lvl1/Room.png" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="4_kvpfn"]
 [ext_resource type="Script" uid="uid://ctt0lym4c002t" path="res://scripts/interactable_sprite.gd" id="5_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dcmvcs5mo5ski" path="res://assets/sprites/lvl1/Lamp On.png" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dbmrc5i2ah281" path="res://assets/sprites/lvl1/Scratches - Couch scratch 1.png" id="7_0tnpc"]
@@ -90,6 +91,8 @@ height = 16.0
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_lbhrr")
 
+[node name="CanvasLayer" parent="." instance=ExtResource("4_kvpfn")]
+
 [node name="RoomBG" type="Sprite2D" parent="."]
 position = Vector2(206, 20)
 texture = ExtResource("1_yqjtg")
@@ -98,7 +101,7 @@ texture = ExtResource("1_yqjtg")
 position = Vector2(-9, 15)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -36)
+position = Vector2(-1, -36)
 zoom = Vector2(8, 8)
 process_callback = 0
 limit_left = -144
