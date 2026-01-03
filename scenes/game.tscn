@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8i4g673wuxt1"]
+[gd_scene load_steps=21 format=3 uid="uid://c8i4g673wuxt1"]
 
 [ext_resource type="Script" uid="uid://bao8i56q8jlrq" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://b5b28wckvo4ot" path="res://assets/sprites/lvl1/Room.png" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://dswlqj6p7vtxg" path="res://scenes/interactable.gd" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://dcmvcs5mo5ski" path="res://assets/sprites/lvl1/Lamp On.png" id="6_p57ef"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
 
@@ -44,15 +46,18 @@ size = Vector2(44.75, 3)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lbhrr"]
+radius = 3.0
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="RoomBG" type="Sprite2D" parent="."]
 position = Vector2(206, 20)
 texture = ExtResource("1_yqjtg")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-121, 59)
+position = Vector2(62, 27)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -36)
@@ -159,6 +164,25 @@ position = Vector2(114, 27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorLanding"]
 shape = SubResource("WorldBoundaryShape2D_kvpfn")
+
+[node name="Lamp" type="Node" parent="."]
+
+[node name="LampSwitch" type="Area2D" parent="Lamp" node_paths=PackedStringArray("target_sprite")]
+position = Vector2(76, 18)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_iywne")
+target_sprite = NodePath("../LampLight")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp/LampSwitch"]
+shape = SubResource("CapsuleShape2D_lbhrr")
+
+[node name="LampLight" type="Sprite2D" parent="Lamp"]
+position = Vector2(80, 6)
+texture = ExtResource("6_p57ef")
+
+[connection signal="body_entered" from="Lamp/LampSwitch" to="Lamp/LampSwitch" method="_on_body_entered"]
+[connection signal="body_exited" from="Lamp/LampSwitch" to="Lamp/LampSwitch" method="_on_body_exited"]
 
 [editable path="Surfaces/TvStand/Landing5"]
 [editable path="Surfaces/CouchSit/Landing4"]

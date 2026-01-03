@@ -5,21 +5,39 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -200.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
-var landings := []
+var _is_poking := false
+var _landings := []
+var _interactables := []
 
+#region linking
 func add_landing(instance_id: int):
-	if not landings.has(instance_id):
-		landings.append(instance_id)
+	if not _landings.has(instance_id):
+		_landings.append(instance_id)
 		
 func remove_landing(instance_id: int):
-	landings.erase(instance_id)
+	_landings.erase(instance_id)
 	
+func add_interactable(instance: Interactable):
+	if not _interactables.has(instance):
+		_interactables.append(instance)
+		
+func remove_interactable(instance: Interactable):
+	_interactables.erase(instance)
+#endregion 
+	
+
 func is_in_landing_zone():
-	return !landings.is_empty()
+	return !_landings.is_empty()
+	
+func is_near_interactable():
+	return !_interactables.is_empty()
 
 func _ready() -> void:
 	Game.player = self
+	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -28,7 +46,10 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		if Input.is_action_pressed("move_down"):
+			position.y += 1
+		else:
+			velocity.y = JUMP_VELOCITY
 
 	# Gets the input direction: -1, 0, 1
 	var direction := Input.get_axis("move_left", "move_right")
@@ -40,10 +61,14 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = true
 		
 	# Play animations
-	
+	# Interact
+	if Input.is_action_just_pressed("interact"):
+		animation_player.play("poke")
+		
 	if is_on_floor():
 		if direction == 0:
-			animated_sprite.play("idle")
+			if !_is_poking:
+				animated_sprite.play("idle")
 		else:
 			animated_sprite.play("run")
 	else:
@@ -64,3 +89,39 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func poke_animation() -> void:
+	poke_collision_enable()
+	animated_sprite.play("poke")
+	_is_poking = true
+	
+func interact() -> void:
+	if is_near_interactable():
+		_interactables[0].interact()
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if _is_poking:
+		poke_collision_disable()
+	_is_poking = false
+
+
+func _on_animated_sprite_2d_animation_changed() -> void:
+	if _is_poking:
+		poke_collision_disable()
+	_is_poking = false
+	
+func poke_collision_enable() -> void:
+	var capsule = collision_shape.shape as CapsuleShape2D
+	if capsule:
+		capsule.height = 20
+		if !animated_sprite.flip_h:
+			collision_shape.position.x = 2		
+		else:
+			collision_shape.position.x = -2
+		
+func poke_collision_disable() -> void:
+	var capsule = collision_shape.shape as CapsuleShape2D
+	if capsule:
+		capsule.height = 18
+		collision_shape.position.x = 0		
