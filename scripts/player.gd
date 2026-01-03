@@ -28,7 +28,7 @@ func is_in_landing_zone():
 #endregion 
 
 func _ready() -> void:
-	Game.player = self
+	GameManager.player = self
 	interact_sprite.visible = false
 	
 	
