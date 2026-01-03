@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8i4g673wuxt1"]
+[gd_scene load_steps=18 format=3 uid="uid://c8i4g673wuxt1"]
 
+[ext_resource type="Script" uid="uid://bao8i56q8jlrq" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://b5b28wckvo4ot" path="res://assets/sprites/lvl1/Room.png" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="3_lnu2h"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
 
@@ -13,26 +15,44 @@ distance = -144.0
 normal = Vector2(-1, 0)
 distance = -556.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
+size = Vector2(62, 27)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(64, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5sy4"]
+size = Vector2(40, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
 size = Vector2(41, 3)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
+size = Vector2(6, 27)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
 size = Vector2(7, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
+size = Vector2(6, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtaks"]
+size = Vector2(44, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
 size = Vector2(44.75, 3)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
+
 [node name="Game" type="Node2D"]
+script = ExtResource("1_lbhrr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(206, 20)
 texture = ExtResource("1_yqjtg")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(110, 55)
+position = Vector2(-121, 59)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -36)
@@ -61,12 +81,28 @@ shape = SubResource("WorldBoundaryShape2D_lnu2h")
 
 [node name="TvStand" type="StaticBody2D" parent="Surfaces"]
 
+[node name="Landing5" parent="Surfaces/TvStand" instance=ExtResource("3_lnu2h")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-64, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/TvStand/Landing5"]
+shape = SubResource("RectangleShape2D_p57ef")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/TvStand"]
 position = Vector2(-64, 34)
 shape = SubResource("RectangleShape2D_yqjtg")
 one_way_collision = true
 
 [node name="CouchSit" type="StaticBody2D" parent="Surfaces"]
+
+[node name="Landing4" parent="Surfaces/CouchSit" instance=ExtResource("3_lnu2h")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-2, 29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchSit/Landing4"]
+shape = SubResource("RectangleShape2D_u5sy4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchSit"]
 position = Vector2(-1.5, 44.5)
@@ -75,12 +111,28 @@ one_way_collision = true
 
 [node name="CouchLeftArmrest" type="StaticBody2D" parent="Surfaces"]
 
+[node name="Landing3" parent="Surfaces/CouchLeftArmrest" instance=ExtResource("3_lnu2h")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-27, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchLeftArmrest/Landing3"]
+shape = SubResource("RectangleShape2D_gee14")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchLeftArmrest"]
 position = Vector2(-26, 39)
 shape = SubResource("RectangleShape2D_lbhrr")
 one_way_collision = true
 
 [node name="CouchRightArmrest" type="StaticBody2D" parent="Surfaces"]
+
+[node name="Landing2" parent="Surfaces/CouchRightArmrest" instance=ExtResource("3_lnu2h")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(23, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchRightArmrest/Landing2"]
+shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchRightArmrest"]
 position = Vector2(23, 39)
@@ -89,7 +141,27 @@ one_way_collision = true
 
 [node name="Table" type="StaticBody2D" parent="Surfaces"]
 
+[node name="Landing" parent="Surfaces/Table" instance=ExtResource("3_lnu2h")]
+visible = false
+position = Vector2(51, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table/Landing"]
+shape = SubResource("RectangleShape2D_vtaks")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table"]
 position = Vector2(51.375, 37)
 shape = SubResource("RectangleShape2D_iywne")
 one_way_collision = true
+
+[node name="FloorLanding" parent="." instance=ExtResource("3_lnu2h")]
+visible = false
+position = Vector2(114, 27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorLanding"]
+shape = SubResource("WorldBoundaryShape2D_kvpfn")
+
+[editable path="Surfaces/TvStand/Landing5"]
+[editable path="Surfaces/CouchSit/Landing4"]
+[editable path="Surfaces/CouchLeftArmrest/Landing3"]
+[editable path="Surfaces/CouchRightArmrest/Landing2"]
+[editable path="FloorLanding"]

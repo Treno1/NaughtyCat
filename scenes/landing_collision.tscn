@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cocn3nc3mwbvg"]
+
+[ext_resource type="Script" uid="uid://cwqpw8op0nd7v" path="res://scripts/landing_collision.gd" id="1_s2bbl"]
+
+[node name="Area2D" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_s2bbl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,10 +1,25 @@
 extends CharacterBody2D
-
+class_name CatPlayer
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -200.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+var landings := []
+
+func add_landing(instance_id: int):
+	if not landings.has(instance_id):
+		landings.append(instance_id)
+		
+func remove_landing(instance_id: int):
+	landings.erase(instance_id)
+	
+func is_in_landing_zone():
+	return !landings.is_empty()
+
+func _ready() -> void:
+	Game.player = self
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -32,7 +47,15 @@ func _physics_process(delta: float) -> void:
 		else:
 			animated_sprite.play("run")
 	else:
-		animated_sprite.play("jump")
+		# Going up
+		if velocity.y < 0:
+			animated_sprite.play("jump")
+		# Going down
+		elif velocity.y > 0:
+			if is_in_landing_zone():
+				animated_sprite.play("land")
+			else:
+				animated_sprite.play("fly")
 	
 	# Apply movement
 	if direction:

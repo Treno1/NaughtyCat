@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://co1pxrnjscwd0"]
+[gd_scene load_steps=25 format=3 uid="uid://co1pxrnjscwd0"]
 
 [ext_resource type="Texture2D" uid="uid://bvyv0scsn42oe" path="res://assets/sprites/cat/Cat_spritesheet.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://ba7tci2t72b7h" path="res://scripts/player.gd" id="1_g2els"]
@@ -43,10 +43,6 @@ region = Rect2(32, 64, 32, 32)
 atlas = ExtResource("1_3vyb7")
 region = Rect2(64, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(0, 128, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(32, 128, 32, 32)
@@ -54,10 +50,6 @@ region = Rect2(32, 128, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(64, 128, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(96, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
 atlas = ExtResource("1_3vyb7")
@@ -102,7 +94,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fly",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -140,20 +132,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f1ej7")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_oprun")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a8ls1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qfm1y")
 }],
 "loop": false,
 "name": &"land",
-"speed": 3.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -195,12 +181,13 @@ radius = 7.9999995
 height = 18.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_smehm")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -208,3 +195,5 @@ z_index = 5
 position = Vector2(0, -9)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_ur7pv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
