@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8i4g673wuxt1"]
+[gd_scene load_steps=10 format=3 uid="uid://c8i4g673wuxt1"]
 
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://b5b28wckvo4ot" path="res://assets/sprites/lvl1/Room.png" id="1_yqjtg"]
@@ -13,6 +13,18 @@ distance = -144.0
 normal = Vector2(-1, 0)
 distance = -556.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
+size = Vector2(64, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(41, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
+size = Vector2(7, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+size = Vector2(44.75, 3)
+
 [node name="Game" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -20,27 +32,64 @@ position = Vector2(206, 20)
 texture = ExtResource("1_yqjtg")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(0, 48)
+position = Vector2(110, 55)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -36)
 zoom = Vector2(8, 8)
 process_callback = 0
 limit_left = -144
-limit_top = -56
+limit_top = -57
 limit_right = 556
-limit_bottom = 79
+limit_bottom = 78
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="World Boundaries" type="StaticBody2D" parent="."]
 position = Vector2(0, 59)
 
-[node name="CollisionBottom" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionBottom" type="CollisionShape2D" parent="World Boundaries"]
 shape = SubResource("WorldBoundaryShape2D_uwrxv")
 
-[node name="CollisionLeft" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionLeft" type="CollisionShape2D" parent="World Boundaries"]
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
 
-[node name="CollisionRight" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionRight" type="CollisionShape2D" parent="World Boundaries"]
 shape = SubResource("WorldBoundaryShape2D_lnu2h")
+
+[node name="Surfaces" type="Node2D" parent="."]
+
+[node name="TvStand" type="StaticBody2D" parent="Surfaces"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/TvStand"]
+position = Vector2(-64, 34)
+shape = SubResource("RectangleShape2D_yqjtg")
+one_way_collision = true
+
+[node name="CouchSit" type="StaticBody2D" parent="Surfaces"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchSit"]
+position = Vector2(-1.5, 44.5)
+shape = SubResource("RectangleShape2D_lnu2h")
+one_way_collision = true
+
+[node name="CouchLeftArmrest" type="StaticBody2D" parent="Surfaces"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchLeftArmrest"]
+position = Vector2(-26, 39)
+shape = SubResource("RectangleShape2D_lbhrr")
+one_way_collision = true
+
+[node name="CouchRightArmrest" type="StaticBody2D" parent="Surfaces"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchRightArmrest"]
+position = Vector2(23, 39)
+shape = SubResource("RectangleShape2D_lbhrr")
+one_way_collision = true
+
+[node name="Table" type="StaticBody2D" parent="Surfaces"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table"]
+position = Vector2(51.375, 37)
+shape = SubResource("RectangleShape2D_iywne")
+one_way_collision = true
