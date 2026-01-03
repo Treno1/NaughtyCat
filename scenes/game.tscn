@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bao8i56q8jlrq" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="Texture2D" uid="uid://b5b28wckvo4ot" path="res://assets/sprites/lvl1/Room.png" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://b42f1ayg7sfar" path="res://assets/sprites/lvl1/Room.png" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://ctt0lym4c002t" path="res://scripts/interactable_sprite.gd" id="5_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dcmvcs5mo5ski" path="res://assets/sprites/lvl1/Lamp On.png" id="6_p57ef"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cdgbl8e0ph2uw" path="res://scripts/interactable_scratch.gd" id="10_vtaks"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
+distance = -11.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
 normal = Vector2(1, 0)
@@ -124,13 +125,13 @@ shape = SubResource("WorldBoundaryShape2D_lnu2h")
 [node name="Landing5" parent="Surfaces/TvStand" instance=ExtResource("3_lnu2h")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-64, 18)
+position = Vector2(-64, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/TvStand/Landing5"]
 shape = SubResource("RectangleShape2D_p57ef")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/TvStand"]
-position = Vector2(-64, 34)
+position = Vector2(-64, 39)
 shape = SubResource("RectangleShape2D_yqjtg")
 one_way_collision = true
 
@@ -139,13 +140,13 @@ one_way_collision = true
 [node name="Landing4" parent="Surfaces/CouchSit" instance=ExtResource("3_lnu2h")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-2, 29)
+position = Vector2(-1, 38)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchSit/Landing4"]
 shape = SubResource("RectangleShape2D_u5sy4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchSit"]
-position = Vector2(-1.5, 44.5)
+position = Vector2(-1, 53)
 shape = SubResource("RectangleShape2D_lnu2h")
 one_way_collision = true
 
@@ -154,13 +155,13 @@ one_way_collision = true
 [node name="Landing3" parent="Surfaces/CouchLeftArmrest" instance=ExtResource("3_lnu2h")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(-27, 24)
+position = Vector2(-26, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchLeftArmrest/Landing3"]
 shape = SubResource("RectangleShape2D_gee14")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchLeftArmrest"]
-position = Vector2(-26, 39)
+position = Vector2(-26, 47)
 shape = SubResource("RectangleShape2D_lbhrr")
 one_way_collision = true
 
@@ -169,13 +170,13 @@ one_way_collision = true
 [node name="Landing2" parent="Surfaces/CouchRightArmrest" instance=ExtResource("3_lnu2h")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(23, 24)
+position = Vector2(23, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchRightArmrest/Landing2"]
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CouchRightArmrest"]
-position = Vector2(23, 39)
+position = Vector2(23, 47)
 shape = SubResource("RectangleShape2D_lbhrr")
 one_way_collision = true
 
@@ -183,18 +184,17 @@ one_way_collision = true
 
 [node name="Landing" parent="Surfaces/Table" instance=ExtResource("3_lnu2h")]
 visible = false
-position = Vector2(51, 22)
+position = Vector2(51, 26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table/Landing"]
 shape = SubResource("RectangleShape2D_vtaks")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table"]
-position = Vector2(51.375, 37)
+position = Vector2(51, 41)
 shape = SubResource("RectangleShape2D_iywne")
 one_way_collision = true
 
 [node name="FloorLanding" parent="." instance=ExtResource("3_lnu2h")]
-visible = false
 position = Vector2(114, 27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorLanding"]
@@ -210,34 +210,35 @@ script = ExtResource("5_p57ef")
 target_sprite = NodePath("LampLight")
 
 [node name="LampLight" type="Sprite2D" parent="Interactables/LampSwitch"]
-position = Vector2(4, -12)
+position = Vector2(4, -6)
 texture = ExtResource("6_p57ef")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/LampSwitch"]
+position = Vector2(-1, 9)
 shape = SubResource("CapsuleShape2D_lbhrr")
 
-[node name="Area2D" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
-position = Vector2(-26, 46)
+[node name="CouchScratchArea" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
+position = Vector2(-26, 54)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("10_vtaks")
 target_sprites = NodePath("ScratchSprite")
 
-[node name="ScratchSprite" type="AnimatedSprite2D" parent="Interactables/Area2D"]
+[node name="ScratchSprite" type="AnimatedSprite2D" parent="Interactables/CouchScratchArea"]
 visible = false
 position = Vector2(2, 0)
 sprite_frames = SubResource("SpriteFrames_dinhu")
-animation = &"1"
+animation = &"3"
 autoplay = "1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/CouchScratchArea"]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_vtaks")
 
 [connection signal="body_entered" from="Interactables/LampSwitch" to="Interactables/LampSwitch" method="_on_body_entered"]
 [connection signal="body_exited" from="Interactables/LampSwitch" to="Interactables/LampSwitch" method="_on_body_exited"]
-[connection signal="area_shape_entered" from="Interactables/Area2D" to="Interactables/Area2D" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="Interactables/Area2D" to="Interactables/Area2D" method="_on_area_shape_exited"]
+[connection signal="area_shape_entered" from="Interactables/CouchScratchArea" to="Interactables/CouchScratchArea" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Interactables/CouchScratchArea" to="Interactables/CouchScratchArea" method="_on_area_shape_exited"]
 
 [editable path="Surfaces/TvStand/Landing5"]
 [editable path="Surfaces/CouchSit/Landing4"]
