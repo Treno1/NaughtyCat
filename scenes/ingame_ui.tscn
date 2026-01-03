@@ -1,12 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://rn0vmqxk6m2u"]
+[gd_scene load_steps=8 format=3 uid="uid://rn0vmqxk6m2u"]
 
+[ext_resource type="Texture2D" uid="uid://dmq0c7jcsiviw" path="res://assets/sprites/bg4ui.png" id="1_031h6"]
+[ext_resource type="Script" uid="uid://bc4uq8rlh5dhl" path="res://scripts/ingame_ui.gd" id="1_npobg"]
 [ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="1_v3yap"]
+[ext_resource type="FontFile" uid="uid://bpcpm71ca1l1j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_hifx3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v3yap"]
 font = ExtResource("1_v3yap")
 font_size = 32
 
+[sub_resource type="LabelSettings" id="LabelSettings_i42rf"]
+font = ExtResource("3_hifx3")
+font_size = 50
+
+[sub_resource type="GDScript" id="GDScript_hifx3"]
+script/source = "extends Label
+
+@export var start_minutes := 0
+@export var start_seconds := 0
+
+@onready var timer: Timer = $Timer
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	timer.start(start_seconds + start_minutes * 60)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	text = _get_time_str(timer.time_left)
+
+
+func _get_time_str(time: float) -> String:
+	var minutes = time / 60 as int
+	var seconds = int(time) % 60 as int
+	
+	return str(minutes).pad_zeros(2) + \":\" + str(seconds).pad_zeros(2)
+	
+"
+
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_npobg")
+
+[node name="test_bg" type="TextureRect" parent="."]
+visible = false
+offset_right = 700.0
+offset_bottom = 180.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_031h6")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 anchors_preset = 10
@@ -33,3 +74,20 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "test ui"
 label_settings = SubResource("LabelSettings_v3yap")
+
+[node name="CountdownLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
+offset_top = 59.0
+offset_right = 76.0
+offset_bottom = 91.0
+grow_horizontal = 2
+text = "02:15"
+label_settings = SubResource("LabelSettings_i42rf")
+script = SubResource("GDScript_hifx3")
+start_minutes = 2
+start_seconds = 9
+
+[node name="Timer" type="Timer" parent="CountdownLabel"]

@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name CatPlayer
 
+enum PlayerState { NORMAL, CUTSCENE }
+
+signal system_ready
+
 const SPEED = 130.0
 const JUMP_VELOCITY = -200.0
 
@@ -9,6 +13,8 @@ const JUMP_VELOCITY = -200.0
 @onready var collision_shape: CollisionShape2D = $InteractSprite/InteractArea/CollisionShape2D
 @onready var _collision_x_pos = collision_shape.position.x
 @onready var interact_sprite: AnimatedSprite2D = $InteractSprite
+
+var player_state := PlayerState.NORMAL
 
 var _is_poking := false
 
@@ -28,12 +34,15 @@ func is_in_landing_zone():
 #endregion 
 
 func _ready() -> void:
-	GameManager.player = self
+	GameManager.set_player(self)
 	interact_sprite.visible = false
+	emit_signal("system_ready")
 	
 	
-
 func _physics_process(delta: float) -> void:
+	if player_state != PlayerState.NORMAL:
+		return
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -95,4 +104,10 @@ func _on_animated_sprite_2d_animation_changed() -> void:
 func poke_animation() -> void:
 	animated_sprite.play("poke")
 	_is_poking = true
+	
+func set_state_cutscene() -> void:
+	player_state = PlayerState.CUTSCENE
+	
+func set_state_normal() -> void:
+	player_state = PlayerState.NORMAL
 	

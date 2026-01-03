@@ -1,16 +1,16 @@
 [gd_scene load_steps=28 format=3 uid="uid://c8i4g673wuxt1"]
 
-[ext_resource type="Script" uid="uid://bao8i56q8jlrq" path="res://scripts/game_manager.gd" id="1_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="Texture2D" uid="uid://b42f1ayg7sfar" path="res://assets/sprites/lvl1/Room.png" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="4_kvpfn"]
-[ext_resource type="Script" uid="uid://ctt0lym4c002t" path="res://scripts/interactable_sprite.gd" id="5_p57ef"]
-[ext_resource type="Texture2D" uid="uid://dcmvcs5mo5ski" path="res://assets/sprites/lvl1/Lamp On.png" id="6_p57ef"]
-[ext_resource type="Texture2D" uid="uid://dbmrc5i2ah281" path="res://assets/sprites/lvl1/Scratches - Couch scratch 1.png" id="7_0tnpc"]
-[ext_resource type="Texture2D" uid="uid://clfenjtshp1ie" path="res://assets/sprites/lvl1/Scratches - Couch scratch 2.png" id="8_vtaks"]
-[ext_resource type="Texture2D" uid="uid://ck7e81bgj6d2p" path="res://assets/sprites/lvl1/Scratches - Couch scratch 3.png" id="9_kvpfn"]
-[ext_resource type="Script" uid="uid://cdgbl8e0ph2uw" path="res://scripts/interactable_scratch.gd" id="10_vtaks"]
+[ext_resource type="Script" uid="uid://bao8i56q8jlrq" path="res://scripts/game_manager.gd" id="1_kylad"]
+[ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="2_28l0p"]
+[ext_resource type="Texture2D" uid="uid://b42f1ayg7sfar" path="res://assets/sprites/lvl1/Room.png" id="3_yq2hi"]
+[ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="4_2tpkn"]
+[ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="5_6oc1e"]
+[ext_resource type="Script" uid="uid://ctt0lym4c002t" path="res://scripts/interactable_sprite.gd" id="6_sh3n3"]
+[ext_resource type="Texture2D" uid="uid://dcmvcs5mo5ski" path="res://assets/sprites/lvl1/Lamp On.png" id="7_sh364"]
+[ext_resource type="Script" uid="uid://cdgbl8e0ph2uw" path="res://scripts/interactable_scratch.gd" id="8_vl02w"]
+[ext_resource type="Texture2D" uid="uid://dbmrc5i2ah281" path="res://assets/sprites/lvl1/Scratches - Couch scratch 1.png" id="9_cpkqi"]
+[ext_resource type="Texture2D" uid="uid://clfenjtshp1ie" path="res://assets/sprites/lvl1/Scratches - Couch scratch 2.png" id="10_tpdyh"]
+[ext_resource type="Texture2D" uid="uid://ck7e81bgj6d2p" path="res://assets/sprites/lvl1/Scratches - Couch scratch 3.png" id="11_sx06d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
 distance = -11.0
@@ -59,7 +59,7 @@ radius = 3.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_0tnpc")
+"texture": ExtResource("9_cpkqi")
 }],
 "loop": true,
 "name": &"1",
@@ -67,7 +67,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_vtaks")
+"texture": ExtResource("10_tpdyh")
 }],
 "loop": true,
 "name": &"2",
@@ -75,7 +75,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_kvpfn")
+"texture": ExtResource("11_sx06d")
 }],
 "loop": true,
 "name": &"3",
@@ -86,18 +86,20 @@ animations = [{
 radius = 3.0
 height = 16.0
 
-[node name="Game" type="Node2D"]
+[node name="Lvl1" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_lbhrr")
+script = ExtResource("1_kylad")
+is_in_level = true
+time_limit_seconds = 15
 
-[node name="CanvasLayer" parent="." instance=ExtResource("4_kvpfn")]
+[node name="IngameUI" parent="." instance=ExtResource("2_28l0p")]
 
 [node name="RoomBG" type="Sprite2D" parent="."]
 position = Vector2(206, 20)
-texture = ExtResource("1_yqjtg")
+texture = ExtResource("3_yq2hi")
 
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+[node name="Player" parent="." instance=ExtResource("4_2tpkn")]
 position = Vector2(-9, 15)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -127,7 +129,7 @@ shape = SubResource("WorldBoundaryShape2D_lnu2h")
 
 [node name="TvStand" type="StaticBody2D" parent="Surfaces"]
 
-[node name="Landing5" parent="Surfaces/TvStand" instance=ExtResource("3_lnu2h")]
+[node name="Landing5" parent="Surfaces/TvStand" instance=ExtResource("5_6oc1e")]
 unique_name_in_owner = true
 visible = false
 position = Vector2(-64, 24)
@@ -142,7 +144,7 @@ one_way_collision = true
 
 [node name="CouchSit" type="StaticBody2D" parent="Surfaces"]
 
-[node name="Landing4" parent="Surfaces/CouchSit" instance=ExtResource("3_lnu2h")]
+[node name="Landing4" parent="Surfaces/CouchSit" instance=ExtResource("5_6oc1e")]
 unique_name_in_owner = true
 visible = false
 position = Vector2(-1, 38)
@@ -157,7 +159,7 @@ one_way_collision = true
 
 [node name="CouchLeftArmrest" type="StaticBody2D" parent="Surfaces"]
 
-[node name="Landing3" parent="Surfaces/CouchLeftArmrest" instance=ExtResource("3_lnu2h")]
+[node name="Landing3" parent="Surfaces/CouchLeftArmrest" instance=ExtResource("5_6oc1e")]
 unique_name_in_owner = true
 visible = false
 position = Vector2(-26, 32)
@@ -172,7 +174,7 @@ one_way_collision = true
 
 [node name="CouchRightArmrest" type="StaticBody2D" parent="Surfaces"]
 
-[node name="Landing2" parent="Surfaces/CouchRightArmrest" instance=ExtResource("3_lnu2h")]
+[node name="Landing2" parent="Surfaces/CouchRightArmrest" instance=ExtResource("5_6oc1e")]
 unique_name_in_owner = true
 visible = false
 position = Vector2(23, 32)
@@ -187,7 +189,7 @@ one_way_collision = true
 
 [node name="Table" type="StaticBody2D" parent="Surfaces"]
 
-[node name="Landing" parent="Surfaces/Table" instance=ExtResource("3_lnu2h")]
+[node name="Landing" parent="Surfaces/Table" instance=ExtResource("5_6oc1e")]
 visible = false
 position = Vector2(51, 26)
 
@@ -199,7 +201,7 @@ position = Vector2(51, 41)
 shape = SubResource("RectangleShape2D_iywne")
 one_way_collision = true
 
-[node name="FloorLanding" parent="." instance=ExtResource("3_lnu2h")]
+[node name="FloorLanding" parent="." instance=ExtResource("5_6oc1e")]
 position = Vector2(114, 27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorLanding"]
@@ -211,12 +213,12 @@ shape = SubResource("WorldBoundaryShape2D_kvpfn")
 position = Vector2(76, 18)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("5_p57ef")
+script = ExtResource("6_sh3n3")
 target_sprite = NodePath("LampLight")
 
 [node name="LampLight" type="Sprite2D" parent="Interactables/LampSwitch"]
 position = Vector2(4, -6)
-texture = ExtResource("6_p57ef")
+texture = ExtResource("7_sh364")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/LampSwitch"]
 position = Vector2(-1, 9)
@@ -226,7 +228,7 @@ shape = SubResource("CapsuleShape2D_lbhrr")
 position = Vector2(-26, 54)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("10_vtaks")
+script = ExtResource("8_vl02w")
 target_sprites = NodePath("ScratchSprite")
 
 [node name="ScratchSprite" type="AnimatedSprite2D" parent="Interactables/CouchScratchArea"]
