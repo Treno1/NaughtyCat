@@ -6,9 +6,12 @@ const JUMP_VELOCITY = -200.0
 
 @onready var animated_sprite: AnimatedSprite2D = $PlayerSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape: CollisionShape2D = $InteractSprite/InteractArea/CollisionShape2D
+@onready var _collision_x_pos = collision_shape.position.x
+@onready var interact_sprite: AnimatedSprite2D = $InteractSprite
 
 var _is_poking := false
+
 
 #region landings
 var _landings := []
@@ -26,6 +29,8 @@ func is_in_landing_zone():
 
 func _ready() -> void:
 	Game.player = self
+	interact_sprite.visible = false
+	
 	
 
 func _physics_process(delta: float) -> void:
@@ -46,8 +51,10 @@ func _physics_process(delta: float) -> void:
 	# Flip the sprite
 	if direction > 0:
 		animated_sprite.flip_h = false
+		collision_shape.position.x = _collision_x_pos
 	elif direction < 0:
 		animated_sprite.flip_h = true
+		collision_shape.position.x = _collision_x_pos * -1
 		
 	# Play animations
 	# Interact

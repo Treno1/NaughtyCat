@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8i4g673wuxt1"]
+[gd_scene load_steps=27 format=3 uid="uid://c8i4g673wuxt1"]
 
 [ext_resource type="Script" uid="uid://bao8i56q8jlrq" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://ctt0lym4c002t" path="res://scripts/interactable_sprite.gd" id="5_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dcmvcs5mo5ski" path="res://assets/sprites/lvl1/Lamp On.png" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://dbmrc5i2ah281" path="res://assets/sprites/lvl1/Scratches - Couch scratch 1.png" id="7_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://clfenjtshp1ie" path="res://assets/sprites/lvl1/Scratches - Couch scratch 2.png" id="8_vtaks"]
+[ext_resource type="Texture2D" uid="uid://ck7e81bgj6d2p" path="res://assets/sprites/lvl1/Scratches - Couch scratch 3.png" id="9_kvpfn"]
+[ext_resource type="Script" uid="uid://cdgbl8e0ph2uw" path="res://scripts/interactable_scratch.gd" id="10_vtaks"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
 
@@ -49,6 +53,37 @@ size = Vector2(44.75, 3)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lbhrr"]
 radius = 3.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_dinhu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_0tnpc")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_vtaks")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_kvpfn")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtaks"]
+radius = 3.0
+height = 16.0
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_lbhrr")
 
@@ -57,7 +92,7 @@ position = Vector2(206, 20)
 texture = ExtResource("1_yqjtg")
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(42, 30)
+position = Vector2(-9, 15)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -36)
@@ -165,24 +200,44 @@ position = Vector2(114, 27)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorLanding"]
 shape = SubResource("WorldBoundaryShape2D_kvpfn")
 
-[node name="Lamp" type="Node" parent="."]
+[node name="Interactables" type="Node" parent="."]
 
-[node name="LampSwitch" type="Area2D" parent="Lamp" node_paths=PackedStringArray("target_sprite")]
+[node name="LampSwitch" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprite")]
 position = Vector2(76, 18)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("5_p57ef")
-target_sprite = NodePath("../LampLight")
+target_sprite = NodePath("LampLight")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp/LampSwitch"]
-shape = SubResource("CapsuleShape2D_lbhrr")
-
-[node name="LampLight" type="Sprite2D" parent="Lamp"]
-position = Vector2(80, 6)
+[node name="LampLight" type="Sprite2D" parent="Interactables/LampSwitch"]
+position = Vector2(4, -12)
 texture = ExtResource("6_p57ef")
 
-[connection signal="body_entered" from="Lamp/LampSwitch" to="Lamp/LampSwitch" method="_on_body_entered"]
-[connection signal="body_exited" from="Lamp/LampSwitch" to="Lamp/LampSwitch" method="_on_body_exited"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/LampSwitch"]
+shape = SubResource("CapsuleShape2D_lbhrr")
+
+[node name="Area2D" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
+position = Vector2(-26, 46)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("10_vtaks")
+target_sprites = NodePath("ScratchSprite")
+
+[node name="ScratchSprite" type="AnimatedSprite2D" parent="Interactables/Area2D"]
+visible = false
+position = Vector2(2, 0)
+sprite_frames = SubResource("SpriteFrames_dinhu")
+animation = &"1"
+autoplay = "1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_vtaks")
+
+[connection signal="body_entered" from="Interactables/LampSwitch" to="Interactables/LampSwitch" method="_on_body_entered"]
+[connection signal="body_exited" from="Interactables/LampSwitch" to="Interactables/LampSwitch" method="_on_body_exited"]
+[connection signal="area_shape_entered" from="Interactables/Area2D" to="Interactables/Area2D" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Interactables/Area2D" to="Interactables/Area2D" method="_on_area_shape_exited"]
 
 [editable path="Surfaces/TvStand/Landing5"]
 [editable path="Surfaces/CouchSit/Landing4"]

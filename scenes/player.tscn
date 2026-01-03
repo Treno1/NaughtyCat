@@ -251,6 +251,8 @@ collision_layer = 2
 script = ExtResource("1_g2els")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+z_index = 10
+z_as_relative = false
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_smehm")
 animation = &"poke"
@@ -270,7 +272,6 @@ libraries = {
 }
 
 [node name="InteractSprite" type="AnimatedSprite2D" parent="."]
-visible = false
 z_index = 10
 position = Vector2(0, -27)
 sprite_frames = SubResource("SpriteFrames_f1ej7")

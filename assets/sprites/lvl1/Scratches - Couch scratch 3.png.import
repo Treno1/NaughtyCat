@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh2nqsrw2bdt6"
-path="res://.godot/imported/Couch Scratch.png-234e16022f0199d5c9380454961d4d19.ctex"
+uid="uid://ck7e81bgj6d2p"
+path="res://.godot/imported/Scratches - Couch scratch 3.png-22cba1142c889b11718306648ecae2aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/lvl1/Couch Scratch.png"
-dest_files=["res://.godot/imported/Couch Scratch.png-234e16022f0199d5c9380454961d4d19.ctex"]
+source_file="res://assets/sprites/lvl1/Scratches - Couch scratch 3.png"
+dest_files=["res://.godot/imported/Scratches - Couch scratch 3.png-22cba1142c889b11718306648ecae2aa.ctex"]
 
 [params]
 
