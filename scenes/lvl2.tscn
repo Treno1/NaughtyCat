@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://btf3hgk1bt3ct"]
+[gd_scene load_steps=54 format=3 uid="uid://btf3hgk1bt3ct"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_y266n"]
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_datw2"]
@@ -259,49 +259,6 @@ animations = [{
 radius = 2.9997158
 height = 15.998482
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_cybey"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kaqyl")
-}],
-"loop": false,
-"name": &"1",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4v6ji")
-}],
-"loop": false,
-"name": &"2",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i4mno")
-}],
-"loop": true,
-"name": &"3",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_awinm")
-}],
-"loop": true,
-"name": &"4",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xb3wc")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
 [node name="Lvl2" type="Node2D"]
 
 [node name="IngameUI" parent="." instance=ExtResource("1_y266n")]
@@ -507,7 +464,8 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("12_x5lnp")
 target_sprites = NodePath("ScratchSprite2")
-animations_count = 2
+animations_count = 4
+enabled = false
 
 [node name="ScratchSprite2" type="AnimatedSprite2D" parent="Interactables/CouchScratchR"]
 sprite_frames = SubResource("SpriteFrames_datw2")
@@ -515,25 +473,6 @@ animation = &"4"
 autoplay = "4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/CouchScratchR"]
-position = Vector2(-1.0000006, 4)
-rotation = 0.013788337
-shape = SubResource("CapsuleShape2D_hcc03")
-
-[node name="CouchScratchR2" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
-position = Vector2(24, 53)
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("12_x5lnp")
-target_sprites = NodePath("ScratchSprite2")
-animations_count = 2
-enabled = false
-
-[node name="ScratchSprite2" type="AnimatedSprite2D" parent="Interactables/CouchScratchR2"]
-sprite_frames = SubResource("SpriteFrames_cybey")
-animation = &"4"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/CouchScratchR2"]
 position = Vector2(-1.0000006, 4)
 rotation = 0.013788337
 shape = SubResource("CapsuleShape2D_hcc03")
@@ -546,8 +485,6 @@ shape = SubResource("CapsuleShape2D_hcc03")
 [connection signal="area_shape_exited" from="Interactables/FlowerPot" to="Interactables/FlowerPot" method="_on_area_shape_exited"]
 [connection signal="area_shape_entered" from="Interactables/CouchScratchR" to="Interactables/CouchScratchR" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Interactables/CouchScratchR" to="Interactables/CouchScratchR" method="_on_area_shape_exited"]
-[connection signal="area_shape_entered" from="Interactables/CouchScratchR2" to="Interactables/CouchScratchR2" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="Interactables/CouchScratchR2" to="Interactables/CouchScratchR2" method="_on_area_shape_exited"]
 
 [editable path="Surfaces/TvStand/Landing5"]
 [editable path="Surfaces/CouchSit/Landing4"]

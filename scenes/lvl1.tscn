@@ -469,7 +469,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("8_vl02w")
 target_sprites = NodePath("ScratchSprite2")
-animations_count = 2
+animations_count = 4
 
 [node name="ScratchSprite2" type="AnimatedSprite2D" parent="Interactables/CouchScratchR"]
 sprite_frames = SubResource("SpriteFrames_cybey")
@@ -477,24 +477,6 @@ animation = &"4"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/CouchScratchR"]
-position = Vector2(-1.0000006, 4)
-rotation = 0.013788337
-shape = SubResource("CapsuleShape2D_hcc03")
-
-[node name="CouchScratchR2" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
-position = Vector2(24, 53)
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("8_vl02w")
-target_sprites = NodePath("ScratchSprite2")
-animations_count = 2
-
-[node name="ScratchSprite2" type="AnimatedSprite2D" parent="Interactables/CouchScratchR2"]
-sprite_frames = SubResource("SpriteFrames_cybey")
-animation = &"4"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/CouchScratchR2"]
 position = Vector2(-1.0000006, 4)
 rotation = 0.013788337
 shape = SubResource("CapsuleShape2D_hcc03")
@@ -507,8 +489,6 @@ shape = SubResource("CapsuleShape2D_hcc03")
 [connection signal="area_shape_exited" from="Interactables/FlowerPot" to="Interactables/FlowerPot" method="_on_area_shape_exited"]
 [connection signal="area_shape_entered" from="Interactables/CouchScratchR" to="Interactables/CouchScratchR" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Interactables/CouchScratchR" to="Interactables/CouchScratchR" method="_on_area_shape_exited"]
-[connection signal="area_shape_entered" from="Interactables/CouchScratchR2" to="Interactables/CouchScratchR2" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="Interactables/CouchScratchR2" to="Interactables/CouchScratchR2" method="_on_area_shape_exited"]
 
 [editable path="Surfaces/TvStand/Landing5"]
 [editable path="Surfaces/CouchSit/Landing4"]
