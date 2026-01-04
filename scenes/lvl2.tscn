@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://btf3hgk1bt3ct"]
+[gd_scene load_steps=92 format=3 uid="uid://btf3hgk1bt3ct"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_y266n"]
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_datw2"]
@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://d0mmyba8777qk" path="res://assets/sprites/lvl1/FlowerPot.png" id="18_02i5d"]
 [ext_resource type="Texture2D" uid="uid://dq0ogf5agoujc" path="res://assets/sprites/lvl1/couch scratch right.png" id="19_usg8q"]
 [ext_resource type="Texture2D" uid="uid://b380kus2wl0yp" path="res://assets/sprites/lvl1/tv on.png" id="19_y266n"]
+[ext_resource type="Texture2D" uid="uid://bofoio1qbs1tg" path="res://assets/sprites/lvl1/door.png" id="20_iyd8c"]
+[ext_resource type="Script" uid="uid://cnkvtcitd4nb3" path="res://scripts/door.gd" id="21_nn67r"]
+[ext_resource type="Script" uid="uid://dr8veymk5832e" path="res://scripts/level_animator.gd" id="22_gk86t"]
+[ext_resource type="AudioStream" uid="uid://d377s8jicb3k" path="res://assets/audio/door_open.mp3" id="23_py87s"]
 
 [sub_resource type="Resource" id="Resource_sh364"]
 script = ExtResource("6_nn67r")
@@ -346,6 +350,165 @@ animations = [{
 radius = 9.012932
 height = 44.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2y8u"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(0, 0, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8nnd"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(0, 0, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdlxk"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(0, 0, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhitu"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(36, 0, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kes6e"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(72, 0, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alemc"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(108, 0, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2dfw"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(0, 77, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqhkw"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(0, 77, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0adkv"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(0, 0, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx5i6"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(0, 0, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sva8"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(0, 77, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2h7q"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(0, 77, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok8wf"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(36, 77, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r266"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(72, 77, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a68ly"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(108, 77, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ypuy"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(0, 154, 36, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc6v1"]
+atlas = ExtResource("20_iyd8c")
+region = Rect2(36, 154, 36, 77)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wom57"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2y8u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8nnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdlxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhitu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kes6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alemc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2dfw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqhkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0adkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx5i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sva8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2h7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok8wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5r266")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a68ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ypuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc6v1")
+}],
+"loop": false,
+"name": &"open",
+"speed": 3.0
+}]
+
+[sub_resource type="Animation" id="Animation_gtj14"]
+resource_name = "timer_out"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelAnimator/AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tpdyh"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fk3q0"]
+_data = {
+&"RESET": SubResource("Animation_tpdyh"),
+&"timer_out": SubResource("Animation_gtj14")
+}
+
 [node name="Lvl2" type="Node2D"]
 
 [node name="IngameUI" parent="." instance=ExtResource("1_y266n")]
@@ -578,12 +741,30 @@ position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_ybwc6")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.060462814
+frame_progress = 0.86591285
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/TurnOnTV"]
 position = Vector2(-5.9604645e-07, 4)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_iyd8c")
+
+[node name="Door" type="AnimatedSprite2D" parent="."]
+position = Vector2(-120, 25)
+sprite_frames = SubResource("SpriteFrames_wom57")
+animation = &"open"
+autoplay = "idle"
+script = ExtResource("21_nn67r")
+
+[node name="LevelAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fk3q0")
+}
+script = ExtResource("22_gk86t")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="LevelAnimator"]
+stream = ExtResource("23_py87s")
+volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="area_shape_entered" from="Interactables/CouchScratchL" to="Interactables/CouchScratchL" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Interactables/CouchScratchL" to="Interactables/CouchScratchL" method="_on_area_shape_exited"]

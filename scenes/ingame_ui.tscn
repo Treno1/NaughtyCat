@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://rn0vmqxk6m2u"]
+[gd_scene load_steps=9 format=3 uid="uid://rn0vmqxk6m2u"]
 
 [ext_resource type="Texture2D" uid="uid://dmq0c7jcsiviw" path="res://assets/sprites/bg4ui.png" id="1_031h6"]
 [ext_resource type="Script" uid="uid://bc4uq8rlh5dhl" path="res://scripts/ingame_ui.gd" id="1_npobg"]
@@ -6,6 +6,10 @@
 [ext_resource type="FontFile" uid="uid://bpcpm71ca1l1j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_hifx3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hifx3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hifx3"]
+font = ExtResource("1_v3yap")
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_i42rf"]
 font = ExtResource("3_hifx3")
@@ -37,6 +41,18 @@ text = "THIS IS A TEST BACKGROUND
 DISABLE IT BEFORE RUN"
 horizontal_alignment = 1
 
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -210.0
+offset_top = 13.0
+offset_right = 210.0
+offset_bottom = 45.0
+grow_horizontal = 2
+text = "Owners return in"
+label_settings = SubResource("LabelSettings_hifx3")
+
 [node name="CountdownLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
@@ -50,6 +66,8 @@ text = "02:15"
 label_settings = SubResource("LabelSettings_i42rf")
 
 [node name="Timer" type="Timer" parent="CountdownLabel"]
+
+[node name="PreTimer" type="Timer" parent="CountdownLabel"]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15

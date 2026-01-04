@@ -4,6 +4,7 @@ class_name IngameUI
 signal system_ready
 
 @onready var timer: Timer = $CountdownLabel/Timer
+@onready var pre_timer: Timer = $CountdownLabel/PreTimer
 @onready var countdown_label: Label = $CountdownLabel
 @onready var tasks_container: GridContainer = $MarginContainer/GridContainer
 var TaskControl := preload("res://scenes/task_control.tscn")
@@ -13,6 +14,7 @@ var white := Color.WHITE
 
 func set_timer(total_seconds: int) -> void:
 	timer.wait_time = total_seconds
+	pre_timer.wait_time = total_seconds - GameManager.red_timer_seconds
 	countdown_label.text = _get_time_str(total_seconds)
 
 func add_tasks(task_trackers: Array[TaskTracker]) -> void:
@@ -31,24 +33,27 @@ func add_tasks(task_trackers: Array[TaskTracker]) -> void:
 func start_timer(total_seconds: int = -1) -> void:
 	if total_seconds > 0:
 		timer.start(total_seconds)
+		pre_timer.start(total_seconds - GameManager.red_timer_seconds)
 	else:
 		timer.start()
+		pre_timer.start()
 	
 	timer.timeout.connect(GameManager.timeout)
+	pre_timer.timeout.connect(GameManager.pre_timeout)
+	pre_timer.timeout.connect(_pre_timer_finish)
 
 func _ready() -> void:
 	GameManager.set_ingame_ui(self)
 	emit_signal("system_ready")
+	countdown_label.label_settings.font_color = white
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if timer:
 		countdown_label.text = _get_time_str(timer.time_left)
-		if timer.time_left <= 5:
-			countdown_label.label_settings.font_color = red
-		else:
-			countdown_label.label_settings.font_color = white
 
+func _pre_timer_finish() -> void:
+	countdown_label.label_settings.font_color = red
 
 func _get_time_str(time: float) -> String:
 	var minutes = time / 60 as int

@@ -11,12 +11,15 @@ enum GameState { MAIN_MENU, PLAY, PAUSE, LEVEL_END }
 
 var game_state := GameState.MAIN_MENU
 
-var _total_pending := 4
+var red_timer_seconds := 5
+
+var _total_pending := 5
 var pending := _total_pending
 var _player: CatPlayer = null
 var _ingame_ui: IngameUI = null
 var _level_data: LevelData = null
 var _lvl_finish_ui: LevelFinishMenu = null
+var _level_animator: LevelAnimator = null
 
 var _task_trackers: Array[TaskTracker]
 var _tasks_left := 0
@@ -88,6 +91,10 @@ func timeout():
 	game_state = GameState.LEVEL_END
 	_lvl_finish_ui.lose_level()
 	
+func pre_timeout():
+	print("pre_timeout")
+	_level_animator.pre_timer_trigger()
+	
 func _is_in_level():
 	return _level_data != null and GameState.PLAY
 	
@@ -98,6 +105,10 @@ func set_player(player: CatPlayer) -> void:
 func set_ingame_ui(ingame_ui: IngameUI) -> void:
 	_ingame_ui = ingame_ui
 	_ingame_ui.system_ready.connect(_on_system_ready)
+	
+func set_level_animator(level_animator: LevelAnimator) -> void:
+	_level_animator = level_animator
+	_level_animator.system_ready.connect(_on_system_ready)
 	
 func set_level_data(level_data: LevelData) -> void:
 	_level_data = level_data
