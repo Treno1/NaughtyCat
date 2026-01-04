@@ -97,6 +97,8 @@ height = 16.0
 
 [node name="Lvl1" type="Node2D"]
 
+[node name="IngameUI" parent="." instance=ExtResource("2_28l0p")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_2tpkn")]
@@ -108,8 +110,6 @@ script = ExtResource("1_kylad")
 script = ExtResource("2_yq2hi")
 tasks = Array[ExtResource("3_2tpkn")]([SubResource("Resource_6oc1e")])
 timer_limit_seconds = 197
-
-[node name="IngameUI" parent="." instance=ExtResource("2_28l0p")]
 
 [node name="RoomBG" type="Sprite2D" parent="."]
 position = Vector2(206, 20)
