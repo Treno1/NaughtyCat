@@ -5,6 +5,9 @@ var _player: CatPlayer = null
 var _ingame_ui: IngameUI = null
 var _level_data: LevelData = null
 
+var _task_trackers: Array[TaskTracker]
+var _tasks_left := 0
+
 func _on_system_ready() -> void:
 	pending -= 1
 	if pending != 0:
@@ -17,6 +20,28 @@ func _on_system_ready() -> void:
 	
 	# for debug reasons
 	start_play()
+	
+func _setup_task_trackers():
+	_task_trackers = []
+	
+	await get_tree().process_frame
+	
+	for task in _level_data.tasks:
+		var tracker = TaskTracker.new()
+		get_tree().current_scene.add_child.call_deferred(tracker)
+		tracker.setup.call_deferred(task)
+		_task_trackers.append(tracker)
+		_tasks_left += 1
+		
+	await get_tree().process_frame
+	
+	for tracker in _task_trackers:
+		tracker.task_completed.connect(_on_task_completed)
+		
+func _on_task_completed(task_tracker: TaskTracker):
+	_tasks_left -= 1
+	print("tasks left: ", _tasks_left, ", completed task: ", task_tracker._task_data.task_ui_text)
+	
 	
 func _is_in_level():
 	return _level_data != null
@@ -35,6 +60,9 @@ func set_level_data(level_data: LevelData) -> void:
 	
 	
 func start_play() -> void:
+	# Setup tasks
+	_setup_task_trackers()
+	
 	# Give controls to player
 	_player.set_state_normal()
 	
