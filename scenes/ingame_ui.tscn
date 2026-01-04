@@ -65,6 +65,7 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+process_mode = 3
 custom_minimum_size = Vector2(100, 100)
 layout_direction = 2
 layout_mode = 2

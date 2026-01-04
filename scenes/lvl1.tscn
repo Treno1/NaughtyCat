@@ -254,7 +254,7 @@ target_sprites = NodePath("ScratchSprite")
 visible = false
 position = Vector2(2, 0)
 sprite_frames = SubResource("SpriteFrames_dinhu")
-animation = &"3"
+animation = &"1"
 autoplay = "1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/CouchScratchArea"]
