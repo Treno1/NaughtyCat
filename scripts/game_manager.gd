@@ -35,6 +35,8 @@ func _setup_task_trackers():
 		
 	await get_tree().process_frame
 	
+	_ingame_ui.add_tasks(_task_trackers)
+	
 	for tracker in _task_trackers:
 		tracker.task_completed.connect(_on_task_completed)
 		

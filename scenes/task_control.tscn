@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://5kghwfmd00lo"]
+
+[ext_resource type="Script" uid="uid://cjhpmixh28r6b" path="res://scripts/task_ui.gd" id="1_iaj03"]
+[ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="2_f1783"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f6424"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_uyn70"]
+color = Color(1, 1, 1, 1)
+thickness = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_cm6yq"]
+font = ExtResource("2_f1783")
+font_size = 24
+
+[sub_resource type="Animation" id="Animation_r7y21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TaskProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_yrj12"]
+resource_name = "complete"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TaskProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k4ad5"]
+_data = {
+&"RESET": SubResource("Animation_r7y21"),
+&"complete": SubResource("Animation_yrj12")
+}
+
+[node name="TaskControl" type="Control"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_iaj03")
+
+[node name="TaskProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_top = 10.0
+offset_right = 450.0
+offset_bottom = 15.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_f6424")
+theme_override_styles/fill = SubResource("StyleBoxLine_uyn70")
+show_percentage = false
+
+[node name="TaskLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 371.0
+offset_bottom = 24.0
+text = "* Scratch the couch"
+label_settings = SubResource("LabelSettings_cm6yq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k4ad5")
+}
