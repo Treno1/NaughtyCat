@@ -43,7 +43,11 @@ func _setup_task_trackers():
 func _on_task_completed(task_tracker: TaskTracker):
 	_tasks_left -= 1
 	print("tasks left: ", _tasks_left, ", completed task: ", task_tracker._task_data.task_ui_text)
+	if _tasks_left <= 0:
+		_level_complete()
 	
+func _level_complete():
+	print("level complete")
 	
 func _is_in_level():
 	return _level_data != null

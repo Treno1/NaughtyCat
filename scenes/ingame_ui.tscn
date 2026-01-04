@@ -5,9 +5,7 @@
 [ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="1_v3yap"]
 [ext_resource type="FontFile" uid="uid://bpcpm71ca1l1j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_hifx3"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_v3yap"]
-font = ExtResource("1_v3yap")
-font_size = 32
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hifx3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i42rf"]
 font = ExtResource("3_hifx3")
@@ -20,30 +18,24 @@ font_size = 24
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_npobg")
 
-[node name="test_bg" type="TextureRect" parent="."]
+[node name="DISABLE TEST BG" type="TextureRect" parent="."]
 visible = false
 offset_right = 700.0
 offset_bottom = 180.0
 scale = Vector2(2, 2)
 texture = ExtResource("1_031h6")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 604.0
-offset_top = 408.0
-offset_right = 608.0
-offset_bottom = 412.0
-size_flags_vertical = 1
-show_percentage = false
-
-[node name="Label" type="Label" parent="ProgressBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "test ui"
-label_settings = SubResource("LabelSettings_v3yap")
+[node name="Label" type="Label" parent="DISABLE TEST BG"]
+layout_mode = 0
+offset_left = -102.5
+offset_top = 240.5
+offset_right = 1015.5
+offset_bottom = 409.5
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxTexture_hifx3")
+text = "THIS IS A TEST BACKGROUND
+DISABLE IT BEFORE RUN"
+horizontal_alignment = 1
 
 [node name="CountdownLabel" type="Label" parent="."]
 anchors_preset = 5
@@ -83,3 +75,7 @@ theme_override_constants/v_separation = 20
 layout_mode = 2
 text = "Active tasks:"
 label_settings = SubResource("LabelSettings_cm6yq")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

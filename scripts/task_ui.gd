@@ -13,5 +13,5 @@ func setup(task_data: TaskData) -> void:
 	task_label.text = "* " + task_data.task_ui_text
 	task_progress_bar.value = 0
 	
-func complete(task_tracker: TaskTracker) -> void:
+func complete(_task_tracker: TaskTracker) -> void:
 	animation_player.play("complete")
