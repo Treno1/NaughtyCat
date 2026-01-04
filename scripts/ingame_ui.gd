@@ -31,6 +31,8 @@ func start_timer(total_seconds: int = -1) -> void:
 		timer.start(total_seconds)
 	else:
 		timer.start()
+	
+	timer.timeout.connect(GameManager.timeout)
 
 func _ready() -> void:
 	GameManager.set_ingame_ui(self)

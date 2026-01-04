@@ -1,10 +1,11 @@
 extends Node
 
-var _total_pending := 3
+var _total_pending := 4
 var pending := _total_pending
 var _player: CatPlayer = null
 var _ingame_ui: IngameUI = null
 var _level_data: LevelData = null
+var _lvl_finish_ui: LevelFinishMenu = null
 
 var _task_trackers: Array[TaskTracker]
 var _tasks_left := 0
@@ -12,6 +13,9 @@ var _tasks_left := 0
 func restart_level() -> void:
 	pending = _total_pending
 	get_tree().reload_current_scene()	
+	
+func next_level() -> void:
+	restart_level()
 
 func _on_system_ready() -> void:
 	pending -= 1
@@ -52,7 +56,10 @@ func _on_task_completed(task_tracker: TaskTracker):
 		_level_complete()
 	
 func _level_complete():
-	print("level complete")
+	_lvl_finish_ui.finish_level()
+	
+func timeout():
+	_lvl_finish_ui.lose_level()
 	
 func _is_in_level():
 	return _level_data != null
@@ -68,6 +75,10 @@ func set_ingame_ui(ingame_ui: IngameUI) -> void:
 func set_level_data(level_data: LevelData) -> void:
 	_level_data = level_data
 	_level_data.system_ready.connect(_on_system_ready)
+	
+func set_lvl_finish_ui(lvl_finish_ui: LevelFinishMenu) -> void:
+	_lvl_finish_ui = lvl_finish_ui
+	_lvl_finish_ui.system_ready.connect(_on_system_ready)
 	
 	
 func start_play() -> void:
