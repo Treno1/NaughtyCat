@@ -5,10 +5,12 @@ func _ready() -> void:
 	hide()
 
 func resume():
+	GameManager.game_state = GameManager.GameState.PLAY
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")
 	
 func pause():
+	GameManager.game_state = GameManager.GameState.PAUSE
 	show()
 	get_tree().paused = true
 	$AnimationPlayer.play("blur")
@@ -24,7 +26,6 @@ func test_esc():
 
 
 func _on_resume_pressed() -> void:
-	print("resume pressed")
 	resume()
 
 
@@ -34,4 +35,6 @@ func _on_restart_pressed() -> void:
 
 
 func _process(_delta: float) -> void:
+	if GameManager.game_state != GameManager.GameState.PLAY:
+		return
 	test_esc()

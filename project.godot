@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="NaughtyCat"
-run/main_scene="uid://c8i4g673wuxt1"
+run/main_scene="uid://cnryun3gojxlg"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]

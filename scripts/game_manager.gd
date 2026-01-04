@@ -4,8 +4,12 @@ const LEVELS := [
 	preload("res://scenes/lvl1.tscn"),
 	preload("res://scenes/lvl2.tscn")
 	]
+	
+enum GameState { MAIN_MENU, PLAY, PAUSE, LEVEL_END }
 
 @onready var level_finish_sounds: Node = $LevelFinishSounds
+
+var game_state := GameState.MAIN_MENU
 
 var _total_pending := 4
 var pending := _total_pending
@@ -33,6 +37,7 @@ func next_level() -> void:
 	get_tree().change_scene_to_packed(LEVELS[_lvl_id-1])
 	
 	await get_tree().scene_changed
+	game_state = GameState.PLAY
 
 func _on_system_ready() -> void:
 	pending -= 1
@@ -49,6 +54,7 @@ func _on_system_ready() -> void:
 	
 func _setup_task_trackers():
 	_task_trackers = []
+	_tasks_left = 0
 	
 	await get_tree().process_frame
 	
@@ -75,13 +81,15 @@ func _on_task_completed(task_tracker: TaskTracker):
 func _level_complete():
 	var sound = level_finish_sounds.get_children().pick_random() as AudioStreamPlayer2D
 	sound.play()
+	game_state = GameState.LEVEL_END
 	_lvl_finish_ui.finish_level()
 	
 func timeout():
+	game_state = GameState.LEVEL_END
 	_lvl_finish_ui.lose_level()
 	
 func _is_in_level():
-	return _level_data != null
+	return _level_data != null and GameState.PLAY
 	
 func set_player(player: CatPlayer) -> void:
 	_player = player
@@ -109,6 +117,8 @@ func start_play() -> void:
 	
 	# Start timer
 	_ingame_ui.start_timer()
+	
+	game_state = GameState.PLAY
 	
 	
 	
