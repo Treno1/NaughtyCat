@@ -30,7 +30,7 @@ func _on_resume_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	resume()
-	get_tree().reload_current_scene()
+	GameManager.restart_level()
 
 
 func _process(_delta: float) -> void:

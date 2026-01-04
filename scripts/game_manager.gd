@@ -1,12 +1,17 @@
 extends Node
 
-var pending := 3
+var _total_pending := 3
+var pending := _total_pending
 var _player: CatPlayer = null
 var _ingame_ui: IngameUI = null
 var _level_data: LevelData = null
 
 var _task_trackers: Array[TaskTracker]
 var _tasks_left := 0
+	
+func restart_level() -> void:
+	pending = _total_pending
+	get_tree().reload_current_scene()	
 
 func _on_system_ready() -> void:
 	pending -= 1
