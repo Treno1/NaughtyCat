@@ -148,7 +148,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1702c"]
 radius = 5.99942
-height = 15.998482
+height = 11.998863
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2y8u"]
 atlas = ExtResource("20_8ihoc")
@@ -512,7 +512,7 @@ autoplay = "idle"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/FlowerPot"]
-position = Vector2(1.9999995, -1.0000005)
+position = Vector2(1.9999995, -10.999999)
 rotation = 0.013788337
 shape = SubResource("CapsuleShape2D_1702c")
 
