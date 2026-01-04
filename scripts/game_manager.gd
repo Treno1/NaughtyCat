@@ -26,7 +26,7 @@ func restart_level() -> void:
 func next_level() -> void:
 	pending = _total_pending
 	_lvl_id += 1
-	if _lvl_id >= _max_lvl:
+	if _lvl_id > _max_lvl:
 		_lvl_id = 1
 	
 	get_tree().change_scene_to_packed(LEVELS[_lvl_id-1])

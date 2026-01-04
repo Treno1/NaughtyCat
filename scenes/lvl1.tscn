@@ -1,7 +1,6 @@
-[gd_scene load_steps=56 format=3 uid="uid://c8i4g673wuxt1"]
+[gd_scene load_steps=55 format=3 uid="uid://c8i4g673wuxt1"]
 
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="1_2tpkn"]
-[ext_resource type="Script" uid="uid://bao8i56q8jlrq" path="res://scripts/game_manager.gd" id="1_kylad"]
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="2_28l0p"]
 [ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="2_yq2hi"]
 [ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="3_2tpkn"]
@@ -275,9 +274,6 @@ height = 15.998482
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("1_2tpkn")]
 
 [node name="LevelFinishMenu" parent="CanvasLayer" instance=ExtResource("3_6oc1e")]
-
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_kylad")
 
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("2_yq2hi")

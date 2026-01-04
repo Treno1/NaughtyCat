@@ -1,9 +1,8 @@
-[gd_scene load_steps=56 format=3 uid="uid://btf3hgk1bt3ct"]
+[gd_scene load_steps=55 format=3 uid="uid://btf3hgk1bt3ct"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_y266n"]
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_datw2"]
 [ext_resource type="PackedScene" uid="uid://cfsbgkp7pgb4y" path="res://scenes/level_finish_menu.tscn" id="3_rhyen"]
-[ext_resource type="Script" uid="uid://bao8i56q8jlrq" path="res://scripts/game_manager.gd" id="4_ybwc6"]
 [ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="5_iyd8c"]
 [ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="6_nn67r"]
 [ext_resource type="Texture2D" uid="uid://b42f1ayg7sfar" path="res://assets/sprites/lvl1/Room.png" id="7_gk86t"]
@@ -313,9 +312,6 @@ animations = [{
 
 [node name="LevelFinishMenu" parent="CanvasLayer" instance=ExtResource("3_rhyen")]
 
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("4_ybwc6")
-
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("5_iyd8c")
 tasks = Array[ExtResource("6_nn67r")]([SubResource("Resource_sh364"), SubResource("Resource_vl02w")])
@@ -456,13 +452,14 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("12_x5lnp")
 target_sprites = NodePath("ScratchSprite")
+enabled = false
 
 [node name="ScratchSprite" type="AnimatedSprite2D" parent="Interactables/CouchScratchL"]
-visible = false
 position = Vector2(2, 0)
 sprite_frames = SubResource("SpriteFrames_y266n")
 animation = &"3"
 autoplay = "3"
+frame_progress = 0.43557414
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/CouchScratchL"]
 position = Vector2(0, 3)
@@ -529,6 +526,7 @@ collision_mask = 0
 script = ExtResource("12_x5lnp")
 target_sprites = NodePath("ScratchSprite2")
 animations_count = 2
+enabled = false
 
 [node name="ScratchSprite2" type="AnimatedSprite2D" parent="Interactables/CouchScratchR2"]
 sprite_frames = SubResource("SpriteFrames_cybey")

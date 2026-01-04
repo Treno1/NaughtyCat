@@ -11,6 +11,9 @@ func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int
 	if !interactable:
 		return
 		
+	if !interactable.enabled:
+		return
+		
 	if !interactables.has(interactable):
 		interactables.append(interactable)
 		

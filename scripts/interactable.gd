@@ -3,6 +3,8 @@ class_name Interactable
 
 signal interaction_complete
 
+@export var enabled: bool = true
+
 func interact() -> void:
 	return
 	
