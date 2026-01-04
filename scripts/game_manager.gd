@@ -1,5 +1,11 @@
 extends Node
 
+const LEVELS := [
+	preload("res://scenes/lvl1.tscn"),
+	preload("res://scenes/lvl2.tscn")
+	]
+
+
 var _total_pending := 4
 var pending := _total_pending
 var _player: CatPlayer = null
@@ -9,13 +15,23 @@ var _lvl_finish_ui: LevelFinishMenu = null
 
 var _task_trackers: Array[TaskTracker]
 var _tasks_left := 0
+
+var _lvl_id := 1
+var _max_lvl := 2
 	
 func restart_level() -> void:
 	pending = _total_pending
 	get_tree().reload_current_scene()	
 	
 func next_level() -> void:
-	restart_level()
+	pending = _total_pending
+	_lvl_id += 1
+	if _lvl_id >= _max_lvl:
+		_lvl_id = 1
+	
+	get_tree().change_scene_to_packed(LEVELS[_lvl_id-1])
+	
+	await get_tree().scene_changed
 
 func _on_system_ready() -> void:
 	pending -= 1
