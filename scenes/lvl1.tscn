@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c8i4g673wuxt1"]
+[gd_scene load_steps=48 format=3 uid="uid://c8i4g673wuxt1"]
 
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="1_2tpkn"]
 [ext_resource type="Script" uid="uid://bao8i56q8jlrq" path="res://scripts/game_manager.gd" id="1_kylad"]
@@ -15,11 +15,26 @@
 [ext_resource type="Texture2D" uid="uid://dbmrc5i2ah281" path="res://assets/sprites/lvl1/Scratches - Couch scratch 1.png" id="9_cpkqi"]
 [ext_resource type="Texture2D" uid="uid://clfenjtshp1ie" path="res://assets/sprites/lvl1/Scratches - Couch scratch 2.png" id="10_tpdyh"]
 [ext_resource type="Texture2D" uid="uid://ck7e81bgj6d2p" path="res://assets/sprites/lvl1/Scratches - Couch scratch 3.png" id="11_sx06d"]
+[ext_resource type="Texture2D" uid="uid://cj3yl74pokn04" path="res://assets/sprites/lvl1/Picture screwed.png" id="13_2tpkn"]
+[ext_resource type="Texture2D" uid="uid://cd3yjookwqexw" path="res://assets/sprites/lvl1/Picture.png" id="14_6oc1e"]
+[ext_resource type="Texture2D" uid="uid://d0mmyba8777qk" path="res://assets/sprites/lvl1/FlowerPot.png" id="18_vl02w"]
 
 [sub_resource type="Resource" id="Resource_6oc1e"]
 script = ExtResource("3_2tpkn")
-interactables_to_complete = Array[NodePath]([NodePath("../Interactables/CouchScratchArea")])
+interactables_to_complete = Array[NodePath]([NodePath("../Interactables/CouchScratch")])
 task_ui_text = "Scratch the couch left"
+metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
+
+[sub_resource type="Resource" id="Resource_sh364"]
+script = ExtResource("3_2tpkn")
+interactables_to_complete = Array[NodePath]([NodePath("../Interactables/Picture")])
+task_ui_text = "Move the picture"
+metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
+
+[sub_resource type="Resource" id="Resource_vl02w"]
+script = ExtResource("3_2tpkn")
+interactables_to_complete = Array[NodePath]([NodePath("../Interactables/FlowerPot")])
+task_ui_text = "Put down the flower"
 metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
@@ -65,7 +80,7 @@ size = Vector2(44.75, 3)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lbhrr"]
 radius = 3.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dinhu"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_sh364"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -96,6 +111,93 @@ animations = [{
 radius = 3.0
 height = 16.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_vl02w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_2tpkn")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_6oc1e")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cpkqi"]
+radius = 6.0
+height = 26.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpkqi"]
+atlas = ExtResource("18_vl02w")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpdyh"]
+atlas = ExtResource("18_vl02w")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx06d"]
+atlas = ExtResource("18_vl02w")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufetx"]
+atlas = ExtResource("18_vl02w")
+region = Rect2(0, 32, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjqds"]
+atlas = ExtResource("18_vl02w")
+region = Rect2(26, 32, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0a4n"]
+atlas = ExtResource("18_vl02w")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kaqyl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpkqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpdyh")
+}],
+"loop": false,
+"name": &"1",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sx06d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufetx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjqds")
+}],
+"loop": false,
+"name": &"2",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0a4n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4v6ji"]
+radius = 3.9996223
+height = 15.998482
+
 [node name="Lvl1" type="Node2D"]
 
 [node name="IngameUI" parent="." instance=ExtResource("2_28l0p")]
@@ -111,7 +213,7 @@ script = ExtResource("1_kylad")
 
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("2_yq2hi")
-tasks = Array[ExtResource("3_2tpkn")]([SubResource("Resource_6oc1e")])
+tasks = Array[ExtResource("3_2tpkn")]([SubResource("Resource_6oc1e"), SubResource("Resource_sh364"), SubResource("Resource_vl02w")])
 timer_limit_seconds = 15
 
 [node name="RoomBG" type="Sprite2D" parent="."]
@@ -119,7 +221,7 @@ position = Vector2(206, 20)
 texture = ExtResource("3_yq2hi")
 
 [node name="Player" parent="." instance=ExtResource("4_2tpkn")]
-position = Vector2(-9, 15)
+position = Vector2(-86, 64)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, -36)
@@ -243,26 +345,66 @@ texture = ExtResource("7_sh364")
 position = Vector2(-1, 9)
 shape = SubResource("CapsuleShape2D_lbhrr")
 
-[node name="CouchScratchArea" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
+[node name="CouchScratch" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
 position = Vector2(-26, 54)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("8_vl02w")
 target_sprites = NodePath("ScratchSprite")
 
-[node name="ScratchSprite" type="AnimatedSprite2D" parent="Interactables/CouchScratchArea"]
+[node name="ScratchSprite" type="AnimatedSprite2D" parent="Interactables/CouchScratch"]
 visible = false
 position = Vector2(2, 0)
-sprite_frames = SubResource("SpriteFrames_dinhu")
-animation = &"1"
+sprite_frames = SubResource("SpriteFrames_sh364")
+animation = &"3"
 autoplay = "1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/CouchScratchArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/CouchScratch"]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_vtaks")
 
-[connection signal="area_shape_entered" from="Interactables/CouchScratchArea" to="Interactables/CouchScratchArea" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="Interactables/CouchScratchArea" to="Interactables/CouchScratchArea" method="_on_area_shape_exited"]
+[node name="Picture" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
+position = Vector2(0, 14)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("8_vl02w")
+target_sprites = NodePath("PicturePokeSprite")
+animations_count = 1
+
+[node name="PicturePokeSprite" type="AnimatedSprite2D" parent="Interactables/Picture"]
+sprite_frames = SubResource("SpriteFrames_vl02w")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Picture"]
+position = Vector2(0, 3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_cpkqi")
+
+[node name="FlowerPot" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
+position = Vector2(46, 25)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("8_vl02w")
+target_sprites = NodePath("FlowerPotSprite")
+animations_count = 2
+
+[node name="FlowerPotSprite" type="AnimatedSprite2D" parent="Interactables/FlowerPot"]
+sprite_frames = SubResource("SpriteFrames_kaqyl")
+animation = &"1"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/FlowerPot"]
+position = Vector2(4, 2)
+rotation = 0.013788337
+shape = SubResource("CapsuleShape2D_4v6ji")
+
+[connection signal="area_shape_entered" from="Interactables/CouchScratch" to="Interactables/CouchScratch" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Interactables/CouchScratch" to="Interactables/CouchScratch" method="_on_area_shape_exited"]
+[connection signal="area_shape_entered" from="Interactables/Picture" to="Interactables/Picture" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Interactables/Picture" to="Interactables/Picture" method="_on_area_shape_exited"]
+[connection signal="area_shape_entered" from="Interactables/FlowerPot" to="Interactables/FlowerPot" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Interactables/FlowerPot" to="Interactables/FlowerPot" method="_on_area_shape_exited"]
 
 [editable path="Surfaces/TvStand/Landing5"]
 [editable path="Surfaces/CouchSit/Landing4"]
