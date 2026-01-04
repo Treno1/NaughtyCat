@@ -1,6 +1,7 @@
 extends Node
 
 const LEVELS := [
+	preload("res://scenes/lvl0.tscn"),
 	preload("res://scenes/lvl1.tscn"),
 	preload("res://scenes/lvl2.tscn")
 	]
@@ -25,7 +26,7 @@ var _task_trackers: Array[TaskTracker]
 var _tasks_left := 0
 
 var _lvl_id := 1
-var _max_lvl := 2
+var _max_lvl := 3
 	
 func restart_level() -> void:
 	pending = _total_pending
