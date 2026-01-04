@@ -13,6 +13,7 @@ const JUMP_VELOCITY = -200.0
 @onready var collision_shape: CollisionShape2D = $InteractSprite/InteractArea/CollisionShape2D
 @onready var _collision_x_pos = collision_shape.position.x
 @onready var interact_sprite: AnimatedSprite2D = $InteractSprite
+@onready var miaus: Node = $miaus
 
 var player_state := PlayerState.NORMAL
 
@@ -103,6 +104,7 @@ func _on_animated_sprite_2d_animation_changed() -> void:
 	
 func poke_animation() -> void:
 	animated_sprite.play("poke")
+	play_miau()
 	_is_poking = true
 	
 func set_state_cutscene() -> void:
@@ -110,4 +112,8 @@ func set_state_cutscene() -> void:
 	
 func set_state_normal() -> void:
 	player_state = PlayerState.NORMAL
+	
+func play_miau() -> void:
+	var sound = miaus.get_children().pick_random() as AudioStreamPlayer2D
+	sound.play()
 	
