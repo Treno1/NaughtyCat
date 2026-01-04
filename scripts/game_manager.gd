@@ -5,6 +5,7 @@ const LEVELS := [
 	preload("res://scenes/lvl2.tscn")
 	]
 
+@onready var level_finish_sounds: Node = $LevelFinishSounds
 
 var _total_pending := 4
 var pending := _total_pending
@@ -72,6 +73,8 @@ func _on_task_completed(task_tracker: TaskTracker):
 		_level_complete()
 	
 func _level_complete():
+	var sound = level_finish_sounds.get_children().pick_random() as AudioStreamPlayer2D
+	sound.play()
 	_lvl_finish_ui.finish_level()
 	
 func timeout():
