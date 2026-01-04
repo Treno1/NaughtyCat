@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://c8i4g673wuxt1"]
+[gd_scene load_steps=66 format=3 uid="uid://c8i4g673wuxt1"]
 
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="1_2tpkn"]
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="2_28l0p"]
@@ -18,23 +18,24 @@
 [ext_resource type="Texture2D" uid="uid://cd3yjookwqexw" path="res://assets/sprites/lvl1/Picture.png" id="14_6oc1e"]
 [ext_resource type="Texture2D" uid="uid://d0mmyba8777qk" path="res://assets/sprites/lvl1/FlowerPot.png" id="18_vl02w"]
 [ext_resource type="Texture2D" uid="uid://dq0ogf5agoujc" path="res://assets/sprites/lvl1/couch scratch right.png" id="19_cpkqi"]
+[ext_resource type="Texture2D" uid="uid://b380kus2wl0yp" path="res://assets/sprites/lvl1/tv on.png" id="19_tpdyh"]
 
 [sub_resource type="Resource" id="Resource_6oc1e"]
 script = ExtResource("3_2tpkn")
 interactables_to_complete = Array[NodePath]([NodePath("../Interactables/CouchScratchL"), NodePath("../Interactables/CouchScratchR")])
-task_ui_text = "Scratch the couch left"
+task_ui_text = "Sharpen your claws"
 metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 
 [sub_resource type="Resource" id="Resource_sh364"]
 script = ExtResource("3_2tpkn")
 interactables_to_complete = Array[NodePath]([NodePath("../Interactables/Picture")])
-task_ui_text = "Move the picture"
+task_ui_text = "Move the beach"
 metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 
 [sub_resource type="Resource" id="Resource_vl02w"]
 script = ExtResource("3_2tpkn")
 interactables_to_complete = Array[NodePath]([NodePath("../Interactables/FlowerPot")])
-task_ui_text = "Conquer the flower"
+task_ui_text = "Conquer shiny thingy"
 metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
@@ -214,7 +215,7 @@ region = Rect2(16, 0, 8, 20)
 atlas = ExtResource("19_cpkqi")
 region = Rect2(0, 20, 8, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xb3wc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhyen"]
 atlas = ExtResource("19_cpkqi")
 region = Rect2(8, 20, 8, 20)
 
@@ -254,7 +255,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xb3wc")
+"texture": SubResource("AtlasTexture_rhyen")
 }],
 "loop": true,
 "name": &"idle",
@@ -264,6 +265,82 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hcc03"]
 radius = 2.9997158
 height = 15.998482
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cybey"]
+atlas = ExtResource("19_tpdyh")
+region = Rect2(0, 0, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcc03"]
+atlas = ExtResource("19_tpdyh")
+region = Rect2(46, 0, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsg5g"]
+atlas = ExtResource("19_tpdyh")
+region = Rect2(92, 0, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j8ap"]
+atlas = ExtResource("19_tpdyh")
+region = Rect2(0, 26, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpu2l"]
+atlas = ExtResource("19_tpdyh")
+region = Rect2(46, 26, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta5eo"]
+atlas = ExtResource("19_tpdyh")
+region = Rect2(92, 26, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ff1n"]
+atlas = ExtResource("19_tpdyh")
+region = Rect2(0, 52, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc2me"]
+atlas = ExtResource("19_tpdyh")
+region = Rect2(46, 52, 46, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b8nnd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cybey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcc03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsg5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j8ap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpu2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta5eo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ff1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc2me")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhyen")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xdlxk"]
+radius = 9.012932
+height = 44.0
 
 [node name="Lvl1" type="Node2D"]
 
@@ -481,6 +558,25 @@ position = Vector2(-1.0000006, 4)
 rotation = 0.013788337
 shape = SubResource("CapsuleShape2D_hcc03")
 
+[node name="TurnOnTV" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
+position = Vector2(-64, 20)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("8_vl02w")
+target_sprites = NodePath("ScratchSprite2")
+animations_count = 4
+enabled = false
+
+[node name="ScratchSprite2" type="AnimatedSprite2D" parent="Interactables/TurnOnTV"]
+sprite_frames = SubResource("SpriteFrames_b8nnd")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/TurnOnTV"]
+position = Vector2(-5.9604645e-07, 4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xdlxk")
+
 [connection signal="area_shape_entered" from="Interactables/CouchScratchL" to="Interactables/CouchScratchL" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Interactables/CouchScratchL" to="Interactables/CouchScratchL" method="_on_area_shape_exited"]
 [connection signal="area_shape_entered" from="Interactables/Picture" to="Interactables/Picture" method="_on_area_shape_entered"]
@@ -489,6 +585,8 @@ shape = SubResource("CapsuleShape2D_hcc03")
 [connection signal="area_shape_exited" from="Interactables/FlowerPot" to="Interactables/FlowerPot" method="_on_area_shape_exited"]
 [connection signal="area_shape_entered" from="Interactables/CouchScratchR" to="Interactables/CouchScratchR" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Interactables/CouchScratchR" to="Interactables/CouchScratchR" method="_on_area_shape_exited"]
+[connection signal="area_shape_entered" from="Interactables/TurnOnTV" to="Interactables/TurnOnTV" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Interactables/TurnOnTV" to="Interactables/TurnOnTV" method="_on_area_shape_exited"]
 
 [editable path="Surfaces/TvStand/Landing5"]
 [editable path="Surfaces/CouchSit/Landing4"]

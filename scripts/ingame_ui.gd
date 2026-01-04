@@ -8,6 +8,8 @@ signal system_ready
 @onready var tasks_container: GridContainer = $MarginContainer/GridContainer
 var TaskControl := preload("res://scenes/task_control.tscn")
 var tasksControls: Array[TaskUI] = []
+var red := Color.INDIAN_RED
+var white := Color.WHITE
 
 func set_timer(total_seconds: int) -> void:
 	timer.wait_time = total_seconds
@@ -42,6 +44,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if timer:
 		countdown_label.text = _get_time_str(timer.time_left)
+		if timer.time_left <= 5:
+			countdown_label.label_settings.font_color = red
+		else:
+			countdown_label.label_settings.font_color = white
 
 
 func _get_time_str(time: float) -> String:
