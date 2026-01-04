@@ -11,7 +11,7 @@ thickness = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_cm6yq"]
 font = ExtResource("2_f1783")
-font_size = 24
+font_size = 32
 
 [sub_resource type="Animation" id="Animation_r7y21"]
 length = 0.001
@@ -59,7 +59,7 @@ script = ExtResource("1_iaj03")
 [node name="TaskProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
 offset_top = 10.0
-offset_right = 450.0
+offset_right = 550.0
 offset_bottom = 15.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_f6424")
 theme_override_styles/fill = SubResource("StyleBoxLine_uyn70")

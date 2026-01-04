@@ -34,7 +34,7 @@ metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 [sub_resource type="Resource" id="Resource_vl02w"]
 script = ExtResource("3_2tpkn")
 interactables_to_complete = Array[NodePath]([NodePath("../Interactables/FlowerPot")])
-task_ui_text = "Put down the flower"
+task_ui_text = "Conquer the flower"
 metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]

@@ -51,3 +51,9 @@ func _on_button_pressed() -> void:
 		GameManager.restart_level()
 	else:
 		GameManager.next_level()
+
+func _process(_delta: float) -> void:
+	if !visible:
+		return
+	if Input.is_action_just_pressed("enter") || Input.is_action_just_pressed("jump"):
+		_on_button_pressed()

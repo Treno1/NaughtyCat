@@ -13,7 +13,7 @@ font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_cm6yq"]
 font = ExtResource("1_v3yap")
-font_size = 24
+font_size = 32
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_npobg")
