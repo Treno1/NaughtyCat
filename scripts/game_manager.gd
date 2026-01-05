@@ -14,11 +14,12 @@ var game_state := GameState.MAIN_MENU
 
 var red_timer_seconds := 5
 
-var _total_pending := 5
+var _total_pending := 6
 var pending := _total_pending
 var _player: CatPlayer = null
 var _ingame_ui: IngameUI = null
 var _level_data: LevelData = null
+var _lvl_start_ui: LevelStartMenu = null
 var _lvl_finish_ui: LevelFinishMenu = null
 var _level_animator: LevelAnimator = null
 
@@ -38,6 +39,10 @@ func set_level_animator(level_animator: LevelAnimator) -> void:
 func set_level_data(level_data: LevelData) -> void:
 	_level_data = level_data
 	_level_data.system_ready.connect(_on_system_ready)
+	
+func set_lvl_start_ui(lvl_start_ui: LevelStartMenu) -> void:
+	_lvl_start_ui = lvl_start_ui
+	_lvl_start_ui.system_ready.connect(_on_system_ready)
 	
 func set_lvl_finish_ui(lvl_finish_ui: LevelFinishMenu) -> void:
 	_lvl_finish_ui = lvl_finish_ui
@@ -126,15 +131,27 @@ func start_play() -> void:
 	# Setup tasks
 	_setup_task_trackers()
 	
+	_ingame_ui.visible = false
+	
 	_player.set_state_cutscene()
 	
+	# Show owners messages and close the door
 	await _level_animator.level_start(_level_data)
+	
+func show_start_menu() -> void: 
+	if _lvl_start_ui != null:
+		_lvl_start_ui.show_start_menu(_level_data)
+
+func start_menu_finished() -> void:
+	_lvl_start_ui.queue_free()
+	
+	# Start timer
+	_ingame_ui.visible = true
+	_ingame_ui.start_timer()
 	
 	# Give controls to player
 	_player.set_state_normal()
 	
-	# Start timer
-	_ingame_ui.start_timer()
 	
 	game_state = GameState.PLAY
 	

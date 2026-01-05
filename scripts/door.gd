@@ -9,3 +9,6 @@ func open() -> void:
 	
 func close() -> void:
 	play_backwards("open")
+	
+func closed() -> void:
+	play("idle")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=78 format=3 uid="uid://bsp0h6x4sa6w3"]
+[gd_scene load_steps=79 format=3 uid="uid://bsp0h6x4sa6w3"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_1702c"]
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_y66yi"]
+[ext_resource type="PackedScene" uid="uid://dc1u6lbglt1sa" path="res://scenes/level_start_menu.tscn" id="3_8degd"]
 [ext_resource type="PackedScene" uid="uid://cfsbgkp7pgb4y" path="res://scenes/level_finish_menu.tscn" id="3_ihhod"]
 [ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="4_6kyq2"]
 [ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="5_eeokw"]
@@ -353,16 +354,15 @@ _data = {
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_y66yi")]
 
-[node name="LevelFinishMenu" parent="CanvasLayer" instance=ExtResource("3_ihhod")]
+[node name="LevelStartMenu" parent="CanvasLayer" instance=ExtResource("3_8degd")]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="LevelFinishMenu" parent="CanvasLayer" instance=ExtResource("3_ihhod")]
 
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("4_6kyq2")
-owners_messages = Array[String](["We'll be back in 15 min
-", "Hope you will be a good boy!
+owners_messages = Array[String](["We'll be back in 15 min", "Hope you will be a good boy!
 Bye!"])
-messages_timeout = Array[int]([4, 4])
+messages_timeout = Array[int]([2, 2])
 tasks = Array[ExtResource("5_eeokw")]([SubResource("Resource_vl02w")])
 timer_limit_seconds = 900
 
@@ -575,7 +575,7 @@ texture = ExtResource("25_eeokw")
 [node name="Door" type="AnimatedSprite2D" parent="."]
 position = Vector2(-120, 25)
 sprite_frames = SubResource("SpriteFrames_cpkqi")
-animation = &"opened"
+animation = &"idle"
 autoplay = "idle"
 script = ExtResource("21_b6gd8")
 
