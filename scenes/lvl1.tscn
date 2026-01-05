@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://c8i4g673wuxt1"]
+[gd_scene load_steps=94 format=3 uid="uid://c8i4g673wuxt1"]
 
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="1_2tpkn"]
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="2_28l0p"]
@@ -21,7 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://b380kus2wl0yp" path="res://assets/sprites/lvl1/tv on.png" id="19_tpdyh"]
 [ext_resource type="Texture2D" uid="uid://bofoio1qbs1tg" path="res://assets/sprites/lvl1/door.png" id="20_tpdyh"]
 [ext_resource type="Script" uid="uid://cnkvtcitd4nb3" path="res://scripts/door.gd" id="21_sx06d"]
+[ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="22_kaqyl"]
 [ext_resource type="Script" uid="uid://dr8veymk5832e" path="res://scripts/level_animator.gd" id="22_ufetx"]
+[ext_resource type="Texture2D" uid="uid://b71qy4ushsdj6" path="res://assets/sprites/lvl_room/Room - Message tooltip - 1.png" id="23_4v6ji"]
 [ext_resource type="AudioStream" uid="uid://d377s8jicb3k" path="res://assets/audio/door_open.mp3" id="23_rjqds"]
 
 [sub_resource type="Resource" id="Resource_6oc1e"]
@@ -346,7 +348,7 @@ animations = [{
 radius = 9.012932
 height = 44.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xb3wc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2y8u"]
 atlas = ExtResource("20_tpdyh")
 region = Rect2(0, 0, 36, 77)
 
@@ -418,7 +420,7 @@ region = Rect2(36, 154, 36, 77)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xb3wc")
+"texture": SubResource("AtlasTexture_l2y8u")
 }],
 "loop": true,
 "name": &"idle",
@@ -477,6 +479,10 @@ animations = [{
 "name": &"open",
 "speed": 3.0
 }]
+
+[sub_resource type="Theme" id="Theme_i4mno"]
+default_font = ExtResource("22_kaqyl")
+default_font_size = 8
 
 [sub_resource type="Animation" id="Animation_gtj14"]
 resource_name = "timer_out"
@@ -747,6 +753,25 @@ sprite_frames = SubResource("SpriteFrames_cpkqi")
 animation = &"open"
 autoplay = "idle"
 script = ExtResource("21_sx06d")
+
+[node name="OwnersMessage" type="Node2D" parent="Door"]
+position = Vector2(109, -41)
+
+[node name="OwnersMessageText" type="Label" parent="Door/OwnersMessage"]
+z_index = 100
+offset_left = -95.0
+offset_top = -20.0
+offset_right = 95.0
+offset_bottom = 20.0
+theme = SubResource("Theme_i4mno")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cloud" type="Sprite2D" parent="Door/OwnersMessage"]
+z_index = 90
+scale = Vector2(0.9, 1)
+texture = ExtResource("23_4v6ji")
 
 [node name="LevelAnimator" type="AnimationPlayer" parent="."]
 libraries = {

@@ -22,6 +22,28 @@ var _level_data: LevelData = null
 var _lvl_finish_ui: LevelFinishMenu = null
 var _level_animator: LevelAnimator = null
 
+#region DI
+func set_player(player: CatPlayer) -> void:
+	_player = player
+	_player.system_ready.connect(_on_system_ready)
+	
+func set_ingame_ui(ingame_ui: IngameUI) -> void:
+	_ingame_ui = ingame_ui
+	_ingame_ui.system_ready.connect(_on_system_ready)
+	
+func set_level_animator(level_animator: LevelAnimator) -> void:
+	_level_animator = level_animator
+	_level_animator.system_ready.connect(_on_system_ready)
+	
+func set_level_data(level_data: LevelData) -> void:
+	_level_data = level_data
+	_level_data.system_ready.connect(_on_system_ready)
+	
+func set_lvl_finish_ui(lvl_finish_ui: LevelFinishMenu) -> void:
+	_lvl_finish_ui = lvl_finish_ui
+	_lvl_finish_ui.system_ready.connect(_on_system_ready)
+#endregion
+
 var _task_trackers: Array[TaskTracker]
 var _tasks_left := 0
 
@@ -99,30 +121,14 @@ func pre_timeout():
 func _is_in_level():
 	return _level_data != null and GameState.PLAY
 	
-func set_player(player: CatPlayer) -> void:
-	_player = player
-	_player.system_ready.connect(_on_system_ready)
-	
-func set_ingame_ui(ingame_ui: IngameUI) -> void:
-	_ingame_ui = ingame_ui
-	_ingame_ui.system_ready.connect(_on_system_ready)
-	
-func set_level_animator(level_animator: LevelAnimator) -> void:
-	_level_animator = level_animator
-	_level_animator.system_ready.connect(_on_system_ready)
-	
-func set_level_data(level_data: LevelData) -> void:
-	_level_data = level_data
-	_level_data.system_ready.connect(_on_system_ready)
-	
-func set_lvl_finish_ui(lvl_finish_ui: LevelFinishMenu) -> void:
-	_lvl_finish_ui = lvl_finish_ui
-	_lvl_finish_ui.system_ready.connect(_on_system_ready)
-	
 	
 func start_play() -> void:
 	# Setup tasks
 	_setup_task_trackers()
+	
+	_player.set_state_cutscene()
+	
+	await _level_animator.level_start(_level_data)
 	
 	# Give controls to player
 	_player.set_state_normal()
@@ -131,6 +137,4 @@ func start_play() -> void:
 	_ingame_ui.start_timer()
 	
 	game_state = GameState.PLAY
-	
-	
 	

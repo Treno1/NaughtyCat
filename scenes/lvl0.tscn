@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://bsp0h6x4sa6w3"]
+[gd_scene load_steps=78 format=3 uid="uid://bsp0h6x4sa6w3"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_1702c"]
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_y66yi"]
@@ -19,11 +19,13 @@
 [ext_resource type="Texture2D" uid="uid://bk5lc6nk6vnn0" path="res://assets/sprites/lvl_room/Room - Lamp - 1.png" id="13_dmq8d"]
 [ext_resource type="Texture2D" uid="uid://d0mmyba8777qk" path="res://assets/sprites/lvl1/FlowerPot.png" id="17_twhj1"]
 [ext_resource type="Texture2D" uid="uid://bofoio1qbs1tg" path="res://assets/sprites/lvl1/door.png" id="20_8ihoc"]
+[ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="21_6kyq2"]
 [ext_resource type="Script" uid="uid://cnkvtcitd4nb3" path="res://scripts/door.gd" id="21_b6gd8"]
 [ext_resource type="Script" uid="uid://dr8veymk5832e" path="res://scripts/level_animator.gd" id="22_ou5cf"]
 [ext_resource type="AudioStream" uid="uid://d377s8jicb3k" path="res://assets/audio/door_open.mp3" id="23_16d68"]
 [ext_resource type="Texture2D" uid="uid://pijyodsliqci" path="res://assets/sprites/lvl_room/Room - Label 1 - 1.png" id="23_ihhod"]
 [ext_resource type="Texture2D" uid="uid://b6h4pepxpp2k8" path="res://assets/sprites/lvl_room/Room - Label 2 - 1.png" id="24_6kyq2"]
+[ext_resource type="Texture2D" uid="uid://b71qy4ushsdj6" path="res://assets/sprites/lvl_room/Room - Message tooltip - 1.png" id="25_8degd"]
 [ext_resource type="Texture2D" uid="uid://cfa0o3wc52y5l" path="res://assets/sprites/lvl_room/Room - Label 3 - 1.png" id="25_eeokw"]
 
 [sub_resource type="Resource" id="Resource_vl02w"]
@@ -218,6 +220,10 @@ region = Rect2(0, 154, 36, 77)
 atlas = ExtResource("20_8ihoc")
 region = Rect2(36, 154, 36, 77)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeokw"]
+atlas = ExtResource("20_8ihoc")
+region = Rect2(36, 154, 36, 77)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_cpkqi"]
 animations = [{
 "frames": [{
@@ -280,7 +286,19 @@ animations = [{
 "loop": false,
 "name": &"open",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eeokw")
+}],
+"loop": true,
+"name": &"opened",
+"speed": 5.0
 }]
+
+[sub_resource type="Theme" id="Theme_6kyq2"]
+default_font = ExtResource("21_6kyq2")
+default_font_size = 8
 
 [sub_resource type="Animation" id="Animation_tpdyh"]
 length = 0.001
@@ -303,9 +321,27 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_ihhod"]
+resource_name = "level_start"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelAnimator")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"level_start"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fk3q0"]
 _data = {
 &"RESET": SubResource("Animation_tpdyh"),
+&"level_start": SubResource("Animation_ihhod"),
 &"timer_out": SubResource("Animation_gtj14")
 }
 
@@ -319,10 +355,16 @@ _data = {
 
 [node name="LevelFinishMenu" parent="CanvasLayer" instance=ExtResource("3_ihhod")]
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("4_6kyq2")
+owners_messages = Array[String](["We'll be back in 15 min
+", "Hope you will be a good boy!
+Bye!"])
+messages_timeout = Array[int]([4, 4])
 tasks = Array[ExtResource("5_eeokw")]([SubResource("Resource_vl02w")])
-timer_limit_seconds = 1000
+timer_limit_seconds = 900
 
 [node name="RoomBG" type="Sprite2D" parent="."]
 position = Vector2(206, 20)
@@ -516,24 +558,6 @@ position = Vector2(1.9999995, -10.999999)
 rotation = 0.013788337
 shape = SubResource("CapsuleShape2D_1702c")
 
-[node name="Door" type="AnimatedSprite2D" parent="."]
-position = Vector2(-120, 25)
-sprite_frames = SubResource("SpriteFrames_cpkqi")
-animation = &"open"
-autoplay = "idle"
-script = ExtResource("21_b6gd8")
-
-[node name="LevelAnimator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_fk3q0")
-}
-script = ExtResource("22_ou5cf")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="LevelAnimator"]
-stream = ExtResource("23_16d68")
-volume_db = -5.0
-bus = &"SFX"
-
 [node name="Tips" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Tips"]
@@ -547,6 +571,43 @@ texture = ExtResource("24_6kyq2")
 [node name="Sprite2D3" type="Sprite2D" parent="Tips"]
 position = Vector2(153, -11)
 texture = ExtResource("25_eeokw")
+
+[node name="Door" type="AnimatedSprite2D" parent="."]
+position = Vector2(-120, 25)
+sprite_frames = SubResource("SpriteFrames_cpkqi")
+animation = &"opened"
+autoplay = "idle"
+script = ExtResource("21_b6gd8")
+
+[node name="OwnersMessage" type="Node2D" parent="Door"]
+position = Vector2(109, -41)
+
+[node name="OwnersMessageText" type="Label" parent="Door/OwnersMessage"]
+z_index = 100
+offset_left = -95.0
+offset_top = -20.0
+offset_right = 95.0
+offset_bottom = 20.0
+theme = SubResource("Theme_6kyq2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cloud" type="Sprite2D" parent="Door/OwnersMessage"]
+z_index = 90
+scale = Vector2(0.9, 1)
+texture = ExtResource("25_8degd")
+
+[node name="LevelAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fk3q0")
+}
+script = ExtResource("22_ou5cf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="LevelAnimator"]
+stream = ExtResource("23_16d68")
+volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="area_shape_entered" from="Interactables/FlowerPot" to="Interactables/FlowerPot" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Interactables/FlowerPot" to="Interactables/FlowerPot" method="_on_area_shape_exited"]
