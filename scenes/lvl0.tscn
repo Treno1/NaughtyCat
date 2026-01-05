@@ -549,6 +549,7 @@ target_sprites = NodePath("FlowerPotSprite")
 animations_count = 2
 
 [node name="FlowerPotSprite" type="AnimatedSprite2D" parent="Interactables/FlowerPot"]
+process_mode = 3
 position = Vector2(10, 0)
 sprite_frames = SubResource("SpriteFrames_grp0m")
 animation = &"idle"
@@ -596,6 +597,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cloud" type="Sprite2D" parent="Door/OwnersMessage"]
+visible = false
 z_index = 90
 scale = Vector2(0.9, 1)
 texture = ExtResource("25_8degd")

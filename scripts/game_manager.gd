@@ -54,7 +54,7 @@ var _task_trackers: Array[TaskTracker]
 var _tasks_left := 0
 
 var _lvl_id := 1
-var _max_lvl := 3
+var _max_lvl := LEVELS.size()
 	
 func restart_level() -> void:
 	pending = _total_pending

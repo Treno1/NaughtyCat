@@ -15,6 +15,9 @@ const JUMP_VELOCITY = -200.0
 @onready var interact_sprite: AnimatedSprite2D = $InteractSprite
 @onready var miaus: Node = $miaus
 
+@export var distraction_time: float= 2
+@export var distraction_cooldown: float= 5
+
 var player_state := PlayerState.NORMAL
 
 var _is_poking := false
@@ -43,6 +46,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if player_state != PlayerState.NORMAL:
 		return
+		
+	if is_on_floor() and _is_in_distract_zone and _distractable:
+		var success = await distract()
+		if success:
+			return
 		
 	# Add the gravity.
 	if not is_on_floor():
@@ -113,7 +121,39 @@ func set_state_cutscene() -> void:
 func set_state_normal() -> void:
 	player_state = PlayerState.NORMAL
 	
+	
 func play_miau() -> void:
 	var sound = miaus.get_children().pick_random() as AudioStreamPlayer2D
 	sound.play()
 	
+	
+var _distractable = true
+var _is_in_distract_zone = false
+
+func distract() -> bool:
+	if !_distractable:
+		return false
+	
+	if animated_sprite.animation != "idle" and animated_sprite.animation != "run":
+		return false
+		
+	player_state = PlayerState.CUTSCENE
+	animated_sprite.play("distracted")
+	await get_tree().create_timer(distraction_time).timeout
+	player_state = PlayerState.NORMAL
+	animated_sprite.play("idle")
+	
+	_distractable = false
+	get_tree().create_timer(distraction_cooldown).timeout.connect(make_distractable)
+	
+	return true
+	
+func make_distractable() -> void:
+	_distractable = true
+
+func _on_distract_area_area_entered(_area: Area2D) -> void:	
+	_is_in_distract_zone = true
+
+
+func _on_distract_area_area_exited(_area: Area2D) -> void:
+	_is_in_distract_zone = false
