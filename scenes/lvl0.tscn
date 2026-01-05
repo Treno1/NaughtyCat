@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://bsp0h6x4sa6w3"]
+[gd_scene load_steps=81 format=3 uid="uid://bsp0h6x4sa6w3"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_1702c"]
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_y66yi"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://b6h4pepxpp2k8" path="res://assets/sprites/lvl_room/Room - Label 2 - 1.png" id="24_6kyq2"]
 [ext_resource type="Texture2D" uid="uid://b71qy4ushsdj6" path="res://assets/sprites/lvl_room/Room - Message tooltip - 1.png" id="25_8degd"]
 [ext_resource type="Texture2D" uid="uid://cfa0o3wc52y5l" path="res://assets/sprites/lvl_room/Room - Label 3 - 1.png" id="25_eeokw"]
+[ext_resource type="Script" uid="uid://dkl5kmjpqac8e" path="res://scripts/cloud.gd" id="27_utfl4"]
 [ext_resource type="Texture2D" uid="uid://bnh45up8ifb7n" path="res://assets/sprites/lvl_room/Room - Window - 1.png" id="29_oimbs"]
 
 [sub_resource type="Resource" id="Resource_vl02w"]
@@ -601,6 +602,7 @@ visible = false
 z_index = 90
 scale = Vector2(0.9, 1)
 texture = ExtResource("25_8degd")
+script = ExtResource("27_utfl4")
 
 [node name="LevelAnimator" type="AnimationPlayer" parent="."]
 libraries = {

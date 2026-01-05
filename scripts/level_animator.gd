@@ -17,13 +17,18 @@ func _ready() -> void:
 
 var _active_mess_id = -1
 var _active_timer : SceneTreeTimer = null
+var _message_ready = true
 
 func show_next_message() -> void:
+	if !_message_ready:
+		return
 	_active_mess_id += 1
 	if _level_data.owners_messages.size() <= _active_mess_id and _active:
 		_continue_level_start()
 		return
+	_message_ready = false
 	await set_label_text(_level_data.owners_messages[_active_mess_id])
+	_message_ready = true
 	
 	if _level_data.owners_messages.size() > _active_mess_id and _active:
 		_active_timer = get_tree().create_timer(_level_data.messages_timeout[_active_mess_id])

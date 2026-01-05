@@ -3,6 +3,8 @@ extends Node
 const LEVELS := [
 	preload("res://scenes/lvl0.tscn"),
 	preload("res://scenes/lvl1.tscn"),
+	preload("res://scenes/lvl2.tscn"),
+	preload("res://scenes/lvl3.tscn"),
 	preload("res://scenes/lvl1_old.tscn"),
 	preload("res://scenes/lvl2_old.tscn")
 	]

@@ -1,4 +1,5 @@
 extends Interactable
+class_name InteractableScratchable
 
 # Animations names should be 1,2,3,4 etc
 @export var target_sprites: AnimatedSprite2D = null
