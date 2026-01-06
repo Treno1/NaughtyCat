@@ -319,7 +319,7 @@ frame_progress = 0.51671565
 
 [node name="InteractArea" type="Area2D" parent="InteractSprite"]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 260
 script = ExtResource("4_dqkch")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractSprite/InteractArea"]
@@ -349,5 +349,7 @@ shape = SubResource("RectangleShape2D_fjrip")
 [connection signal="animation_finished" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_shape_entered" from="InteractSprite/InteractArea" to="InteractSprite/InteractArea" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="InteractSprite/InteractArea" to="InteractSprite/InteractArea" method="_on_area_shape_exited"]
+[connection signal="body_entered" from="InteractSprite/InteractArea" to="InteractSprite/InteractArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractSprite/InteractArea" to="InteractSprite/InteractArea" method="_on_body_exited"]
 [connection signal="area_entered" from="DistractArea" to="." method="_on_distract_area_area_entered"]
 [connection signal="area_exited" from="DistractArea" to="." method="_on_distract_area_area_exited"]

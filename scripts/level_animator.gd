@@ -5,8 +5,8 @@ signal system_ready
 
 @onready var door: DoorAnimatedSprite = $"../Door"
 @onready var owners_message: Node2D = $"../Door/OwnersMessage"
-@onready var owners_message_text: Label = $"../Door/OwnersMessage/OwnersMessageText"
 @onready var cloud: Sprite2D = $"../Door/OwnersMessage/Cloud"
+@onready var owners_message_text: Label = $"../CanvasLayer/OwnersMessageText"
 
 var _level_data: LevelData
 var _active = true
@@ -57,6 +57,7 @@ func level_start(level_data: LevelData):
 func _continue_level_start():
 	_active = false
 	owners_message.visible = false
+	owners_message_text.visible = false
 	door.close()
 	await get_tree().create_timer(0.5).timeout
 	GameManager.show_start_menu()

@@ -40,6 +40,10 @@
 [ext_resource type="AudioStream" uid="uid://d377s8jicb3k" path="res://assets/audio/door_open.mp3" id="34_4usl7"]
 [ext_resource type="Texture2D" uid="uid://bnh45up8ifb7n" path="res://assets/sprites/lvl_room/Room - Window - 1.png" id="35_hk0pf"]
 
+[sub_resource type="Theme" id="Theme_ktplg"]
+default_font = ExtResource("30_bp2rv")
+default_font_size = 64
+
 [sub_resource type="Resource" id="Resource_02i5d"]
 script = ExtResource("6_mp5gf")
 interactables_to_complete = Array[NodePath]([NodePath("../Interactables/Couch/Picture")])
@@ -63,15 +67,15 @@ distance = -144.0
 normal = Vector2(-1, 0)
 distance = -788.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktplg"]
+radius = 8.0
+height = 16.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70ugw"]
 size = Vector2(26, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmq8d"]
 size = Vector2(26, 3)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_06jot"]
-radius = 8.0
-height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06jot"]
 size = Vector2(8.75, 2)
@@ -547,10 +551,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Theme" id="Theme_6kyq2"]
-default_font = ExtResource("30_bp2rv")
-default_font_size = 8
-
 [sub_resource type="Animation" id="Animation_tpdyh"]
 length = 0.001
 
@@ -611,13 +611,24 @@ size = Vector2(30, 40)
 
 [node name="LevelFinishMenu" parent="CanvasLayer" instance=ExtResource("4_ktplg")]
 
+[node name="OwnersMessageText" type="Label" parent="CanvasLayer"]
+z_index = 100
+offset_left = -28.0
+offset_top = 262.0
+offset_right = 2212.0
+offset_bottom = 390.0
+theme = SubResource("Theme_ktplg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "sdfghjklgfvhbnmkvbnm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("5_fgklw")
 owners_messages = Array[String](["Poor couch
 I'll fix it tomorrow", "Kitty boy, be nice, alright?"])
 messages_timeout = Array[int]([4, 4])
 tasks = Array[ExtResource("6_mp5gf")]([SubResource("Resource_02i5d"), SubResource("Resource_jajk2")])
-timer_limit_seconds = 900
 
 [node name="RoomBG" type="Sprite2D" parent="."]
 position = Vector2(206, 20)
@@ -653,6 +664,17 @@ shape = SubResource("WorldBoundaryShape2D_lnu2h")
 
 [node name="Surfaces" type="Node2D" parent="."]
 
+[node name="CatBed" type="StaticBody2D" parent="Surfaces"]
+position = Vector2(-68, 56)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Surfaces/CatBed"]
+texture = ExtResource("11_0pl7f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatBed"]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_ktplg")
+one_way_collision = true
+
 [node name="Nightstand" type="StaticBody2D" parent="Surfaces"]
 position = Vector2(-28, 47)
 
@@ -669,17 +691,6 @@ shape = SubResource("RectangleShape2D_70ugw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Nightstand"]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_dmq8d")
-one_way_collision = true
-
-[node name="CatBed" type="StaticBody2D" parent="Surfaces"]
-position = Vector2(-56, 54)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Surfaces/CatBed"]
-texture = ExtResource("11_0pl7f")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatBed"]
-position = Vector2(0, 9)
-shape = SubResource("CapsuleShape2D_06jot")
 one_way_collision = true
 
 [node name="CatTree" type="Node2D" parent="Surfaces"]
@@ -992,17 +1003,6 @@ script = ExtResource("29_iu12d")
 
 [node name="OwnersMessage" type="Node2D" parent="Door"]
 position = Vector2(109, -41)
-
-[node name="OwnersMessageText" type="Label" parent="Door/OwnersMessage"]
-z_index = 100
-offset_left = -95.0
-offset_top = -20.0
-offset_right = 95.0
-offset_bottom = 20.0
-theme = SubResource("Theme_6kyq2")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Cloud" type="Sprite2D" parent="Door/OwnersMessage"]
 visible = false

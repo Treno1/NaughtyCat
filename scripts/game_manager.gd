@@ -5,8 +5,8 @@ const LEVELS := [
 	preload("res://scenes/lvl1.tscn"),
 	preload("res://scenes/lvl2.tscn"),
 	preload("res://scenes/lvl3.tscn"),
-	preload("res://scenes/lvl1_old.tscn"),
-	preload("res://scenes/lvl2_old.tscn")
+	preload("res://scenes/lvl4.tscn"),
+	preload("res://scenes/lvl5.tscn")
 	]
 	
 enum GameState { MAIN_MENU, PLAY, PAUSE, LEVEL_END }
@@ -74,6 +74,7 @@ func next_level() -> void:
 	game_state = GameState.PLAY
 
 func _on_system_ready() -> void:
+	GameManager.game_state = GameState.PAUSE
 	pending -= 1
 	if pending != 0:
 		return
@@ -85,6 +86,10 @@ func _on_system_ready() -> void:
 	
 	# for debug reasons
 	start_play()
+	
+	if _lvl_id == _max_lvl:
+		_lvl_finish_ui.win_text = "End of the game, thanks for playing!"
+		_lvl_finish_ui.win_button_text = "Go to first level"
 	
 func _setup_task_trackers():
 	_task_trackers = []

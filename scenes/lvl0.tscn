@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://bsp0h6x4sa6w3"]
+[gd_scene load_steps=83 format=3 uid="uid://bsp0h6x4sa6w3"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_1702c"]
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_y66yi"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="4_6kyq2"]
 [ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="5_eeokw"]
 [ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="6_nlhum"]
+[ext_resource type="Texture2D" uid="uid://dmq0c7jcsiviw" path="res://assets/sprites/bg4ui.png" id="6_xkqgr"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="7_oimbs"]
 [ext_resource type="Texture2D" uid="uid://b4vlis8hw5des" path="res://assets/sprites/lvl_room/Room - Nightstand - 1.png" id="8_iw3bm"]
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="8_utfl4"]
@@ -30,6 +31,12 @@
 [ext_resource type="Texture2D" uid="uid://cfa0o3wc52y5l" path="res://assets/sprites/lvl_room/Room - Label 3 - 1.png" id="25_eeokw"]
 [ext_resource type="Script" uid="uid://dkl5kmjpqac8e" path="res://scripts/cloud.gd" id="27_utfl4"]
 [ext_resource type="Texture2D" uid="uid://bnh45up8ifb7n" path="res://assets/sprites/lvl_room/Room - Window - 1.png" id="29_oimbs"]
+
+[sub_resource type="Theme" id="Theme_6kyq2"]
+default_font = ExtResource("21_6kyq2")
+default_font_size = 64
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1hqne"]
 
 [sub_resource type="Resource" id="Resource_vl02w"]
 script = ExtResource("5_eeokw")
@@ -299,10 +306,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Theme" id="Theme_6kyq2"]
-default_font = ExtResource("21_6kyq2")
-default_font_size = 8
-
 [sub_resource type="Animation" id="Animation_tpdyh"]
 length = 0.001
 
@@ -359,6 +362,37 @@ _data = {
 [node name="LevelStartMenu" parent="CanvasLayer" instance=ExtResource("3_8degd")]
 
 [node name="LevelFinishMenu" parent="CanvasLayer" instance=ExtResource("3_ihhod")]
+
+[node name="OwnersMessageText" type="Label" parent="CanvasLayer"]
+z_index = 100
+offset_left = -28.0
+offset_top = 262.0
+offset_right = 2212.0
+offset_bottom = 390.0
+theme = SubResource("Theme_6kyq2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "sdfghjklgfvhbnmkvbnm"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DISABLE TEST BG" type="TextureRect" parent="CanvasLayer"]
+visible = false
+offset_right = 700.0
+offset_bottom = 180.0
+scale = Vector2(2, 2)
+texture = ExtResource("6_xkqgr")
+
+[node name="Label" type="Label" parent="CanvasLayer/DISABLE TEST BG"]
+layout_mode = 0
+offset_left = -103.0
+offset_top = 242.0
+offset_right = 1015.0
+offset_bottom = 411.0
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxTexture_1hqne")
+text = "THIS IS A TEST BACKGROUND
+DISABLE IT BEFORE RUN"
+horizontal_alignment = 1
 
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("4_6kyq2")
@@ -585,17 +619,6 @@ script = ExtResource("21_b6gd8")
 
 [node name="OwnersMessage" type="Node2D" parent="Door"]
 position = Vector2(109, -41)
-
-[node name="OwnersMessageText" type="Label" parent="Door/OwnersMessage"]
-z_index = 100
-offset_left = -95.0
-offset_top = -20.0
-offset_right = 95.0
-offset_bottom = 20.0
-theme = SubResource("Theme_6kyq2")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Cloud" type="Sprite2D" parent="Door/OwnersMessage"]
 visible = false

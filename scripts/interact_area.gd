@@ -2,7 +2,8 @@ extends Area2D
 class_name Interacter
 
 
-var interactables := []
+var interactableAreas := []
+var interactableBodies := []
 
 @onready var interact_sprite: AnimatedSprite2D = $".."
 
@@ -14,8 +15,8 @@ func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int
 	if !interactable.enabled:
 		return
 		
-	if !interactables.has(interactable):
-		interactables.append(interactable)
+	if !interactableAreas.has(interactable):
+		interactableAreas.append(interactable)
 		
 	interact_sprite.visible = true
 
@@ -24,13 +25,44 @@ func _on_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int,
 	if !interactable:
 		return
 		
-	interactables.erase(interactable)
+	interactableAreas.erase(interactable)
 	
-	if interactables.is_empty():
+	if interactableAreas.is_empty() and interactableBodies.is_empty():
 		interact_sprite.visible = false
-		
-func interact() -> void:
-	if interactables.is_empty():
+
+
+func _on_body_entered(body: Node2D) -> void:
+	var interactable = body as InteractableBody
+	if !interactable:
 		return
 		
-	interactables[0].interact()
+	if !interactable.enabled:
+		return
+		
+	if !interactableBodies.has(interactable):
+		interactableBodies.append(interactable)
+		
+	interact_sprite.visible = true
+
+
+func _on_body_exited(body: Node2D) -> void:
+	var interactable = body as InteractableBody
+	if !interactable:
+		return
+		
+	interactableBodies.erase(interactable)
+	
+	if interactableAreas.is_empty() and interactableBodies.is_empty():
+		interact_sprite.visible = false
+
+		
+func interact() -> void:
+	if !interactableAreas.is_empty():
+		interactableAreas[0].interact()
+		return
+	
+	if !interactableBodies.is_empty():
+		interactableBodies[0].interact()
+		return
+		
+	

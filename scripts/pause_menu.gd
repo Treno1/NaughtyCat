@@ -35,6 +35,6 @@ func _on_restart_pressed() -> void:
 
 
 func _process(_delta: float) -> void:
-	if GameManager.game_state != GameManager.GameState.PLAY:
+	if GameManager.game_state != GameManager.GameState.PLAY and !visible:
 		return
 	test_esc()
