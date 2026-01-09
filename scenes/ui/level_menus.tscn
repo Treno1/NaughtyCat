@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwfqattgqn8x2"]
+
+[ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/ui/pause_menu.tscn" id="1_yn3e5"]
+[ext_resource type="PackedScene" uid="uid://dc1u6lbglt1sa" path="res://scenes/ui/level_start_menu.tscn" id="2_j8866"]
+[ext_resource type="PackedScene" uid="uid://cfsbgkp7pgb4y" path="res://scenes/ui/level_finish_menu.tscn" id="3_wbywx"]
+
+[node name="Menus" type="CanvasLayer"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_yn3e5")]
+
+[node name="LevelStartMenu" parent="." instance=ExtResource("2_j8866")]
+
+[node name="LevelFinishMenu" parent="." instance=ExtResource("3_wbywx")]

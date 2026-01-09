@@ -6,7 +6,7 @@ signal system_ready
 @onready var door: DoorAnimatedSprite = $"../Door"
 @onready var owners_message: Node2D = $"../Door/OwnersMessage"
 @onready var cloud: Sprite2D = $"../Door/OwnersMessage/Cloud"
-@onready var owners_message_text: Label = $"../CanvasLayer/OwnersMessageText"
+@onready var owners_message_text: Label = $"../Door/CanvasLayer/OwnersMessageText"
 
 var _level_data: LevelData
 var _active = true

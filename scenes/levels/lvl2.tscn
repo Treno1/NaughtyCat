@@ -1,54 +1,44 @@
-[gd_scene load_steps=106 format=3 uid="uid://coagts8qj0sv2"]
+[gd_scene load_steps=69 format=3 uid="uid://coagts8qj0sv2"]
 
-[ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_y266n"]
-[ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_datw2"]
-[ext_resource type="PackedScene" uid="uid://cfsbgkp7pgb4y" path="res://scenes/level_finish_menu.tscn" id="3_rhyen"]
-[ext_resource type="PackedScene" uid="uid://dc1u6lbglt1sa" path="res://scenes/level_start_menu.tscn" id="4_py87s"]
-[ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="5_iyd8c"]
-[ext_resource type="PackedScene" uid="uid://b85qx5wl01ecj" path="res://scenes/touch_controls.tscn" id="6_02i5d"]
-[ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="6_nn67r"]
-[ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="7_wom57"]
-[ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="8_py87s"]
-[ext_resource type="Texture2D" uid="uid://b4vlis8hw5des" path="res://assets/sprites/lvl_room/Room - Nightstand - 1.png" id="9_ik82j"]
-[ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="9_l2y8u"]
-[ext_resource type="Script" uid="uid://ctt0lym4c002t" path="res://scripts/interactable_sprite.gd" id="10_wom57"]
-[ext_resource type="Texture2D" uid="uid://dcmvcs5mo5ski" path="res://assets/sprites/lvl1/Lamp On.png" id="11_ik82j"]
-[ext_resource type="Texture2D" uid="uid://bcqwg6kjbk4e" path="res://assets/sprites/lvl_room/Room - CatBed - 1.png" id="11_x5lnp"]
-[ext_resource type="Texture2D" uid="uid://pfcloy0hhypg" path="res://assets/sprites/lvl_room/Room - Cat tree - 1.png" id="12_ecc6b"]
-[ext_resource type="Script" uid="uid://cdgbl8e0ph2uw" path="res://scripts/interactable_scratch.gd" id="12_x5lnp"]
-[ext_resource type="Texture2D" uid="uid://d17o8pssqb6sh" path="res://assets/sprites/lvl_room/Room - Table - 1.png" id="13_dlph8"]
-[ext_resource type="Texture2D" uid="uid://dbmrc5i2ah281" path="res://assets/sprites/lvl1/Scratches - Couch scratch 1.png" id="13_ecc6b"]
-[ext_resource type="Texture2D" uid="uid://dxvb7lpmdi7dl" path="res://assets/sprites/lvl_room/Room - Cat tree 2 - 1.png" id="14_7tdfp"]
-[ext_resource type="Texture2D" uid="uid://clfenjtshp1ie" path="res://assets/sprites/lvl1/Scratches - Couch scratch 2.png" id="14_dlph8"]
-[ext_resource type="Texture2D" uid="uid://vfqvts5dtvdy" path="res://assets/sprites/lvl_room/Room - Bookshelf - 1.png" id="15_0cyw2"]
-[ext_resource type="Texture2D" uid="uid://ck7e81bgj6d2p" path="res://assets/sprites/lvl1/Scratches - Couch scratch 3.png" id="15_7tdfp"]
-[ext_resource type="Texture2D" uid="uid://cj3yl74pokn04" path="res://assets/sprites/lvl1/Picture screwed.png" id="16_0cyw2"]
-[ext_resource type="Texture2D" uid="uid://bk5lc6nk6vnn0" path="res://assets/sprites/lvl_room/Room - Lamp - 1.png" id="17_sssct"]
-[ext_resource type="Texture2D" uid="uid://d0mmyba8777qk" path="res://assets/sprites/lvl1/FlowerPot.png" id="18_02i5d"]
-[ext_resource type="Texture2D" uid="uid://dq0ogf5agoujc" path="res://assets/sprites/lvl1/couch scratch right.png" id="19_usg8q"]
-[ext_resource type="Texture2D" uid="uid://bofoio1qbs1tg" path="res://assets/sprites/lvl1/door.png" id="20_iyd8c"]
-[ext_resource type="Script" uid="uid://cnkvtcitd4nb3" path="res://scripts/door.gd" id="21_nn67r"]
-[ext_resource type="Texture2D" uid="uid://tehb0macxso0" path="res://assets/sprites/lvl_room/Room - Couch - 1.png" id="21_sssct"]
-[ext_resource type="Script" uid="uid://dr8veymk5832e" path="res://scripts/level_animator.gd" id="22_gk86t"]
-[ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="22_py87s"]
-[ext_resource type="Texture2D" uid="uid://b71qy4ushsdj6" path="res://assets/sprites/lvl_room/Room - Message tooltip - 1.png" id="23_l2y8u"]
-[ext_resource type="AudioStream" uid="uid://d377s8jicb3k" path="res://assets/audio/door_open.mp3" id="23_py87s"]
-[ext_resource type="Texture2D" uid="uid://bnh45up8ifb7n" path="res://assets/sprites/lvl_room/Room - Window - 1.png" id="27_02i5d"]
-[ext_resource type="Texture2D" uid="uid://cd3yjookwqexw" path="res://assets/sprites/lvl1/Picture.png" id="27_usg8q"]
-[ext_resource type="Script" uid="uid://dkl5kmjpqac8e" path="res://scripts/cloud.gd" id="32_02i5d"]
-
-[sub_resource type="Theme" id="Theme_sssct"]
-default_font = ExtResource("22_py87s")
-default_font_size = 64
+[ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ui/ingame_ui.tscn" id="1_x6l53"]
+[ext_resource type="PackedScene" uid="uid://bwfqattgqn8x2" path="res://scenes/ui/level_menus.tscn" id="2_cdt8n"]
+[ext_resource type="PackedScene" uid="uid://b85qx5wl01ecj" path="res://scenes/ui/touch_controls.tscn" id="6_yo5f8"]
+[ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="7_t3681"]
+[ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="8_q5no5"]
+[ext_resource type="PackedScene" uid="uid://qdr0qdgwrigf" path="res://scenes/surfaces/nightstand.tscn" id="9_cdt8n"]
+[ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="9_xybq0"]
+[ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="10_5uw5k"]
+[ext_resource type="PackedScene" uid="uid://m3rbroiv4ixi" path="res://scenes/surfaces/cat_bed.tscn" id="10_cdt8n"]
+[ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="12_5u5uh"]
+[ext_resource type="Texture2D" uid="uid://pfcloy0hhypg" path="res://assets/sprites/lvl_room/Room - Cat tree - 1.png" id="14_xatwe"]
+[ext_resource type="PackedScene" uid="uid://dpreyluxm2on" path="res://scenes/interactables/flower_pot_right.tscn" id="15_6hyik"]
+[ext_resource type="Texture2D" uid="uid://d17o8pssqb6sh" path="res://assets/sprites/lvl_room/Room - Table - 1.png" id="15_c0oph"]
+[ext_resource type="Texture2D" uid="uid://dxvb7lpmdi7dl" path="res://assets/sprites/lvl_room/Room - Cat tree 2 - 1.png" id="16_p1hnf"]
+[ext_resource type="Texture2D" uid="uid://vfqvts5dtvdy" path="res://assets/sprites/lvl_room/Room - Bookshelf - 1.png" id="17_li34e"]
+[ext_resource type="Script" uid="uid://ctt0lym4c002t" path="res://scripts/interactable_sprite.gd" id="18_i64c7"]
+[ext_resource type="Texture2D" uid="uid://bk5lc6nk6vnn0" path="res://assets/sprites/lvl_room/Room - Lamp - 1.png" id="19_8stmy"]
+[ext_resource type="Texture2D" uid="uid://dcmvcs5mo5ski" path="res://assets/sprites/lvl1/Lamp On.png" id="20_4w7tk"]
+[ext_resource type="Script" uid="uid://cdgbl8e0ph2uw" path="res://scripts/interactable_scratch.gd" id="21_yjvwq"]
+[ext_resource type="Texture2D" uid="uid://tehb0macxso0" path="res://assets/sprites/lvl_room/Room - Couch - 1.png" id="23_wh5o5"]
+[ext_resource type="Texture2D" uid="uid://dbmrc5i2ah281" path="res://assets/sprites/lvl1/Scratches - Couch scratch 1.png" id="24_b6end"]
+[ext_resource type="Texture2D" uid="uid://clfenjtshp1ie" path="res://assets/sprites/lvl1/Scratches - Couch scratch 2.png" id="25_ppwh5"]
+[ext_resource type="Texture2D" uid="uid://ck7e81bgj6d2p" path="res://assets/sprites/lvl1/Scratches - Couch scratch 3.png" id="26_vwaug"]
+[ext_resource type="PackedScene" uid="uid://64l77duy54hw" path="res://scenes/other_objects/door.tscn" id="27_6hyik"]
+[ext_resource type="Texture2D" uid="uid://dq0ogf5agoujc" path="res://assets/sprites/lvl1/couch scratch right.png" id="27_oo3b6"]
+[ext_resource type="Texture2D" uid="uid://cj3yl74pokn04" path="res://assets/sprites/lvl1/Picture screwed.png" id="28_g0iwq"]
+[ext_resource type="Texture2D" uid="uid://cd3yjookwqexw" path="res://assets/sprites/lvl1/Picture.png" id="29_uef0o"]
+[ext_resource type="Script" uid="uid://dr8veymk5832e" path="res://scripts/level_animator.gd" id="34_juiga"]
+[ext_resource type="AudioStream" uid="uid://d377s8jicb3k" path="res://assets/audio/door_open.mp3" id="35_kw118"]
+[ext_resource type="Texture2D" uid="uid://bnh45up8ifb7n" path="res://assets/sprites/lvl_room/Room - Window - 1.png" id="36_h0fjx"]
 
 [sub_resource type="Resource" id="Resource_vl02w"]
-script = ExtResource("6_nn67r")
+script = ExtResource("8_q5no5")
 interactables_to_complete = Array[NodePath]([NodePath("../Interactables/Couch/CouchScratchL"), NodePath("../Interactables/Couch/CouchScratchR")])
 task_ui_text = "Sharpen your claws"
 metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 
 [sub_resource type="Resource" id="Resource_02i5d"]
-script = ExtResource("6_nn67r")
+script = ExtResource("8_q5no5")
 interactables_to_complete = Array[NodePath]([NodePath("../Interactables/Couch/Picture")])
 task_ui_text = "Dig the sand on the wall"
 metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
@@ -63,16 +53,6 @@ distance = -144.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnu2h"]
 normal = Vector2(-1, 0)
 distance = -788.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_70ugw"]
-size = Vector2(26, 27)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmq8d"]
-size = Vector2(26, 3)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_06jot"]
-radius = 8.0
-height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06jot"]
 size = Vector2(8.75, 2)
@@ -110,70 +90,6 @@ size = Vector2(48, 6)
 radius = 3.0
 height = 18.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cpkqi"]
-atlas = ExtResource("18_02i5d")
-region = Rect2(26, 0, 26, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tpdyh"]
-atlas = ExtResource("18_02i5d")
-region = Rect2(0, 0, 26, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sx06d"]
-atlas = ExtResource("18_02i5d")
-region = Rect2(26, 0, 26, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ufetx"]
-atlas = ExtResource("18_02i5d")
-region = Rect2(0, 32, 26, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rjqds"]
-atlas = ExtResource("18_02i5d")
-region = Rect2(26, 32, 26, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v0a4n"]
-atlas = ExtResource("18_02i5d")
-region = Rect2(0, 0, 26, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_grp0m"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cpkqi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tpdyh")
-}],
-"loop": false,
-"name": &"1",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sx06d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ufetx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rjqds")
-}],
-"loop": false,
-"name": &"2",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v0a4n")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1702c"]
-radius = 5.99942
-height = 11.998863
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fwtn"]
 size = Vector2(40, 27)
 
@@ -193,7 +109,7 @@ size = Vector2(6, 27)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_ecc6b")
+"texture": ExtResource("24_b6end")
 }],
 "loop": true,
 "name": &"1",
@@ -201,7 +117,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_dlph8")
+"texture": ExtResource("25_ppwh5")
 }],
 "loop": true,
 "name": &"2",
@@ -209,7 +125,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_7tdfp")
+"texture": ExtResource("26_vwaug")
 }],
 "loop": true,
 "name": &"3",
@@ -226,23 +142,23 @@ radius = 3.0
 height = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kaqyl"]
-atlas = ExtResource("19_usg8q")
+atlas = ExtResource("27_oo3b6")
 region = Rect2(0, 0, 8, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4v6ji"]
-atlas = ExtResource("19_usg8q")
+atlas = ExtResource("27_oo3b6")
 region = Rect2(8, 0, 8, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4mno"]
-atlas = ExtResource("19_usg8q")
+atlas = ExtResource("27_oo3b6")
 region = Rect2(16, 0, 8, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_awinm"]
-atlas = ExtResource("19_usg8q")
+atlas = ExtResource("27_oo3b6")
 region = Rect2(0, 20, 8, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhyen"]
-atlas = ExtResource("19_usg8q")
+atlas = ExtResource("27_oo3b6")
 region = Rect2(8, 20, 8, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3rm4b"]
@@ -296,7 +212,7 @@ height = 15.998482
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("16_0cyw2")
+"texture": ExtResource("28_g0iwq")
 }],
 "loop": true,
 "name": &"1",
@@ -304,7 +220,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("27_usg8q")
+"texture": ExtResource("29_uef0o")
 }],
 "loop": true,
 "name": &"idle",
@@ -314,150 +230,6 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0221s"]
 radius = 6.0
 height = 26.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2y8u"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(0, 0, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b8nnd"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(0, 0, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xdlxk"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(0, 0, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qhitu"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(36, 0, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kes6e"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(72, 0, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_alemc"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(108, 0, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q2dfw"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(0, 77, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqhkw"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(0, 77, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0adkv"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(0, 0, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fx5i6"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(0, 0, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5sva8"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(0, 77, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2h7q"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(0, 77, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ok8wf"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(36, 77, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5r266"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(72, 77, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a68ly"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(108, 77, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6ypuy"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(0, 154, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lc6v1"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(36, 154, 36, 77)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eeokw"]
-atlas = ExtResource("20_iyd8c")
-region = Rect2(36, 154, 36, 77)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cpkqi"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l2y8u")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b8nnd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xdlxk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qhitu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kes6e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_alemc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q2dfw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqhkw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0adkv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fx5i6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5sva8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l2h7q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ok8wf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5r266")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a68ly")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6ypuy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lc6v1")
-}],
-"loop": false,
-"name": &"open",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eeokw")
-}],
-"loop": true,
-"name": &"opened",
-"speed": 5.0
-}]
 
 [sub_resource type="Animation" id="Animation_tpdyh"]
 length = 0.001
@@ -509,42 +281,24 @@ size = Vector2(30, 40)
 
 [node name="Lvl2" type="Node2D"]
 
-[node name="IngameUI" parent="." instance=ExtResource("1_y266n")]
+[node name="IngameUI" parent="." instance=ExtResource("1_x6l53")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Menus" parent="." instance=ExtResource("2_cdt8n")]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_datw2")]
-
-[node name="LevelStartMenu" parent="CanvasLayer" instance=ExtResource("4_py87s")]
-
-[node name="LevelFinishMenu" parent="CanvasLayer" instance=ExtResource("3_rhyen")]
-
-[node name="OwnersMessageText" type="Label" parent="CanvasLayer"]
-z_index = 100
-offset_left = -28.0
-offset_top = 262.0
-offset_right = 2212.0
-offset_bottom = 390.0
-theme = SubResource("Theme_sssct")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "sdfghjklgfvhbnmkvbnm"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TouchControls" parent="." instance=ExtResource("6_02i5d")]
+[node name="TouchControls" parent="." instance=ExtResource("6_yo5f8")]
 
 [node name="LevelData" type="Node" parent="."]
-script = ExtResource("5_iyd8c")
+script = ExtResource("7_t3681")
 owners_messages = Array[String](["This way flowers are safe", "I like how couch looks there!
 And painting fits quite well!"])
 messages_timeout = Array[int]([4, 5])
-tasks = Array[ExtResource("6_nn67r")]([SubResource("Resource_vl02w"), SubResource("Resource_02i5d")])
+tasks = Array[ExtResource("8_q5no5")]([SubResource("Resource_vl02w"), SubResource("Resource_02i5d")])
 
 [node name="RoomBG" type="Sprite2D" parent="."]
 position = Vector2(206, 20)
-texture = ExtResource("7_wom57")
+texture = ExtResource("9_xybq0")
 
-[node name="Player" parent="." instance=ExtResource("8_py87s")]
+[node name="Player" parent="." instance=ExtResource("10_5uw5k")]
 position = Vector2(-90, 57)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -574,40 +328,17 @@ shape = SubResource("WorldBoundaryShape2D_lnu2h")
 
 [node name="Surfaces" type="Node2D" parent="."]
 
-[node name="Nightstand" type="StaticBody2D" parent="Surfaces"]
-position = Vector2(-40, 49)
+[node name="Nightstand" parent="Surfaces" instance=ExtResource("9_cdt8n")]
+position = Vector2(-41, 49)
 
-[node name="Sprite2D" type="Sprite2D" parent="Surfaces/Nightstand"]
-texture = ExtResource("9_ik82j")
-
-[node name="Landing5" parent="Surfaces/Nightstand" instance=ExtResource("9_l2y8u")]
-unique_name_in_owner = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Nightstand/Landing5"]
-position = Vector2(0, -23)
-shape = SubResource("RectangleShape2D_70ugw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Nightstand"]
-position = Vector2(0, -7)
-shape = SubResource("RectangleShape2D_dmq8d")
-one_way_collision = true
-
-[node name="CatBed" type="StaticBody2D" parent="Surfaces"]
+[node name="CatBed" parent="Surfaces" instance=ExtResource("10_cdt8n")]
 position = Vector2(-68, 56)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Surfaces/CatBed"]
-texture = ExtResource("11_x5lnp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatBed"]
-position = Vector2(0, 9)
-shape = SubResource("CapsuleShape2D_06jot")
-one_way_collision = true
 
 [node name="CatTree" type="Node2D" parent="Surfaces"]
 position = Vector2(11, 37)
 
 [node name="Sprite2D" type="Sprite2D" parent="Surfaces/CatTree"]
-texture = ExtResource("12_ecc6b")
+texture = ExtResource("14_xatwe")
 
 [node name="lvl1" type="StaticBody2D" parent="Surfaces/CatTree"]
 position = Vector2(-7, 11)
@@ -644,9 +375,9 @@ one_way_collision = true
 position = Vector2(79, 42)
 
 [node name="Sprite2D" type="Sprite2D" parent="Surfaces/Table"]
-texture = ExtResource("13_dlph8")
+texture = ExtResource("15_c0oph")
 
-[node name="Landing" parent="Surfaces/Table" instance=ExtResource("9_l2y8u")]
+[node name="Landing" parent="Surfaces/Table" instance=ExtResource("12_5u5uh")]
 position = Vector2(1, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table/Landing"]
@@ -662,7 +393,7 @@ one_way_collision = true
 position = Vector2(292, 39)
 
 [node name="Sprite2D" type="Sprite2D" parent="Surfaces/CatTree2"]
-texture = ExtResource("14_7tdfp")
+texture = ExtResource("16_p1hnf")
 
 [node name="lvl1" type="StaticBody2D" parent="Surfaces/CatTree2"]
 position = Vector2(1, 7)
@@ -690,14 +421,14 @@ one_way_collision = true
 position = Vector2(203, 28)
 
 [node name="Bookshelf" type="Sprite2D" parent="Surfaces/BookShelf"]
-texture = ExtResource("15_0cyw2")
+texture = ExtResource("17_li34e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/BookShelf"]
 position = Vector2(0, -27)
 shape = SubResource("RectangleShape2D_awinm")
 one_way_collision = true
 
-[node name="FloorLanding" parent="." instance=ExtResource("9_l2y8u")]
+[node name="FloorLanding" parent="." instance=ExtResource("12_5u5uh")]
 position = Vector2(250, 27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorLanding"]
@@ -705,57 +436,39 @@ shape = SubResource("WorldBoundaryShape2D_kvpfn")
 
 [node name="Interactables" type="Node" parent="."]
 
+[node name="FlowerPotRight" parent="Interactables" instance=ExtResource("15_6hyik")]
+position = Vector2(207, -12)
+
 [node name="LampSwitch" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprite")]
 position = Vector2(108, 30)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("10_wom57")
+script = ExtResource("18_i64c7")
 target_sprite = NodePath("LampLight")
 
 [node name="Lamp" type="Sprite2D" parent="Interactables/LampSwitch"]
-texture = ExtResource("17_sssct")
+texture = ExtResource("19_8stmy")
 
 [node name="LampLight" type="Sprite2D" parent="Interactables/LampSwitch"]
 visible = false
 position = Vector2(0, -21)
-texture = ExtResource("11_ik82j")
+texture = ExtResource("20_4w7tk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/LampSwitch"]
 position = Vector2(-10, -11)
 shape = SubResource("CapsuleShape2D_lbhrr")
-
-[node name="FlowerPot" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
-position = Vector2(197, -12)
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("12_x5lnp")
-target_sprites = NodePath("FlowerPotSprite")
-animations_count = 2
-
-[node name="FlowerPotSprite" type="AnimatedSprite2D" parent="Interactables/FlowerPot"]
-process_mode = 3
-position = Vector2(10, 0)
-sprite_frames = SubResource("SpriteFrames_grp0m")
-animation = &"idle"
-autoplay = "idle"
-flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/FlowerPot"]
-position = Vector2(1.9999995, -10.999999)
-rotation = 0.013788337
-shape = SubResource("CapsuleShape2D_1702c")
 
 [node name="Couch" type="Node2D" parent="Interactables"]
 position = Vector2(144, 41)
 
 [node name="Sprite2D" type="Sprite2D" parent="Interactables/Couch"]
 position = Vector2(0, 1)
-texture = ExtResource("21_sssct")
+texture = ExtResource("23_wh5o5")
 
 [node name="CouchSit" type="StaticBody2D" parent="Interactables/Couch"]
 position = Vector2(1, -46)
 
-[node name="Landing4" parent="Interactables/Couch/CouchSit" instance=ExtResource("9_l2y8u")]
+[node name="Landing4" parent="Interactables/Couch/CouchSit" instance=ExtResource("12_5u5uh")]
 unique_name_in_owner = true
 visible = false
 position = Vector2(-1, 38)
@@ -771,7 +484,7 @@ one_way_collision = true
 [node name="CouchLeftArmrest" type="StaticBody2D" parent="Interactables/Couch"]
 position = Vector2(1, -46)
 
-[node name="Landing3" parent="Interactables/Couch/CouchLeftArmrest" instance=ExtResource("9_l2y8u")]
+[node name="Landing3" parent="Interactables/Couch/CouchLeftArmrest" instance=ExtResource("12_5u5uh")]
 unique_name_in_owner = true
 visible = false
 position = Vector2(-26, 32)
@@ -787,7 +500,7 @@ one_way_collision = true
 [node name="CouchRightArmrest" type="StaticBody2D" parent="Interactables/Couch"]
 position = Vector2(1, -46)
 
-[node name="Landing2" parent="Interactables/Couch/CouchRightArmrest" instance=ExtResource("9_l2y8u")]
+[node name="Landing2" parent="Interactables/Couch/CouchRightArmrest" instance=ExtResource("12_5u5uh")]
 unique_name_in_owner = true
 visible = false
 position = Vector2(23, 32)
@@ -804,7 +517,7 @@ one_way_collision = true
 position = Vector2(-25, 8)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("12_x5lnp")
+script = ExtResource("21_yjvwq")
 target_sprites = NodePath("ScratchSprite")
 
 [node name="ScratchSprite" type="AnimatedSprite2D" parent="Interactables/Couch/CouchScratchL"]
@@ -821,7 +534,7 @@ shape = SubResource("CapsuleShape2D_cbs37")
 position = Vector2(25, 7)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("12_x5lnp")
+script = ExtResource("21_yjvwq")
 target_sprites = NodePath("ScratchSprite2")
 animations_count = 4
 
@@ -839,7 +552,7 @@ shape = SubResource("CapsuleShape2D_re71w")
 position = Vector2(-1, -33)
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("12_x5lnp")
+script = ExtResource("21_yjvwq")
 target_sprites = NodePath("PicturePokeSprite")
 animations_count = 1
 
@@ -853,37 +566,23 @@ position = Vector2(0, 3)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_0221s")
 
-[node name="Door" type="AnimatedSprite2D" parent="."]
+[node name="Door" parent="." instance=ExtResource("27_6hyik")]
 position = Vector2(-120, 25)
-sprite_frames = SubResource("SpriteFrames_cpkqi")
-animation = &"idle"
-autoplay = "idle"
-script = ExtResource("21_nn67r")
-
-[node name="OwnersMessage" type="Node2D" parent="Door"]
-position = Vector2(109, -31)
-
-[node name="Cloud" type="Sprite2D" parent="Door/OwnersMessage"]
-visible = false
-z_index = 90
-scale = Vector2(0.9, 1)
-texture = ExtResource("23_l2y8u")
-script = ExtResource("32_02i5d")
 
 [node name="LevelAnimator" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_fk3q0")
 }
-script = ExtResource("22_gk86t")
+script = ExtResource("34_juiga")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="LevelAnimator"]
-stream = ExtResource("23_py87s")
+stream = ExtResource("35_kw118")
 volume_db = -5.0
 bus = &"SFX"
 
 [node name="Window" type="Sprite2D" parent="."]
 position = Vector2(79, 0)
-texture = ExtResource("27_02i5d")
+texture = ExtResource("36_h0fjx")
 
 [node name="DistractionArea" type="Area2D" parent="Window"]
 collision_layer = 8
@@ -892,8 +591,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Window/DistractionArea"]
 shape = SubResource("RectangleShape2D_xb3wc")
 
-[connection signal="area_shape_entered" from="Interactables/FlowerPot" to="Interactables/FlowerPot" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="Interactables/FlowerPot" to="Interactables/FlowerPot" method="_on_area_shape_exited"]
 [connection signal="area_shape_entered" from="Interactables/Couch/CouchScratchL" to="Interactables/Couch/CouchScratchL" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Interactables/Couch/CouchScratchL" to="Interactables/Couch/CouchScratchL" method="_on_area_shape_exited"]
 [connection signal="area_shape_entered" from="Interactables/Couch/CouchScratchR" to="Interactables/Couch/CouchScratchR" method="_on_area_shape_entered"]
@@ -901,7 +598,6 @@ shape = SubResource("RectangleShape2D_xb3wc")
 [connection signal="area_shape_entered" from="Interactables/Couch/Picture" to="Interactables/Couch/Picture" method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Interactables/Couch/Picture" to="Interactables/Couch/Picture" method="_on_area_shape_exited"]
 
-[editable path="Surfaces/Nightstand/Landing5"]
 [editable path="FloorLanding"]
 [editable path="Interactables/Couch/CouchSit/Landing4"]
 [editable path="Interactables/Couch/CouchLeftArmrest/Landing3"]

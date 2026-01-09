@@ -25,6 +25,12 @@ func setup(task_data: TaskData) -> void:
 			_interactions_to_complete+=1
 			continue
 			
+		var interactableTaskTarget = node as InteractableTaskTarget
+		if interactableTaskTarget != null:
+			interactableTaskTarget.task_completed.connect(_interaction_completed)
+			_interactions_to_complete+=1
+			continue
+			
 		push_error("Node is not a Interactable", node)
 	
 	# Setup label is task

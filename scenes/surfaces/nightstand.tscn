@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://qdr0qdgwrigf"]
+
+[ext_resource type="Texture2D" uid="uid://b4vlis8hw5des" path="res://assets/sprites/lvl_room/Room - Nightstand - 1.png" id="1_j0smp"]
+[ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="2_gonis"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmq8d"]
+size = Vector2(26, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70ugw"]
+size = Vector2(26, 27)
+
+[node name="Nightstand" type="Node2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_j0smp")
+
+[node name="TopCollision" type="StaticBody2D" parent="."]
+position = Vector2(0, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopCollision"]
+shape = SubResource("RectangleShape2D_dmq8d")
+one_way_collision = true
+
+[node name="Landing" parent="." instance=ExtResource("2_gonis")]
+unique_name_in_owner = true
+position = Vector2(0, -23)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Landing"]
+shape = SubResource("RectangleShape2D_70ugw")
+
+[editable path="Landing"]

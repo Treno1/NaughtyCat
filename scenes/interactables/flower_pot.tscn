@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://bu8rbgtc68d73"]
+
+[ext_resource type="Script" uid="uid://cdgbl8e0ph2uw" path="res://scripts/interactable_scratch.gd" id="1_42tcj"]
+[ext_resource type="Texture2D" uid="uid://d0mmyba8777qk" path="res://assets/sprites/lvl1/FlowerPot.png" id="2_uetot"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpkqi"]
+atlas = ExtResource("2_uetot")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpdyh"]
+atlas = ExtResource("2_uetot")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx06d"]
+atlas = ExtResource("2_uetot")
+region = Rect2(26, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufetx"]
+atlas = ExtResource("2_uetot")
+region = Rect2(0, 32, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjqds"]
+atlas = ExtResource("2_uetot")
+region = Rect2(26, 32, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0a4n"]
+atlas = ExtResource("2_uetot")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grp0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpkqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpdyh")
+}],
+"loop": false,
+"name": &"1",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sx06d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufetx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjqds")
+}],
+"loop": false,
+"name": &"2",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0a4n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1702c"]
+radius = 5.99942
+height = 11.998863
+
+[node name="FlowerPot" type="Area2D" node_paths=PackedStringArray("target_sprites")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_42tcj")
+target_sprites = NodePath("FlowerPotSprite")
+animations_count = 2
+
+[node name="FlowerPotSprite" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+position = Vector2(-5, 0)
+sprite_frames = SubResource("SpriteFrames_grp0m")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.9073486e-06, -10.999999)
+rotation = 0.013788337
+shape = SubResource("CapsuleShape2D_1702c")

@@ -1,12 +1,12 @@
 extends Node
 
 const LEVELS := [
-	preload("res://scenes/lvl0.tscn"),
-	preload("res://scenes/lvl1.tscn"),
-	preload("res://scenes/lvl2.tscn"),
-	preload("res://scenes/lvl3.tscn"),
-	preload("res://scenes/lvl4.tscn"),
-	preload("res://scenes/lvl5.tscn")
+	preload("res://scenes/levels/lvl0.tscn"),
+	preload("res://scenes/levels/lvl1.tscn"),
+	preload("res://scenes/levels/lvl2.tscn"),
+	preload("res://scenes/levels/lvl3.tscn"),
+	preload("res://scenes/levels/lvl4.tscn"),
+	preload("res://scenes/levels/lvl5.tscn")
 	]
 	
 enum GameState { MAIN_MENU, PLAY, PAUSE, LEVEL_END }

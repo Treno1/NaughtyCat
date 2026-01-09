@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp78bhfcpieaq"
-path="res://.godot/imported/FlowerPot.png-88bfe67bc7f58dfa42c949dc0a60fcbf.ctex"
+uid="uid://c04t2287r2er7"
+path="res://.godot/imported/FlowerPot.png-b6466b2799e58b9953413551e018f3f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/lvl1/FlowerPot.png"
-dest_files=["res://.godot/imported/FlowerPot.png-88bfe67bc7f58dfa42c949dc0a60fcbf.ctex"]
+source_file="res://assets/sprites/lvl_room/FlowerPot.png"
+dest_files=["res://.godot/imported/FlowerPot.png-b6466b2799e58b9953413551e018f3f1.ctex"]
 
 [params]
 

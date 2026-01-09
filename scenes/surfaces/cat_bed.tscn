@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://m3rbroiv4ixi"]
+
+[ext_resource type="Texture2D" uid="uid://bcqwg6kjbk4e" path="res://assets/sprites/lvl_room/Room - CatBed - 1.png" id="1_sohwt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_06jot"]
+radius = 8.0
+height = 16.0
+
+[node name="CatBed" type="Node2D"]
+
+[node name="CatBed2" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="CatBed2"]
+texture = ExtResource("1_sohwt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatBed2"]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_06jot")
+one_way_collision = true

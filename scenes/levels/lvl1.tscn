@@ -1,0 +1,320 @@
+[gd_scene load_steps=43 format=3 uid="uid://bviva2wc21p3g"]
+
+[ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ui/ingame_ui.tscn" id="1_n0djd"]
+[ext_resource type="PackedScene" uid="uid://bwfqattgqn8x2" path="res://scenes/ui/level_menus.tscn" id="2_pwb5c"]
+[ext_resource type="PackedScene" uid="uid://b85qx5wl01ecj" path="res://scenes/ui/touch_controls.tscn" id="6_biuy1"]
+[ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="7_vac3b"]
+[ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="8_wylsh"]
+[ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="9_40sup"]
+[ext_resource type="PackedScene" uid="uid://qdr0qdgwrigf" path="res://scenes/surfaces/nightstand.tscn" id="9_pwb5c"]
+[ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="10_kd1h7"]
+[ext_resource type="PackedScene" uid="uid://m3rbroiv4ixi" path="res://scenes/surfaces/cat_bed.tscn" id="10_pwb5c"]
+[ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="12_22sgr"]
+[ext_resource type="Texture2D" uid="uid://pfcloy0hhypg" path="res://assets/sprites/lvl_room/Room - Cat tree - 1.png" id="14_7t07d"]
+[ext_resource type="Texture2D" uid="uid://d17o8pssqb6sh" path="res://assets/sprites/lvl_room/Room - Table - 1.png" id="15_ifixw"]
+[ext_resource type="Texture2D" uid="uid://dxvb7lpmdi7dl" path="res://assets/sprites/lvl_room/Room - Cat tree 2 - 1.png" id="16_8c6go"]
+[ext_resource type="Texture2D" uid="uid://vfqvts5dtvdy" path="res://assets/sprites/lvl_room/Room - Bookshelf - 1.png" id="17_cgx76"]
+[ext_resource type="PackedScene" uid="uid://dpreyluxm2on" path="res://scenes/interactables/flower_pot_right.tscn" id="18_picej"]
+[ext_resource type="Script" uid="uid://dgh4uncisvwtj" path="res://scripts/task_target.gd" id="19_o28iq"]
+[ext_resource type="PackedScene" uid="uid://doegkbojgdk07" path="res://scenes/interactables/lamp.tscn" id="20_picej"]
+[ext_resource type="PackedScene" uid="uid://64l77duy54hw" path="res://scenes/other_objects/door.tscn" id="21_13vyy"]
+[ext_resource type="Script" uid="uid://dr8veymk5832e" path="res://scripts/level_animator.gd" id="27_gv2jn"]
+[ext_resource type="AudioStream" uid="uid://d377s8jicb3k" path="res://assets/audio/door_open.mp3" id="28_8r3oa"]
+[ext_resource type="Texture2D" uid="uid://bnh45up8ifb7n" path="res://assets/sprites/lvl_room/Room - Window - 1.png" id="29_4q2dq"]
+[ext_resource type="Texture2D" uid="uid://cao15mwxn7jqd" path="res://assets/sprites/lvl_room/Room - Picture - 1.png" id="30_pdb8f"]
+
+[sub_resource type="Resource" id="Resource_vl02w"]
+script = ExtResource("8_wylsh")
+interactables_to_complete = Array[NodePath]([NodePath("../Interactables/FlowerPotRight/InteractableTaskTarget")])
+task_ui_text = "Find and beat the flowers again"
+metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
+distance = -11.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
+normal = Vector2(1, 0)
+distance = -144.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnu2h"]
+normal = Vector2(-1, 0)
+distance = -681.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06jot"]
+size = Vector2(8.75, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5mx3"]
+size = Vector2(25, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grp0m"]
+size = Vector2(10.75, 1.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1702c"]
+size = Vector2(10, 1.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eeokw"]
+size = Vector2(44, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8degd"]
+size = Vector2(42.375, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y66yi"]
+size = Vector2(10, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihhod"]
+size = Vector2(10, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kyq2"]
+size = Vector2(11, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awinm"]
+size = Vector2(48, 6)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
+
+[sub_resource type="Animation" id="Animation_tpdyh"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ihhod"]
+resource_name = "level_start"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelAnimator")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"level_start"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gtj14"]
+resource_name = "timer_out"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelAnimator/AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fk3q0"]
+_data = {
+&"RESET": SubResource("Animation_tpdyh"),
+&"level_start": SubResource("Animation_ihhod"),
+&"timer_out": SubResource("Animation_gtj14")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb3wc"]
+size = Vector2(30, 40)
+
+[node name="Lvl0" type="Node2D"]
+
+[node name="IngameUI" parent="." instance=ExtResource("1_n0djd")]
+
+[node name="Menus" parent="." instance=ExtResource("2_pwb5c")]
+
+[node name="TouchControls" parent="." instance=ExtResource("6_biuy1")]
+
+[node name="LevelData" type="Node" parent="."]
+script = ExtResource("7_vac3b")
+owners_messages = Array[String](["He won't find the flowers,
+Don't worry"])
+messages_timeout = Array[int]([2])
+tasks = Array[ExtResource("8_wylsh")]([SubResource("Resource_vl02w")])
+
+[node name="RoomBG" type="Sprite2D" parent="."]
+position = Vector2(206, 20)
+texture = ExtResource("9_40sup")
+
+[node name="Player" parent="." instance=ExtResource("10_kd1h7")]
+position = Vector2(-90, 57)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-1, -36)
+zoom = Vector2(8, 8)
+process_callback = 0
+limit_left = -144
+limit_top = -47
+limit_right = 230
+limit_bottom = 88
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+
+[node name="World Boundaries" type="StaticBody2D" parent="."]
+position = Vector2(0, 59)
+
+[node name="CollisionBottom" type="CollisionShape2D" parent="World Boundaries"]
+position = Vector2(0, -9)
+shape = SubResource("WorldBoundaryShape2D_uwrxv")
+
+[node name="CollisionLeft" type="CollisionShape2D" parent="World Boundaries"]
+shape = SubResource("WorldBoundaryShape2D_yqjtg")
+
+[node name="CollisionRight" type="CollisionShape2D" parent="World Boundaries"]
+position = Vector2(-452, -3)
+shape = SubResource("WorldBoundaryShape2D_lnu2h")
+
+[node name="Surfaces" type="Node2D" parent="."]
+
+[node name="Nightstand" parent="Surfaces" instance=ExtResource("9_pwb5c")]
+position = Vector2(-40, 49)
+
+[node name="CatBed" parent="Surfaces" instance=ExtResource("10_pwb5c")]
+position = Vector2(-68, 56)
+
+[node name="CatTree" type="Node2D" parent="Surfaces"]
+position = Vector2(11, 37)
+
+[node name="Sprite2D" type="Sprite2D" parent="Surfaces/CatTree"]
+texture = ExtResource("14_7t07d")
+
+[node name="lvl1" type="StaticBody2D" parent="Surfaces/CatTree"]
+position = Vector2(-7, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree/lvl1"]
+position = Vector2(0.625, 0)
+shape = SubResource("RectangleShape2D_06jot")
+one_way_collision = true
+
+[node name="lvl2" type="StaticBody2D" parent="Surfaces/CatTree"]
+position = Vector2(15, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree/lvl2"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_x5mx3")
+one_way_collision = true
+
+[node name="lvl3" type="StaticBody2D" parent="Surfaces/CatTree"]
+position = Vector2(-24, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree/lvl3"]
+position = Vector2(0.375, 0)
+shape = SubResource("RectangleShape2D_grp0m")
+one_way_collision = true
+
+[node name="lvl4" type="StaticBody2D" parent="Surfaces/CatTree"]
+position = Vector2(8, -22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree/lvl4"]
+shape = SubResource("RectangleShape2D_1702c")
+one_way_collision = true
+
+[node name="Table" type="StaticBody2D" parent="Surfaces"]
+position = Vector2(79, 42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Surfaces/Table"]
+texture = ExtResource("15_ifixw")
+
+[node name="Landing" parent="Surfaces/Table" instance=ExtResource("12_22sgr")]
+position = Vector2(1, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table/Landing"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_eeokw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_8degd")
+one_way_collision = true
+
+[node name="CatTree2" type="Node2D" parent="Surfaces"]
+position = Vector2(134, 41)
+
+[node name="Sprite2D" type="Sprite2D" parent="Surfaces/CatTree2"]
+texture = ExtResource("16_8c6go")
+
+[node name="lvl1" type="StaticBody2D" parent="Surfaces/CatTree2"]
+position = Vector2(1, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree2/lvl1"]
+shape = SubResource("RectangleShape2D_y66yi")
+one_way_collision = true
+
+[node name="lvl2" type="StaticBody2D" parent="Surfaces/CatTree2"]
+position = Vector2(-16, -6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree2/lvl2"]
+shape = SubResource("RectangleShape2D_ihhod")
+one_way_collision = true
+
+[node name="lvl3" type="StaticBody2D" parent="Surfaces/CatTree2"]
+position = Vector2(16, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree2/lvl3"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_6kyq2")
+one_way_collision = true
+
+[node name="BookShelf" type="StaticBody2D" parent="Surfaces"]
+position = Vector2(208, 28)
+
+[node name="Bookshelf" type="Sprite2D" parent="Surfaces/BookShelf"]
+texture = ExtResource("17_cgx76")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/BookShelf"]
+position = Vector2(0, -27)
+shape = SubResource("RectangleShape2D_awinm")
+one_way_collision = true
+
+[node name="FloorLanding" parent="." instance=ExtResource("12_22sgr")]
+position = Vector2(250, 27)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorLanding"]
+shape = SubResource("WorldBoundaryShape2D_kvpfn")
+
+[node name="Interactables" type="Node" parent="."]
+
+[node name="FlowerPotRight" parent="Interactables" instance=ExtResource("18_picej")]
+position = Vector2(212, -13)
+
+[node name="InteractableTaskTarget" type="Node2D" parent="Interactables/FlowerPotRight"]
+position = Vector2(215, -13)
+script = ExtResource("19_o28iq")
+metadata/_custom_type_script = "uid://dgh4uncisvwtj"
+
+[node name="Lamp" parent="Interactables" instance=ExtResource("20_picej")]
+position = Vector2(168, 31)
+
+[node name="Door" parent="." instance=ExtResource("21_13vyy")]
+position = Vector2(-120, 25)
+
+[node name="LevelAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fk3q0")
+}
+script = ExtResource("27_gv2jn")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="LevelAnimator"]
+stream = ExtResource("28_8r3oa")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(79, 0)
+texture = ExtResource("29_4q2dq")
+
+[node name="DistractionArea" type="Area2D" parent="Window"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Window/DistractionArea"]
+shape = SubResource("RectangleShape2D_xb3wc")
+
+[node name="Picture" type="Sprite2D" parent="."]
+position = Vector2(-40, 8)
+texture = ExtResource("30_pdb8f")
+
+[editable path="FloorLanding"]
