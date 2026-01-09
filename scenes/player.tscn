@@ -345,6 +345,10 @@ collision_mask = 8
 position = Vector2(1, -19)
 shape = SubResource("RectangleShape2D_fjrip")
 
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="animation_changed" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="PlayerSprite" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_shape_entered" from="InteractSprite/InteractArea" to="InteractSprite/InteractArea" method="_on_area_shape_entered"]

@@ -14,6 +14,7 @@ const JUMP_VELOCITY = -200.0
 @onready var _collision_x_pos = collision_shape.position.x
 @onready var interact_sprite: AnimatedSprite2D = $InteractSprite
 @onready var miaus: Node = $miaus
+@onready var coyote_timer: Timer = $CoyoteTimer
 
 @export var distraction_time: float= 2
 @export var distraction_cooldown: float= 5
@@ -21,6 +22,7 @@ const JUMP_VELOCITY = -200.0
 var player_state := PlayerState.NORMAL
 
 var _is_poking := false
+var _can_jump := true
 
 
 #region landings
@@ -41,6 +43,7 @@ func _ready() -> void:
 	GameManager.set_player(self)
 	interact_sprite.visible = false
 	emit_signal("system_ready")
+	coyote_timer.timeout.connect(_on_coyote_time_timeout)
 	
 	
 func _physics_process(delta: float) -> void:
@@ -55,13 +58,17 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	else:
+		_can_jump = true
+		coyote_timer.stop()
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		if Input.is_action_pressed("move_down"):
+	if Input.is_action_just_pressed("jump"):
+		if Input.is_action_pressed("move_down") and is_on_floor():
 			position.y += 5
-		else:
+		elif _can_jump:
 			velocity.y = JUMP_VELOCITY
+			coyote_timer.start()
 
 	# Gets the input direction: -1, 0, 1
 	var direction := Input.get_axis("move_left", "move_right")
@@ -157,3 +164,7 @@ func _on_distract_area_area_entered(_area: Area2D) -> void:
 
 func _on_distract_area_area_exited(_area: Area2D) -> void:
 	_is_in_distract_zone = false
+
+
+func _on_coyote_time_timeout() -> void:
+	_can_jump = false
