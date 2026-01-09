@@ -34,11 +34,11 @@ func _enable(state: LevelFinishResult):
 	if _state == LevelFinishResult.WIN:
 		label.text = win_text
 		label.add_theme_color_override("font_color", win_text_color)
-		button.text = win_button_text
+		button.text = "\n" + win_button_text + "\n\n"
 	elif _state == LevelFinishResult.FAIL:
 		label.text = lose_text
 		label.add_theme_color_override("font_color", lose_text_color)
-		button.text = lose_button_text
+		button.text = "\n" + lose_button_text + "\n\n"
 		
 	show()
 	get_tree().paused = true

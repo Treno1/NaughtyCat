@@ -1,10 +1,11 @@
-[gd_scene load_steps=123 format=3 uid="uid://unbsprimpsg"]
+[gd_scene load_steps=124 format=3 uid="uid://unbsprimpsg"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_nnb7g"]
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_gl8td"]
 [ext_resource type="PackedScene" uid="uid://dc1u6lbglt1sa" path="res://scenes/level_start_menu.tscn" id="3_jajk2"]
 [ext_resource type="PackedScene" uid="uid://cfsbgkp7pgb4y" path="res://scenes/level_finish_menu.tscn" id="4_ktplg"]
 [ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="5_fgklw"]
+[ext_resource type="PackedScene" uid="uid://b85qx5wl01ecj" path="res://scenes/touch_controls.tscn" id="6_fgklw"]
 [ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="6_mp5gf"]
 [ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="7_j7x6d"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="8_4b1iq"]
@@ -623,6 +624,8 @@ text = "sdfghjklgfvhbnmkvbnm"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TouchControls" parent="." instance=ExtResource("6_fgklw")]
+
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("5_fgklw")
 owners_messages = Array[String](["Poor couch
@@ -642,9 +645,9 @@ position = Vector2(-1, -36)
 zoom = Vector2(8, 8)
 process_callback = 0
 limit_left = -144
-limit_top = -57
+limit_top = -47
 limit_right = 336
-limit_bottom = 78
+limit_bottom = 88
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
@@ -1002,7 +1005,7 @@ autoplay = "idle"
 script = ExtResource("29_iu12d")
 
 [node name="OwnersMessage" type="Node2D" parent="Door"]
-position = Vector2(109, -41)
+position = Vector2(109, -31)
 
 [node name="Cloud" type="Sprite2D" parent="Door/OwnersMessage"]
 visible = false

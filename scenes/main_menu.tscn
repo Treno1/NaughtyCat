@@ -78,6 +78,9 @@ vertical_alignment = 1
 
 [node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Start Game"
+text = "
+Start Game
+
+"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

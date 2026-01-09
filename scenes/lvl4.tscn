@@ -1,10 +1,11 @@
-[gd_scene load_steps=130 format=3 uid="uid://o22yo5i23b0s"]
+[gd_scene load_steps=131 format=3 uid="uid://o22yo5i23b0s"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_2x2q5"]
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_w31g7"]
 [ext_resource type="PackedScene" uid="uid://dc1u6lbglt1sa" path="res://scenes/level_start_menu.tscn" id="3_y1fe4"]
 [ext_resource type="PackedScene" uid="uid://cfsbgkp7pgb4y" path="res://scenes/level_finish_menu.tscn" id="4_bttck"]
 [ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="5_b2old"]
+[ext_resource type="PackedScene" uid="uid://b85qx5wl01ecj" path="res://scenes/touch_controls.tscn" id="6_bttck"]
 [ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="6_oqkac"]
 [ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="7_kbctc"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="8_6a7j2"]
@@ -667,6 +668,8 @@ text = "sdfghjklgfvhbnmkvbnm"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TouchControls" parent="." instance=ExtResource("6_bttck")]
+
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("5_b2old")
 owners_messages = Array[String](["Couch looks fresh!", "Have I finished my coffee?"])
@@ -685,9 +688,9 @@ position = Vector2(-1, -36)
 zoom = Vector2(8, 8)
 process_callback = 0
 limit_left = -144
-limit_top = -57
+limit_top = -47
 limit_right = 336
-limit_bottom = 78
+limit_bottom = 88
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
@@ -1061,7 +1064,7 @@ autoplay = "idle"
 script = ExtResource("33_lpij2")
 
 [node name="OwnersMessage" type="Node2D" parent="Door"]
-position = Vector2(109, -41)
+position = Vector2(109, -31)
 
 [node name="Cloud" type="Sprite2D" parent="Door/OwnersMessage"]
 visible = false

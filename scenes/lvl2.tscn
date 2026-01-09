@@ -1,10 +1,11 @@
-[gd_scene load_steps=105 format=3 uid="uid://coagts8qj0sv2"]
+[gd_scene load_steps=106 format=3 uid="uid://coagts8qj0sv2"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_y266n"]
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_datw2"]
 [ext_resource type="PackedScene" uid="uid://cfsbgkp7pgb4y" path="res://scenes/level_finish_menu.tscn" id="3_rhyen"]
 [ext_resource type="PackedScene" uid="uid://dc1u6lbglt1sa" path="res://scenes/level_start_menu.tscn" id="4_py87s"]
 [ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="5_iyd8c"]
+[ext_resource type="PackedScene" uid="uid://b85qx5wl01ecj" path="res://scenes/touch_controls.tscn" id="6_02i5d"]
 [ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="6_nn67r"]
 [ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="7_wom57"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="8_py87s"]
@@ -530,6 +531,8 @@ text = "sdfghjklgfvhbnmkvbnm"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TouchControls" parent="." instance=ExtResource("6_02i5d")]
+
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("5_iyd8c")
 owners_messages = Array[String](["This way flowers are safe", "I like how couch looks there!
@@ -549,9 +552,9 @@ position = Vector2(-1, -36)
 zoom = Vector2(8, 8)
 process_callback = 0
 limit_left = -144
-limit_top = -57
+limit_top = -47
 limit_right = 336
-limit_bottom = 78
+limit_bottom = 88
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
@@ -858,7 +861,7 @@ autoplay = "idle"
 script = ExtResource("21_nn67r")
 
 [node name="OwnersMessage" type="Node2D" parent="Door"]
-position = Vector2(109, -41)
+position = Vector2(109, -31)
 
 [node name="Cloud" type="Sprite2D" parent="Door/OwnersMessage"]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://bviva2wc21p3g"]
+[gd_scene load_steps=83 format=3 uid="uid://bviva2wc21p3g"]
 
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="1_2tpkn"]
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="2_28l0p"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="4_2tpkn"]
 [ext_resource type="PackedScene" uid="uid://dc1u6lbglt1sa" path="res://scenes/level_start_menu.tscn" id="4_4v6ji"]
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="5_6oc1e"]
+[ext_resource type="PackedScene" uid="uid://b85qx5wl01ecj" path="res://scenes/touch_controls.tscn" id="6_cybey"]
 [ext_resource type="Script" uid="uid://ctt0lym4c002t" path="res://scripts/interactable_sprite.gd" id="6_sh3n3"]
 [ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="7_awinm"]
 [ext_resource type="Texture2D" uid="uid://dcmvcs5mo5ski" path="res://assets/sprites/lvl1/Lamp On.png" id="7_sh364"]
@@ -377,6 +378,8 @@ text = "sdfghjklgfvhbnmkvbnm"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TouchControls" parent="." instance=ExtResource("6_cybey")]
+
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("2_yq2hi")
 owners_messages = Array[String](["He won't find the flowers,
@@ -396,9 +399,9 @@ position = Vector2(-1, -36)
 zoom = Vector2(8, 8)
 process_callback = 0
 limit_left = -144
-limit_top = -57
+limit_top = -47
 limit_right = 230
-limit_bottom = 78
+limit_bottom = 88
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
@@ -596,7 +599,7 @@ autoplay = "idle"
 script = ExtResource("21_sx06d")
 
 [node name="OwnersMessage" type="Node2D" parent="Door"]
-position = Vector2(109, -41)
+position = Vector2(109, -31)
 
 [node name="Cloud" type="Sprite2D" parent="Door/OwnersMessage"]
 visible = false

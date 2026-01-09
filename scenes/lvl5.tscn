@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://c0xa4wpgbtyqg"]
+[gd_scene load_steps=130 format=3 uid="uid://c0xa4wpgbtyqg"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ingame_ui.tscn" id="1_xgt4i"]
 [ext_resource type="PackedScene" uid="uid://cvlgc2otxhfp0" path="res://scenes/pause_menu.tscn" id="2_kwtev"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cfsbgkp7pgb4y" path="res://scenes/level_finish_menu.tscn" id="4_gb2ui"]
 [ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="5_l4ol4"]
 [ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="6_25hok"]
+[ext_resource type="PackedScene" uid="uid://b85qx5wl01ecj" path="res://scenes/touch_controls.tscn" id="6_xgt4i"]
 [ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="7_lgv0s"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="8_74is2"]
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="10_ifm7o"]
@@ -672,6 +673,8 @@ text = "sdfghjklgfvhbnmkvbnm"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TouchControls" parent="." instance=ExtResource("6_xgt4i")]
+
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource("5_l4ol4")
 owners_messages = Array[String](["Alright, I give up
@@ -692,9 +695,9 @@ position = Vector2(-1, -36)
 zoom = Vector2(8, 8)
 process_callback = 0
 limit_left = -144
-limit_top = -57
+limit_top = -47
 limit_right = 336
-limit_bottom = 78
+limit_bottom = 88
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
@@ -869,7 +872,7 @@ position = Vector2(-10, -11)
 shape = SubResource("CapsuleShape2D_lbhrr")
 
 [node name="FlowerPot" type="Area2D" parent="Interactables" node_paths=PackedStringArray("target_sprites")]
-position = Vector2(17, -15)
+position = Vector2(2, -15)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("20_71qf3")
@@ -882,10 +885,9 @@ position = Vector2(10, 0)
 sprite_frames = SubResource("SpriteFrames_grp0m")
 animation = &"idle"
 autoplay = "idle"
-flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/FlowerPot"]
-position = Vector2(1.9999995, -10.999999)
+position = Vector2(15.000002, -10.999999)
 rotation = 0.013788337
 shape = SubResource("CapsuleShape2D_1702c")
 
@@ -1051,7 +1053,7 @@ autoplay = "idle"
 script = ExtResource("35_uwrr4")
 
 [node name="OwnersMessage" type="Node2D" parent="Door"]
-position = Vector2(109, -41)
+position = Vector2(109, -31)
 
 [node name="Cloud" type="Sprite2D" parent="Door/OwnersMessage"]
 visible = false
