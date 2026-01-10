@@ -11,28 +11,10 @@ func setup(task_data: TaskData) -> void:
 	
 	await get_tree().process_frame
 	
-	for node_path in _task_data.interactables_to_complete:
-		var node = get_node_or_null(node_path)
-		var interactable = node as Interactable
-		if interactable != null:
-			interactable.interaction_complete.connect(_interaction_completed)
-			_interactions_to_complete+=1
-			continue
-		
-		var interactableBody = node as InteractableBody
-		if interactableBody != null:
-			interactableBody.interaction_complete.connect(_interaction_completed)
-			_interactions_to_complete+=1
-			continue
-			
-		var interactableTaskTarget = node as InteractableTaskTarget
-		if interactableTaskTarget != null:
-			interactableTaskTarget.task_completed.connect(_interaction_completed)
-			_interactions_to_complete+=1
-			continue
-			
-		push_error("Node is not a Interactable", node)
-	
+	for interactableTaskTarget in _task_data.interactables_to_complete:
+		interactableTaskTarget.task_completed.connect(_interaction_completed)
+		_interactions_to_complete+=1
+
 	# Setup label is task
 	print(_task_data.task_ui_text)
 

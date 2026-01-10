@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bghc0but4a4do"]
+
+[ext_resource type="Texture2D" uid="uid://xrxpabnjjan" path="res://assets/sprites/lvl_room/Room - Tv stand - 1.png" id="1_4og66"]
+[ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="2_x3txu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl8td"]
+size = Vector2(62, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jajk2"]
+size = Vector2(64, 3)
+
+[node name="TvStand" type="Node2D"]
+
+[node name="TvStand" type="StaticBody2D" parent="."]
+position = Vector2(0, 7)
+
+[node name="Sprite2D" type="Sprite2D" parent="TvStand"]
+texture = ExtResource("1_4og66")
+
+[node name="Landing5" parent="TvStand" instance=ExtResource("2_x3txu")]
+position = Vector2(0, -23)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TvStand/Landing5"]
+shape = SubResource("RectangleShape2D_gl8td")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TvStand"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_jajk2")
+one_way_collision = true
+
+[editable path="TvStand/Landing5"]

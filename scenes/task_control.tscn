@@ -77,3 +77,17 @@ label_settings = SubResource("LabelSettings_cm6yq")
 libraries = {
 &"": SubResource("AnimationLibrary_k4ad5")
 }
+
+[node name="TaskRichLabel" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_right = 432.0
+offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("2_f1783")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false

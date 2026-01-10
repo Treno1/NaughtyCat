@@ -1,10 +1,8 @@
 extends RigidBody2D
-class_name InteractableBody
-
-
-signal interaction_complete
+class_name Cup
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var interact_area: Interactable = $InteractArea
 
 @export var enabled: bool = true
 @export var push_force:= 50
@@ -13,14 +11,12 @@ var _was_pushed = false
 var _was_flying = false
 
 func _ready() -> void:
+	interact_area.interacted.connect(_interact)
 	lock_rotation = true
 
-func interact() -> void:
+func _interact() -> void:
 	_is_pushed = true
 	_was_pushed = true
-	
-func complete_interaction() -> void:
-	return
 	
 func is_flying() -> bool:
 	if linear_velocity.y != 0:
@@ -28,7 +24,7 @@ func is_flying() -> bool:
 	return false
 	
 func _physics_process(_delta: float) -> void:
-	if !_was_pushed:
+	if !_was_pushed or !interact_area.enabled:
 		return
 		
 	if _is_pushed:
@@ -41,10 +37,9 @@ func _physics_process(_delta: float) -> void:
 		_was_flying = true
 	elif _was_flying:
 		animated_sprite.play("on_ground")
-		if enabled:
-			emit_signal("interaction_complete")
+		if interact_area.enabled:
+			interact_area.complete_interaction()
 			print("body interaction complete")
-			enabled = false
 		
 	
 		

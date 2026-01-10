@@ -1,0 +1,124 @@
+[gd_scene load_steps=17 format=3 uid="uid://cxalw640st00"]
+
+[ext_resource type="Script" uid="uid://03xpphoybmxl" path="res://scripts/TV.gd" id="1_4cb7a"]
+[ext_resource type="Texture2D" uid="uid://u4ym2nnkuwlf" path="res://assets/sprites/lvl_room/Room - Tv - 1.png" id="2_ehes4"]
+[ext_resource type="Texture2D" uid="uid://b380kus2wl0yp" path="res://assets/sprites/lvl1/tv on.png" id="3_mls23"]
+[ext_resource type="Texture2D" uid="uid://dq0ogf5agoujc" path="res://assets/sprites/lvl1/couch scratch right.png" id="4_i5x7v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cybey"]
+atlas = ExtResource("3_mls23")
+region = Rect2(0, 0, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcc03"]
+atlas = ExtResource("3_mls23")
+region = Rect2(46, 0, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsg5g"]
+atlas = ExtResource("3_mls23")
+region = Rect2(92, 0, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j8ap"]
+atlas = ExtResource("3_mls23")
+region = Rect2(0, 26, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpu2l"]
+atlas = ExtResource("3_mls23")
+region = Rect2(46, 26, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta5eo"]
+atlas = ExtResource("3_mls23")
+region = Rect2(92, 26, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ff1n"]
+atlas = ExtResource("3_mls23")
+region = Rect2(0, 52, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc2me"]
+atlas = ExtResource("3_mls23")
+region = Rect2(46, 52, 46, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhyen"]
+atlas = ExtResource("4_i5x7v")
+region = Rect2(8, 20, 8, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fgklw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cybey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcc03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsg5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j8ap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpu2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta5eo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ff1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc2me")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhyen")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mp5gf"]
+radius = 9.012932
+height = 44.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktplg"]
+size = Vector2(40, 16)
+
+[node name="TV" type="Node2D"]
+
+[node name="TurnOnTV" type="Area2D" parent="." node_paths=PackedStringArray("target_sprites")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_4cb7a")
+target_sprites = NodePath("ScratchSprite2")
+animations_count = 1
+
+[node name="TVSprite" type="Sprite2D" parent="TurnOnTV"]
+texture = ExtResource("2_ehes4")
+
+[node name="ScratchSprite2" type="AnimatedSprite2D" parent="TurnOnTV"]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_fgklw")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TurnOnTV"]
+position = Vector2(-5.9604645e-07, 4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_mp5gf")
+
+[node name="DistractionArea" type="Area2D" parent="TurnOnTV"]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TurnOnTV/DistractionArea"]
+shape = SubResource("RectangleShape2D_ktplg")
+
+[connection signal="area_shape_entered" from="TurnOnTV" to="TurnOnTV" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="TurnOnTV" to="TurnOnTV" method="_on_area_shape_exited"]

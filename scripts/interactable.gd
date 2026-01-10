@@ -2,6 +2,7 @@ extends Area2D
 class_name Interactable
 
 signal interaction_complete
+signal interacted
 
 @export var enabled: bool = true
 
@@ -12,7 +13,8 @@ func _ready() -> void:
 	collision_mask = 0
 
 func interact() -> void:
-	return
+	emit_signal("interacted")
 	
 func complete_interaction() -> void:
+	enabled = false
 	emit_signal("interaction_complete")

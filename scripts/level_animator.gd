@@ -10,6 +10,7 @@ signal system_ready
 
 var _level_data: LevelData
 var _active = true
+var _typing = false
 
 func _ready() -> void:
 	GameManager.set_level_animator(self)
@@ -34,15 +35,23 @@ func show_next_message() -> void:
 		_active_timer = get_tree().create_timer(_level_data.messages_timeout[_active_mess_id])
 
 func _process(_delta: float) -> void:
+	if _active and _typing and Input.is_action_just_pressed("jump"):
+		_typing = false
+		
 	if _active_timer != null and _active:
 		if _active_timer.time_left <= 0 or Input.is_action_just_pressed("jump"):
 			show_next_message()
 
 func set_label_text(text: String) -> void:
 	owners_message_text.text = ""
+	_typing = true
 	for c in text:
+		if !_typing:
+			owners_message_text.text = text
+			break
 		owners_message_text.text += c
 		await get_tree().create_timer(0.05).timeout
+	_typing = false
 
 func pre_timer_trigger():
 	play("timer_out")

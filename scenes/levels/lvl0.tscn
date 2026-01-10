@@ -1,34 +1,28 @@
-[gd_scene load_steps=42 format=3 uid="uid://bsp0h6x4sa6w3"]
+[gd_scene load_steps=32 format=3 uid="uid://bsp0h6x4sa6w3"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ui/ingame_ui.tscn" id="1_h86ek"]
 [ext_resource type="PackedScene" uid="uid://bwfqattgqn8x2" path="res://scenes/ui/level_menus.tscn" id="4_oj86k"]
 [ext_resource type="PackedScene" uid="uid://b85qx5wl01ecj" path="res://scenes/ui/touch_controls.tscn" id="7_mc55s"]
 [ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="8_82ufk"]
-[ext_resource type="PackedScene" uid="uid://qdr0qdgwrigf" path="res://scenes/surfaces/nightstand.tscn" id="8_nnw3a"]
+[ext_resource type="PackedScene" uid="uid://qdr0qdgwrigf" path="res://scenes/room_parts/nightstand.tscn" id="8_nnw3a"]
 [ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="9_evvim"]
-[ext_resource type="PackedScene" uid="uid://m3rbroiv4ixi" path="res://scenes/surfaces/cat_bed.tscn" id="9_nnw3a"]
+[ext_resource type="PackedScene" uid="uid://m3rbroiv4ixi" path="res://scenes/room_parts/cat_bed.tscn" id="9_nnw3a"]
 [ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="10_17pes"]
+[ext_resource type="PackedScene" uid="uid://csjfki363ku44" path="res://scenes/room_parts/cat_tree_4_sections.tscn" id="10_nnw3a"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="11_36cy7"]
+[ext_resource type="PackedScene" uid="uid://c4dw1vjrvbth4" path="res://scenes/room_parts/cat_tree_3_sections.tscn" id="11_nnw3a"]
+[ext_resource type="PackedScene" uid="uid://bkfvve164s5vy" path="res://scenes/room_parts/table.tscn" id="12_q14oe"]
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="13_eye3e"]
-[ext_resource type="Texture2D" uid="uid://pfcloy0hhypg" path="res://assets/sprites/lvl_room/Room - Cat tree - 1.png" id="15_kj6id"]
-[ext_resource type="Texture2D" uid="uid://d17o8pssqb6sh" path="res://assets/sprites/lvl_room/Room - Table - 1.png" id="16_kriyd"]
-[ext_resource type="Texture2D" uid="uid://dxvb7lpmdi7dl" path="res://assets/sprites/lvl_room/Room - Cat tree 2 - 1.png" id="17_mtfk1"]
+[ext_resource type="PackedScene" uid="uid://dghkoj1lifurw" path="res://scenes/room_parts/window.tscn" id="14_nnw3a"]
 [ext_resource type="PackedScene" uid="uid://doegkbojgdk07" path="res://scenes/interactables/lamp.tscn" id="18_bdpwx"]
 [ext_resource type="PackedScene" uid="uid://dpreyluxm2on" path="res://scenes/interactables/flower_pot_right.tscn" id="18_h86ek"]
 [ext_resource type="Script" uid="uid://dgh4uncisvwtj" path="res://scripts/task_target.gd" id="19_ve3sp"]
-[ext_resource type="PackedScene" uid="uid://64l77duy54hw" path="res://scenes/other_objects/door.tscn" id="20_nnw3a"]
+[ext_resource type="PackedScene" uid="uid://64l77duy54hw" path="res://scenes/room_parts/door.tscn" id="20_nnw3a"]
 [ext_resource type="Texture2D" uid="uid://pijyodsliqci" path="res://assets/sprites/lvl_room/Room - Label 1 - 1.png" id="23_basj3"]
 [ext_resource type="Texture2D" uid="uid://b6h4pepxpp2k8" path="res://assets/sprites/lvl_room/Room - Label 2 - 1.png" id="24_xpdhd"]
 [ext_resource type="Texture2D" uid="uid://cfa0o3wc52y5l" path="res://assets/sprites/lvl_room/Room - Label 3 - 1.png" id="25_jt347"]
 [ext_resource type="Script" uid="uid://dr8veymk5832e" path="res://scripts/level_animator.gd" id="30_hptd6"]
 [ext_resource type="AudioStream" uid="uid://d377s8jicb3k" path="res://assets/audio/door_open.mp3" id="31_nicd6"]
-[ext_resource type="Texture2D" uid="uid://bnh45up8ifb7n" path="res://assets/sprites/lvl_room/Room - Window - 1.png" id="32_8aolk"]
-
-[sub_resource type="Resource" id="Resource_vl02w"]
-script = ExtResource("9_evvim")
-interactables_to_complete = Array[NodePath]([NodePath("../Interactables/FlowerPotRight/InteractableTaskTarget")])
-task_ui_text = "Conquer shiny thingy"
-metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
 distance = -11.0
@@ -40,33 +34,6 @@ distance = -144.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnu2h"]
 normal = Vector2(-1, 0)
 distance = -681.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_06jot"]
-size = Vector2(8.75, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5mx3"]
-size = Vector2(25, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_grp0m"]
-size = Vector2(10.75, 1.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1702c"]
-size = Vector2(10, 1.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eeokw"]
-size = Vector2(44, 27)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8degd"]
-size = Vector2(42.375, 3)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y66yi"]
-size = Vector2(10, 3)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihhod"]
-size = Vector2(10, 3)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kyq2"]
-size = Vector2(11, 3)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
 
@@ -128,8 +95,13 @@ script = ExtResource("8_82ufk")
 owners_messages = Array[String](["We'll be back in 15 min", "Hope you will be a good boy!
 Bye!"])
 messages_timeout = Array[int]([2, 2])
-tasks = Array[ExtResource("9_evvim")]([SubResource("Resource_vl02w")])
 timer_limit_seconds = 900
+
+[node name="Conquer shiny thingy" type="Node" parent="LevelData" node_paths=PackedStringArray("interactables_to_complete")]
+script = ExtResource("9_evvim")
+interactables_to_complete = [NodePath("../../Interactables/FlowerPotRight/InteractableTaskTarget")]
+task_ui_text = "Conquer shiny thingy"
+metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 
 [node name="RoomBG" type="Sprite2D" parent="."]
 position = Vector2(206, 20)
@@ -163,102 +135,31 @@ shape = SubResource("WorldBoundaryShape2D_yqjtg")
 position = Vector2(-452, -3)
 shape = SubResource("WorldBoundaryShape2D_lnu2h")
 
-[node name="Surfaces" type="Node2D" parent="."]
-
-[node name="Nightstand" parent="Surfaces" instance=ExtResource("8_nnw3a")]
-position = Vector2(-40, 49)
-
-[node name="CatBed" parent="Surfaces" instance=ExtResource("9_nnw3a")]
-position = Vector2(-68, 56)
-
-[node name="CatTree4Sections" type="Node2D" parent="Surfaces"]
-position = Vector2(11, 37)
-
-[node name="Sprite2D" type="Sprite2D" parent="Surfaces/CatTree4Sections"]
-texture = ExtResource("15_kj6id")
-
-[node name="lvl1" type="StaticBody2D" parent="Surfaces/CatTree4Sections"]
-position = Vector2(-7, 11)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree4Sections/lvl1"]
-position = Vector2(0.625, 0)
-shape = SubResource("RectangleShape2D_06jot")
-one_way_collision = true
-
-[node name="lvl2" type="StaticBody2D" parent="Surfaces/CatTree4Sections"]
-position = Vector2(15, -3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree4Sections/lvl2"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_x5mx3")
-one_way_collision = true
-
-[node name="lvl3" type="StaticBody2D" parent="Surfaces/CatTree4Sections"]
-position = Vector2(-24, -10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree4Sections/lvl3"]
-position = Vector2(0.375, 0)
-shape = SubResource("RectangleShape2D_grp0m")
-one_way_collision = true
-
-[node name="lvl4" type="StaticBody2D" parent="Surfaces/CatTree4Sections"]
-position = Vector2(8, -22)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree4Sections/lvl4"]
-shape = SubResource("RectangleShape2D_1702c")
-one_way_collision = true
-
-[node name="Table" type="StaticBody2D" parent="Surfaces"]
-position = Vector2(193, 44)
-
-[node name="Sprite2D" type="Sprite2D" parent="Surfaces/Table"]
-texture = ExtResource("16_kriyd")
-
-[node name="Landing" parent="Surfaces/Table" instance=ExtResource("13_eye3e")]
-position = Vector2(1, -24)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table/Landing"]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_eeokw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table"]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_8degd")
-one_way_collision = true
-
-[node name="CatTree2" type="Node2D" parent="Surfaces"]
-position = Vector2(134, 41)
-
-[node name="Sprite2D" type="Sprite2D" parent="Surfaces/CatTree2"]
-texture = ExtResource("17_mtfk1")
-
-[node name="lvl1" type="StaticBody2D" parent="Surfaces/CatTree2"]
-position = Vector2(1, 7)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree2/lvl1"]
-shape = SubResource("RectangleShape2D_y66yi")
-one_way_collision = true
-
-[node name="lvl2" type="StaticBody2D" parent="Surfaces/CatTree2"]
-position = Vector2(-16, -6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree2/lvl2"]
-shape = SubResource("RectangleShape2D_ihhod")
-one_way_collision = true
-
-[node name="lvl3" type="StaticBody2D" parent="Surfaces/CatTree2"]
-position = Vector2(16, -18)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree2/lvl3"]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_6kyq2")
-one_way_collision = true
-
 [node name="FloorLanding" parent="." instance=ExtResource("13_eye3e")]
 position = Vector2(250, 27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorLanding"]
 shape = SubResource("WorldBoundaryShape2D_kvpfn")
+
+[node name="RoomParts" type="Node2D" parent="."]
+
+[node name="Nightstand" parent="RoomParts" instance=ExtResource("8_nnw3a")]
+position = Vector2(-40, 49)
+
+[node name="CatBed" parent="RoomParts" instance=ExtResource("9_nnw3a")]
+position = Vector2(-68, 56)
+
+[node name="CatTree4Sections" parent="RoomParts" instance=ExtResource("10_nnw3a")]
+position = Vector2(11, 37)
+
+[node name="CatTree3Sections" parent="RoomParts" instance=ExtResource("11_nnw3a")]
+position = Vector2(134, 41)
+
+[node name="Table" parent="RoomParts" instance=ExtResource("12_q14oe")]
+position = Vector2(193, 36)
+
+[node name="Window" parent="RoomParts" instance=ExtResource("14_nnw3a")]
+position = Vector2(63, -3)
 
 [node name="Interactables" type="Node" parent="."]
 
@@ -286,9 +187,6 @@ texture = ExtResource("24_xpdhd")
 position = Vector2(153, -11)
 texture = ExtResource("25_jt347")
 
-[node name="Door" parent="." instance=ExtResource("20_nnw3a")]
-position = Vector2(-120, 25)
-
 [node name="LevelAnimator" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_fk3q0")
@@ -300,8 +198,8 @@ stream = ExtResource("31_nicd6")
 volume_db = -5.0
 bus = &"SFX"
 
-[node name="Window" type="Sprite2D" parent="."]
-position = Vector2(63, -3)
-texture = ExtResource("32_8aolk")
+[node name="Door" parent="." instance=ExtResource("20_nnw3a")]
+position = Vector2(-120, 25)
+animation = &"opened"
 
 [editable path="FloorLanding"]

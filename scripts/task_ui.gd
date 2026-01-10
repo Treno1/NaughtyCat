@@ -1,6 +1,7 @@
 extends Control
 class_name TaskUI
 
+@onready var task_rich_label: RichTextLabel = $TaskRichLabel
 @onready var task_label: Label = $TaskLabel
 @onready var task_progress_bar: ProgressBar = $TaskProgressBar
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -11,7 +12,10 @@ func _ready() -> void:
 
 func setup(task_data: TaskData) -> void:
 	task_label.text = "* " + task_data.task_ui_text
+	task_rich_label.text = "* " + task_data.task_ui_text
 	task_progress_bar.value = 0
 	
 func complete(_task_tracker: TaskTracker) -> void:
+	task_rich_label.text = "[s]" + task_rich_label.text
+	#task_rich_label.text = "[hr height=16]"
 	animation_player.play("complete")

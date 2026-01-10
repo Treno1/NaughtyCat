@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bviva2wc21p3g"]
+[gd_scene load_steps=31 format=3 uid="uid://bviva2wc21p3g"]
 
 [ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ui/ingame_ui.tscn" id="1_n0djd"]
 [ext_resource type="PackedScene" uid="uid://bwfqattgqn8x2" path="res://scenes/ui/level_menus.tscn" id="2_pwb5c"]
@@ -6,28 +6,22 @@
 [ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="7_vac3b"]
 [ext_resource type="Script" uid="uid://ch7pe31yvd7f2" path="res://scripts/task_data.gd" id="8_wylsh"]
 [ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="9_40sup"]
-[ext_resource type="PackedScene" uid="uid://qdr0qdgwrigf" path="res://scenes/surfaces/nightstand.tscn" id="9_pwb5c"]
+[ext_resource type="PackedScene" uid="uid://qdr0qdgwrigf" path="res://scenes/room_parts/nightstand.tscn" id="9_pwb5c"]
 [ext_resource type="PackedScene" uid="uid://co1pxrnjscwd0" path="res://scenes/player.tscn" id="10_kd1h7"]
-[ext_resource type="PackedScene" uid="uid://m3rbroiv4ixi" path="res://scenes/surfaces/cat_bed.tscn" id="10_pwb5c"]
+[ext_resource type="PackedScene" uid="uid://csjfki363ku44" path="res://scenes/room_parts/cat_tree_4_sections.tscn" id="10_l7kj2"]
+[ext_resource type="PackedScene" uid="uid://m3rbroiv4ixi" path="res://scenes/room_parts/cat_bed.tscn" id="10_pwb5c"]
+[ext_resource type="PackedScene" uid="uid://bkfvve164s5vy" path="res://scenes/room_parts/table.tscn" id="11_pwb5c"]
+[ext_resource type="PackedScene" uid="uid://c4dw1vjrvbth4" path="res://scenes/room_parts/cat_tree_3_sections.tscn" id="12_6oybs"]
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="12_22sgr"]
-[ext_resource type="Texture2D" uid="uid://pfcloy0hhypg" path="res://assets/sprites/lvl_room/Room - Cat tree - 1.png" id="14_7t07d"]
-[ext_resource type="Texture2D" uid="uid://d17o8pssqb6sh" path="res://assets/sprites/lvl_room/Room - Table - 1.png" id="15_ifixw"]
-[ext_resource type="Texture2D" uid="uid://dxvb7lpmdi7dl" path="res://assets/sprites/lvl_room/Room - Cat tree 2 - 1.png" id="16_8c6go"]
-[ext_resource type="Texture2D" uid="uid://vfqvts5dtvdy" path="res://assets/sprites/lvl_room/Room - Bookshelf - 1.png" id="17_cgx76"]
+[ext_resource type="PackedScene" uid="uid://iksx3nl3hdfi" path="res://scenes/room_parts/book_shelf.tscn" id="13_picej"]
+[ext_resource type="PackedScene" uid="uid://dghkoj1lifurw" path="res://scenes/room_parts/window.tscn" id="14_l7kj2"]
+[ext_resource type="PackedScene" uid="uid://cefscqgejbuqp" path="res://scenes/interactables/picture.tscn" id="16_pwb5c"]
 [ext_resource type="PackedScene" uid="uid://dpreyluxm2on" path="res://scenes/interactables/flower_pot_right.tscn" id="18_picej"]
 [ext_resource type="Script" uid="uid://dgh4uncisvwtj" path="res://scripts/task_target.gd" id="19_o28iq"]
 [ext_resource type="PackedScene" uid="uid://doegkbojgdk07" path="res://scenes/interactables/lamp.tscn" id="20_picej"]
-[ext_resource type="PackedScene" uid="uid://64l77duy54hw" path="res://scenes/other_objects/door.tscn" id="21_13vyy"]
+[ext_resource type="PackedScene" uid="uid://64l77duy54hw" path="res://scenes/room_parts/door.tscn" id="21_13vyy"]
 [ext_resource type="Script" uid="uid://dr8veymk5832e" path="res://scripts/level_animator.gd" id="27_gv2jn"]
 [ext_resource type="AudioStream" uid="uid://d377s8jicb3k" path="res://assets/audio/door_open.mp3" id="28_8r3oa"]
-[ext_resource type="Texture2D" uid="uid://bnh45up8ifb7n" path="res://assets/sprites/lvl_room/Room - Window - 1.png" id="29_4q2dq"]
-[ext_resource type="Texture2D" uid="uid://cao15mwxn7jqd" path="res://assets/sprites/lvl_room/Room - Picture - 1.png" id="30_pdb8f"]
-
-[sub_resource type="Resource" id="Resource_vl02w"]
-script = ExtResource("8_wylsh")
-interactables_to_complete = Array[NodePath]([NodePath("../Interactables/FlowerPotRight/InteractableTaskTarget")])
-task_ui_text = "Find and beat the flowers again"
-metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
 distance = -11.0
@@ -39,36 +33,6 @@ distance = -144.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnu2h"]
 normal = Vector2(-1, 0)
 distance = -681.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_06jot"]
-size = Vector2(8.75, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5mx3"]
-size = Vector2(25, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_grp0m"]
-size = Vector2(10.75, 1.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1702c"]
-size = Vector2(10, 1.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eeokw"]
-size = Vector2(44, 27)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8degd"]
-size = Vector2(42.375, 3)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y66yi"]
-size = Vector2(10, 3)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihhod"]
-size = Vector2(10, 3)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kyq2"]
-size = Vector2(11, 3)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_awinm"]
-size = Vector2(48, 6)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kvpfn"]
 
@@ -117,9 +81,6 @@ _data = {
 &"timer_out": SubResource("Animation_gtj14")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb3wc"]
-size = Vector2(30, 40)
-
 [node name="Lvl0" type="Node2D"]
 
 [node name="IngameUI" parent="." instance=ExtResource("1_n0djd")]
@@ -133,7 +94,12 @@ script = ExtResource("7_vac3b")
 owners_messages = Array[String](["He won't find the flowers,
 Don't worry"])
 messages_timeout = Array[int]([2])
-tasks = Array[ExtResource("8_wylsh")]([SubResource("Resource_vl02w")])
+
+[node name="Find and beat the flowers again" type="Node" parent="LevelData" node_paths=PackedStringArray("interactables_to_complete")]
+script = ExtResource("8_wylsh")
+interactables_to_complete = [NodePath("../../Interactables/FlowerPotRight/InteractableTaskTarget")]
+task_ui_text = "Find and beat the flowers again"
+metadata/_custom_type_script = "uid://ch7pe31yvd7f2"
 
 [node name="RoomBG" type="Sprite2D" parent="."]
 position = Vector2(206, 20)
@@ -167,107 +133,28 @@ shape = SubResource("WorldBoundaryShape2D_yqjtg")
 position = Vector2(-452, -3)
 shape = SubResource("WorldBoundaryShape2D_lnu2h")
 
-[node name="Surfaces" type="Node2D" parent="."]
+[node name="RoomParts" type="Node2D" parent="."]
 
-[node name="Nightstand" parent="Surfaces" instance=ExtResource("9_pwb5c")]
+[node name="Nightstand" parent="RoomParts" instance=ExtResource("9_pwb5c")]
 position = Vector2(-40, 49)
 
-[node name="CatBed" parent="Surfaces" instance=ExtResource("10_pwb5c")]
+[node name="CatBed" parent="RoomParts" instance=ExtResource("10_pwb5c")]
 position = Vector2(-68, 56)
 
-[node name="CatTree" type="Node2D" parent="Surfaces"]
+[node name="CatTree4Sections" parent="RoomParts" instance=ExtResource("10_l7kj2")]
 position = Vector2(11, 37)
 
-[node name="Sprite2D" type="Sprite2D" parent="Surfaces/CatTree"]
-texture = ExtResource("14_7t07d")
+[node name="Table2" parent="RoomParts" instance=ExtResource("11_pwb5c")]
+position = Vector2(79, 34)
 
-[node name="lvl1" type="StaticBody2D" parent="Surfaces/CatTree"]
-position = Vector2(-7, 11)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree/lvl1"]
-position = Vector2(0.625, 0)
-shape = SubResource("RectangleShape2D_06jot")
-one_way_collision = true
-
-[node name="lvl2" type="StaticBody2D" parent="Surfaces/CatTree"]
-position = Vector2(15, -3)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree/lvl2"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_x5mx3")
-one_way_collision = true
-
-[node name="lvl3" type="StaticBody2D" parent="Surfaces/CatTree"]
-position = Vector2(-24, -10)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree/lvl3"]
-position = Vector2(0.375, 0)
-shape = SubResource("RectangleShape2D_grp0m")
-one_way_collision = true
-
-[node name="lvl4" type="StaticBody2D" parent="Surfaces/CatTree"]
-position = Vector2(8, -22)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree/lvl4"]
-shape = SubResource("RectangleShape2D_1702c")
-one_way_collision = true
-
-[node name="Table" type="StaticBody2D" parent="Surfaces"]
-position = Vector2(79, 42)
-
-[node name="Sprite2D" type="Sprite2D" parent="Surfaces/Table"]
-texture = ExtResource("15_ifixw")
-
-[node name="Landing" parent="Surfaces/Table" instance=ExtResource("12_22sgr")]
-position = Vector2(1, -24)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table/Landing"]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_eeokw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/Table"]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_8degd")
-one_way_collision = true
-
-[node name="CatTree2" type="Node2D" parent="Surfaces"]
+[node name="CatTree3Sections" parent="RoomParts" instance=ExtResource("12_6oybs")]
 position = Vector2(134, 41)
 
-[node name="Sprite2D" type="Sprite2D" parent="Surfaces/CatTree2"]
-texture = ExtResource("16_8c6go")
-
-[node name="lvl1" type="StaticBody2D" parent="Surfaces/CatTree2"]
-position = Vector2(1, 7)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree2/lvl1"]
-shape = SubResource("RectangleShape2D_y66yi")
-one_way_collision = true
-
-[node name="lvl2" type="StaticBody2D" parent="Surfaces/CatTree2"]
-position = Vector2(-16, -6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree2/lvl2"]
-shape = SubResource("RectangleShape2D_ihhod")
-one_way_collision = true
-
-[node name="lvl3" type="StaticBody2D" parent="Surfaces/CatTree2"]
-position = Vector2(16, -18)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/CatTree2/lvl3"]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_6kyq2")
-one_way_collision = true
-
-[node name="BookShelf" type="StaticBody2D" parent="Surfaces"]
+[node name="BookShelf" parent="RoomParts" instance=ExtResource("13_picej")]
 position = Vector2(208, 28)
 
-[node name="Bookshelf" type="Sprite2D" parent="Surfaces/BookShelf"]
-texture = ExtResource("17_cgx76")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Surfaces/BookShelf"]
-position = Vector2(0, -27)
-shape = SubResource("RectangleShape2D_awinm")
-one_way_collision = true
+[node name="Window" parent="RoomParts" instance=ExtResource("14_l7kj2")]
+position = Vector2(79, 0)
 
 [node name="FloorLanding" parent="." instance=ExtResource("12_22sgr")]
 position = Vector2(250, 27)
@@ -276,6 +163,9 @@ position = Vector2(250, 27)
 shape = SubResource("WorldBoundaryShape2D_kvpfn")
 
 [node name="Interactables" type="Node" parent="."]
+
+[node name="Picture" parent="Interactables" instance=ExtResource("16_pwb5c")]
+position = Vector2(-40, -5)
 
 [node name="FlowerPotRight" parent="Interactables" instance=ExtResource("18_picej")]
 position = Vector2(212, -13)
@@ -301,20 +191,5 @@ script = ExtResource("27_gv2jn")
 stream = ExtResource("28_8r3oa")
 volume_db = -5.0
 bus = &"SFX"
-
-[node name="Window" type="Sprite2D" parent="."]
-position = Vector2(79, 0)
-texture = ExtResource("29_4q2dq")
-
-[node name="DistractionArea" type="Area2D" parent="Window"]
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Window/DistractionArea"]
-shape = SubResource("RectangleShape2D_xb3wc")
-
-[node name="Picture" type="Sprite2D" parent="."]
-position = Vector2(-40, 8)
-texture = ExtResource("30_pdb8f")
 
 [editable path="FloorLanding"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dghkoj1lifurw"]
+
+[ext_resource type="Texture2D" uid="uid://bnh45up8ifb7n" path="res://assets/sprites/lvl_room/Room - Window - 1.png" id="1_gd702"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb3wc"]
+size = Vector2(30, 40)
+
+[node name="Window" type="Node2D"]
+
+[node name="Window" type="Sprite2D" parent="."]
+texture = ExtResource("1_gd702")
+
+[node name="DistractionArea" type="Area2D" parent="Window"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Window/DistractionArea"]
+shape = SubResource("RectangleShape2D_xb3wc")

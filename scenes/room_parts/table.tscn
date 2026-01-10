@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkfvve164s5vy"]
+
+[ext_resource type="Texture2D" uid="uid://d17o8pssqb6sh" path="res://assets/sprites/lvl_room/Room - Table - 1.png" id="1_ou4q2"]
+[ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="2_6rv38"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eeokw"]
+size = Vector2(44, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8degd"]
+size = Vector2(42.375, 3)
+
+[node name="Table" type="Node2D"]
+
+[node name="Table" type="StaticBody2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Table"]
+texture = ExtResource("1_ou4q2")
+
+[node name="Landing" parent="Table" instance=ExtResource("2_6rv38")]
+position = Vector2(1, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/Landing"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_eeokw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_8degd")
+one_way_collision = true

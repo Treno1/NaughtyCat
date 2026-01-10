@@ -159,8 +159,8 @@ default_font_size = 64
 
 [node name="Door" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_cpkqi")
-animation = &"idle"
-autoplay = "idle"
+animation = &"open"
+autoplay = "opened"
 script = ExtResource("2_18pbm")
 
 [node name="OwnersMessage" type="Node2D" parent="."]
