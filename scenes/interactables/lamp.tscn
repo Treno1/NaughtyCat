@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://doegkbojgdk07"]
+[gd_scene load_steps=6 format=3 uid="uid://doegkbojgdk07"]
 
-[ext_resource type="Script" uid="uid://ctt0lym4c002t" path="res://scripts/interactable_sprite.gd" id="1_jui6u"]
+[ext_resource type="Script" uid="uid://ctt0lym4c002t" path="res://scripts/components/on_offable.gd" id="1_jui6u"]
 [ext_resource type="Texture2D" uid="uid://bk5lc6nk6vnn0" path="res://assets/sprites/lvl_room/Room - Lamp - 1.png" id="2_mvxpj"]
 [ext_resource type="Texture2D" uid="uid://dcmvcs5mo5ski" path="res://assets/sprites/lvl1/Lamp On.png" id="3_po4wo"]
+[ext_resource type="Script" uid="uid://dswlqj6p7vtxg" path="res://scripts/components/interactable.gd" id="4_mvxpj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lbhrr"]
 radius = 3.0
@@ -10,20 +11,26 @@ height = 18.0
 
 [node name="Lamp" type="Node2D"]
 
-[node name="LampSwitch" type="Area2D" parent="." node_paths=PackedStringArray("target_sprite")]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("1_jui6u")
-target_sprite = NodePath("LampLight")
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="Lamp" type="Sprite2D" parent="LampSwitch"]
+[node name="Lamp" type="Sprite2D" parent="Area2D"]
 texture = ExtResource("2_mvxpj")
 
-[node name="LampLight" type="Sprite2D" parent="LampSwitch"]
+[node name="LampLight" type="Sprite2D" parent="Area2D"]
 visible = false
 position = Vector2(0, -21)
 texture = ExtResource("3_po4wo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LampSwitch"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-10, -11)
 shape = SubResource("CapsuleShape2D_lbhrr")
+
+[node name="OnOffable" type="Node" parent="Area2D" node_paths=PackedStringArray("target_sprite", "target_interactable")]
+script = ExtResource("1_jui6u")
+target_sprite = NodePath("../LampLight")
+target_interactable = NodePath("../Interactable")
+metadata/_custom_type_script = "uid://ctt0lym4c002t"
+
+[node name="Interactable" type="Node" parent="Area2D"]
+script = ExtResource("4_mvxpj")
+metadata/_custom_type_script = "uid://dswlqj6p7vtxg"

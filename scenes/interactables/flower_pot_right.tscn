@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpreyluxm2on"]
+[gd_scene load_steps=12 format=3 uid="uid://dpreyluxm2on"]
 
 [ext_resource type="Texture2D" uid="uid://c04t2287r2er7" path="res://assets/sprites/lvl_room/FlowerPot.png" id="1_pnn7y"]
-[ext_resource type="Script" uid="uid://cdgbl8e0ph2uw" path="res://scripts/interactable_scratch.gd" id="2_hi6w0"]
+[ext_resource type="Script" uid="uid://ex4bv1auk72v" path="res://scripts/components/scratchable.gd" id="2_hi6w0"]
+[ext_resource type="Script" uid="uid://dswlqj6p7vtxg" path="res://scripts/components/interactable.gd" id="3_22lig"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2vwjs"]
 atlas = ExtResource("1_pnn7y")
@@ -75,14 +76,20 @@ animation = &"2"
 autoplay = "idle"
 flip_h = true
 
-[node name="InteractableScratchable" type="Area2D" parent="." node_paths=PackedStringArray("target_sprites")]
+[node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("2_hi6w0")
-target_sprites = NodePath("../Sprite")
-animations_count = 2
-metadata/_custom_type_script = "uid://cdgbl8e0ph2uw"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableScratchable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_cf77b")
+
+[node name="Scratchable" type="Node" parent="Area2D" node_paths=PackedStringArray("target_sprites", "target_interactable")]
+script = ExtResource("2_hi6w0")
+target_sprites = NodePath("../../Sprite")
+target_interactable = NodePath("../Interactable")
+animations_count = 2
+metadata/_custom_type_script = "uid://ex4bv1auk72v"
+
+[node name="Interactable" type="Node" parent="Area2D"]
+script = ExtResource("3_22lig")

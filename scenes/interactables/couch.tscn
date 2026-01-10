@@ -1,13 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://belo5ev21hpy8"]
+[gd_scene load_steps=24 format=3 uid="uid://belo5ev21hpy8"]
 
 [ext_resource type="Texture2D" uid="uid://tehb0macxso0" path="res://assets/sprites/lvl_room/Room - Couch - 1.png" id="1_4k3f1"]
 [ext_resource type="Script" uid="uid://bqij3lhm6cb1a" path="res://scripts/couch.gd" id="1_7notj"]
 [ext_resource type="PackedScene" uid="uid://cocn3nc3mwbvg" path="res://scenes/landing_collision.tscn" id="2_7notj"]
-[ext_resource type="Script" uid="uid://cdgbl8e0ph2uw" path="res://scripts/interactable_scratch.gd" id="3_65xhj"]
 [ext_resource type="Texture2D" uid="uid://dbmrc5i2ah281" path="res://assets/sprites/lvl1/Scratches - Couch scratch 1.png" id="4_rych0"]
 [ext_resource type="Texture2D" uid="uid://clfenjtshp1ie" path="res://assets/sprites/lvl1/Scratches - Couch scratch 2.png" id="5_ce677"]
+[ext_resource type="Script" uid="uid://ex4bv1auk72v" path="res://scripts/components/scratchable.gd" id="6_4k3f1"]
 [ext_resource type="Texture2D" uid="uid://ck7e81bgj6d2p" path="res://assets/sprites/lvl1/Scratches - Couch scratch 3.png" id="6_yq8nu"]
 [ext_resource type="Texture2D" uid="uid://dq0ogf5agoujc" path="res://assets/sprites/lvl1/couch scratch right.png" id="7_ymlcd"]
+[ext_resource type="Script" uid="uid://dswlqj6p7vtxg" path="res://scripts/components/interactable.gd" id="9_4k3f1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fwtn"]
 size = Vector2(40, 27)
@@ -23,42 +24,6 @@ size = Vector2(7, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_130d8"]
 size = Vector2(6, 27)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hxvtx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_rych0")
-}],
-"loop": true,
-"name": &"1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_ce677")
-}],
-"loop": true,
-"name": &"2",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_yq8nu")
-}],
-"loop": true,
-"name": &"3",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cbs37"]
-radius = 3.0
-height = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kaqyl"]
 atlas = ExtResource("7_ymlcd")
@@ -127,6 +92,42 @@ animations = [{
 radius = 2.9997158
 height = 15.998482
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxvtx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rych0")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ce677")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_yq8nu")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cbs37"]
+radius = 3.0
+height = 16.0
+
 [node name="Couch" type="Node2D"]
 script = ExtResource("1_7notj")
 
@@ -182,45 +183,49 @@ position = Vector2(23, 47)
 shape = SubResource("RectangleShape2D_i6nya")
 one_way_collision = true
 
-[node name="CouchScratchL" type="Area2D" parent="." node_paths=PackedStringArray("target_sprites")]
-position = Vector2(-25, 8)
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("3_65xhj")
-target_sprites = NodePath("ScratchSpriteL")
-
-[node name="ScratchSpriteL" type="AnimatedSprite2D" parent="CouchScratchL"]
-position = Vector2(3, 0)
-sprite_frames = SubResource("SpriteFrames_hxvtx")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CouchScratchL"]
-position = Vector2(0, 3)
-shape = SubResource("CapsuleShape2D_cbs37")
-
-[node name="CouchScratchR" type="Area2D" parent="." node_paths=PackedStringArray("target_sprites")]
-position = Vector2(25, 7)
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("3_65xhj")
-target_sprites = NodePath("ScratchSpriteR")
-animations_count = 4
+[node name="CouchScratchR" type="Area2D" parent="."]
 
 [node name="ScratchSpriteR" type="AnimatedSprite2D" parent="CouchScratchR"]
+position = Vector2(25, 7)
 sprite_frames = SubResource("SpriteFrames_3rm4b")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CouchScratchR"]
-position = Vector2(-1.0000006, 4)
+position = Vector2(24, 11)
 rotation = 0.013788337
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CapsuleShape2D_re71w")
 
-[connection signal="area_shape_entered" from="CouchScratchL" to="CouchScratchL" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="CouchScratchL" to="CouchScratchL" method="_on_area_shape_exited"]
-[connection signal="area_shape_entered" from="CouchScratchR" to="CouchScratchR" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="CouchScratchR" to="CouchScratchR" method="_on_area_shape_exited"]
+[node name="Interactable" type="Node" parent="CouchScratchR"]
+script = ExtResource("9_4k3f1")
+
+[node name="Scratchable" type="Node" parent="CouchScratchR" node_paths=PackedStringArray("target_sprites", "target_interactable")]
+script = ExtResource("6_4k3f1")
+target_sprites = NodePath("../ScratchSpriteR")
+target_interactable = NodePath("../Interactable")
+metadata/_custom_type_script = "uid://ex4bv1auk72v"
+
+[node name="CouchScratchL" type="Area2D" parent="."]
+
+[node name="ScratchSpriteL" type="AnimatedSprite2D" parent="CouchScratchL"]
+position = Vector2(-22, 8)
+sprite_frames = SubResource("SpriteFrames_hxvtx")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CouchScratchL"]
+position = Vector2(-25, 11)
+shape = SubResource("CapsuleShape2D_cbs37")
+
+[node name="Interactable" type="Node" parent="CouchScratchL"]
+script = ExtResource("9_4k3f1")
+
+[node name="Scratchable" type="Node" parent="CouchScratchL" node_paths=PackedStringArray("target_sprites", "target_interactable")]
+script = ExtResource("6_4k3f1")
+target_sprites = NodePath("../ScratchSpriteL")
+target_interactable = NodePath("../Interactable")
+metadata/_custom_type_script = "uid://ex4bv1auk72v"
 
 [editable path="CouchSit/Landing4"]
 [editable path="CouchLeftArmrest/Landing3"]

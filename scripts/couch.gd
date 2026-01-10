@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var is_scratched := false
-@onready var couch_scratch_l: InteractableScratchable = $CouchScratchL
-@onready var couch_scratch_r: InteractableScratchable = $CouchScratchR
+@onready var couch_scratch_l: Interactable = $CouchScratchL/Interactable
+@onready var couch_scratch_r: Interactable = $CouchScratchR/Interactable
 @onready var scratch_sprite_l: AnimatedSprite2D = $CouchScratchL/ScratchSpriteL
 @onready var scratch_sprite_r: AnimatedSprite2D = $CouchScratchR/ScratchSpriteR
 

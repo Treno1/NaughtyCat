@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bl4hq6cfr2uk0" path="res://scripts/cup.gd" id="1_qac4g"]
 [ext_resource type="Texture2D" uid="uid://ct53cfvybpbm3" path="res://assets/sprites/lvl_room/Cup.png" id="2_ng1bt"]
-[ext_resource type="Script" uid="uid://dswlqj6p7vtxg" path="res://scripts/interactable.gd" id="3_ng1bt"]
+[ext_resource type="Script" uid="uid://dswlqj6p7vtxg" path="res://scripts/components/interactable.gd" id="3_ng1bt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w31g7"]
 atlas = ExtResource("2_ng1bt")
@@ -62,9 +62,11 @@ autoplay = "idle"
 position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_y1fe4")
 
-[node name="InteractArea" type="Area2D" parent="."]
-script = ExtResource("3_ng1bt")
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_qac4g")
+
+[node name="Interactable" type="Node" parent="Area2D"]
+script = ExtResource("3_ng1bt")

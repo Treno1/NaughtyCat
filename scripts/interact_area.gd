@@ -9,6 +9,12 @@ var interactableAreas := []
 func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	var interactable = area as Interactable
 	if !interactable:
+		for cld in area.get_children():
+			if interactable != null:
+				push_error("More than one interactable inside ", area.name)
+			interactable = cld as Interactable
+	
+	if !interactable:
 		return
 		
 	if !interactable.enabled:

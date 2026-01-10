@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cefscqgejbuqp"]
+[gd_scene load_steps=7 format=3 uid="uid://cefscqgejbuqp"]
 
-[ext_resource type="Script" uid="uid://cdgbl8e0ph2uw" path="res://scripts/interactable_scratch.gd" id="1_i6lgj"]
 [ext_resource type="Texture2D" uid="uid://cj3yl74pokn04" path="res://assets/sprites/lvl1/Picture screwed.png" id="2_rrvjf"]
 [ext_resource type="Texture2D" uid="uid://cd3yjookwqexw" path="res://assets/sprites/lvl1/Picture.png" id="3_a14ma"]
+[ext_resource type="Script" uid="uid://ex4bv1auk72v" path="res://scripts/components/scratchable.gd" id="3_rrvjf"]
+[ext_resource type="Script" uid="uid://dswlqj6p7vtxg" path="res://scripts/components/interactable.gd" id="4_a14ma"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n24p8"]
 animations = [{
@@ -29,22 +30,25 @@ height = 26.0
 
 [node name="Picture" type="Node2D"]
 
-[node name="Picture" type="Area2D" parent="." node_paths=PackedStringArray("target_sprites")]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("1_i6lgj")
-target_sprites = NodePath("PicturePokeSprite")
-animations_count = 1
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="PicturePokeSprite" type="AnimatedSprite2D" parent="Picture"]
+[node name="PicturePokeSprite" type="AnimatedSprite2D" parent="Area2D"]
 sprite_frames = SubResource("SpriteFrames_n24p8")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Picture"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 3)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_rgkgn")
 
-[connection signal="area_shape_entered" from="Picture" to="Picture" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="Picture" to="Picture" method="_on_area_shape_exited"]
+[node name="Scratchable" type="Node" parent="Area2D" node_paths=PackedStringArray("target_sprites", "target_interactable")]
+script = ExtResource("3_rrvjf")
+target_sprites = NodePath("../PicturePokeSprite")
+target_interactable = NodePath("../Interactable")
+animations_count = 1
+metadata/_custom_type_script = "uid://ex4bv1auk72v"
+
+[node name="Interactable" type="Node" parent="Area2D"]
+script = ExtResource("4_a14ma")
+metadata/_custom_type_script = "uid://dswlqj6p7vtxg"
