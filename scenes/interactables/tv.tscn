@@ -92,11 +92,6 @@ size = Vector2(40, 16)
 
 [node name="TV" type="Node2D"]
 
-[node name="TurnOnTV" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("1_4cb7a")
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="TVSprite" type="Sprite2D" parent="Area2D"]
@@ -138,6 +133,3 @@ script = ExtResource("1_4cb7a")
 distraction_area = NodePath("../DistractionArea")
 control_interactable = NodePath("../Interactable")
 metadata/_custom_type_script = "uid://03xpphoybmxl"
-
-[connection signal="area_shape_entered" from="TurnOnTV" to="TurnOnTV" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="TurnOnTV" to="TurnOnTV" method="_on_area_shape_exited"]
