@@ -5,6 +5,7 @@ class_name Scratchable
 ## Animations names should be 1,2,3,4 etc
 @export var target_sprites: AnimatedSprite2D = null
 @export var target_interactable: Interactable = null
+@export var interact_area: Area2D = null
 @export var animations_count: int = 3
 
 var scratch_cnt := 0
@@ -24,7 +25,7 @@ func _interact() -> void:
 	target_sprites.play(str(scratch_cnt))
 	
 	if scratch_cnt >= animations_count:
-		self.monitorable = false
-		self.monitoring = false
+		interact_area.monitorable = false
+		interact_area.monitoring = false
 		
 		target_interactable.complete_interaction()

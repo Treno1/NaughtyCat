@@ -84,10 +84,11 @@ collision_mask = 0
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_cf77b")
 
-[node name="Scratchable" type="Node" parent="Area2D" node_paths=PackedStringArray("target_sprites", "target_interactable")]
+[node name="Scratchable" type="Node" parent="Area2D" node_paths=PackedStringArray("target_sprites", "target_interactable", "interact_area")]
 script = ExtResource("2_hi6w0")
 target_sprites = NodePath("../../Sprite")
 target_interactable = NodePath("../Interactable")
+interact_area = NodePath("..")
 animations_count = 2
 metadata/_custom_type_script = "uid://ex4bv1auk72v"
 

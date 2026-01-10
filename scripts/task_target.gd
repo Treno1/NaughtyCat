@@ -13,17 +13,29 @@ func _ready() -> void:
 		inters_total += 1
 	
 func get_interactables_from_parent() -> Array[Interactable]:
-	var siblings: Array[Interactable] = []
 	var parent := get_parent()
 	if parent == null:
-		return siblings
+		return []
 
-	for child in parent.get_children():
+	var interactables = _get_interactables_from_children(parent.get_children(true))
+		
+	return interactables
+
+func _get_interactables_from_children(children : Array[Node]) -> Array[Interactable]:
+	var interactables: Array[Interactable] = []
+	for child in children:
 		var interactable = child as Interactable
 		if interactable:
-			siblings.append(interactable)
-
-	return siblings
+			interactables.append(interactable)
+		
+		if child.get_child_count(true) <= 0:
+			continue
+			
+		var subInteractables = _get_interactables_from_children(child.get_children())
+		if subInteractables.size() > 0:
+			interactables.append_array(subInteractables)
+			
+	return interactables
 
 func _on_interactable_complete():
 	inters_finished += 1

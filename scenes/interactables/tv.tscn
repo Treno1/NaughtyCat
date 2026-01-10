@@ -121,10 +121,11 @@ shape = SubResource("RectangleShape2D_ktplg")
 script = ExtResource("5_mls23")
 metadata/_custom_type_script = "uid://dswlqj6p7vtxg"
 
-[node name="Scratchable" type="Node" parent="Area2D" node_paths=PackedStringArray("target_sprites", "target_interactable")]
+[node name="Scratchable" type="Node" parent="Area2D" node_paths=PackedStringArray("target_sprites", "target_interactable", "interact_area")]
 script = ExtResource("6_i5x7v")
 target_sprites = NodePath("../ScratchSprite2")
 target_interactable = NodePath("../Interactable")
+interact_area = NodePath("..")
 animations_count = 1
 metadata/_custom_type_script = "uid://ex4bv1auk72v"
 

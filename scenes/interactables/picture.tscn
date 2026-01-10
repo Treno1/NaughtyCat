@@ -42,10 +42,11 @@ position = Vector2(0, 3)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_rgkgn")
 
-[node name="Scratchable" type="Node" parent="Area2D" node_paths=PackedStringArray("target_sprites", "target_interactable")]
+[node name="Scratchable" type="Node" parent="Area2D" node_paths=PackedStringArray("target_sprites", "target_interactable", "interact_area")]
 script = ExtResource("3_rrvjf")
 target_sprites = NodePath("../PicturePokeSprite")
 target_interactable = NodePath("../Interactable")
+interact_area = NodePath("..")
 animations_count = 1
 metadata/_custom_type_script = "uid://ex4bv1auk72v"
 

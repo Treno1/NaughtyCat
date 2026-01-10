@@ -7,12 +7,14 @@ var interactableAreas := []
 @onready var interact_sprite: AnimatedSprite2D = $".."
 
 func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	var interactable = area as Interactable
-	if !interactable:
-		for cld in area.get_children():
+	var interactable : Interactable = null
+	
+	for cld in area.get_children():
+		var candidate = cld as Interactable
+		if candidate != null:
 			if interactable != null:
 				push_error("More than one interactable inside ", area.name)
-			interactable = cld as Interactable
+			interactable = candidate
 	
 	if !interactable:
 		return
@@ -26,7 +28,15 @@ func _on_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int
 	interact_sprite.visible = true
 
 func _on_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	var interactable = area as Interactable
+	var interactable : Interactable = null
+	
+	for cld in area.get_children():
+		var candidate = cld as Interactable
+		if candidate != null:
+			if interactable != null:
+				push_error("More than one interactable inside ", area.name)
+			interactable = candidate
+		
 	if !interactable:
 		return
 		
