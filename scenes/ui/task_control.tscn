@@ -11,7 +11,7 @@ thickness = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_cm6yq"]
 font = ExtResource("2_f1783")
-font_size = 28
+font_size = 6
 
 [sub_resource type="Animation" id="Animation_r7y21"]
 length = 0.001
@@ -51,43 +51,29 @@ _data = {
 }
 
 [node name="TaskControl" type="Control"]
-custom_minimum_size = Vector2(0, 15)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_iaj03")
 
 [node name="TaskProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_top = 13.0
-offset_right = 650.0
-offset_bottom = 18.0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 502.0
+offset_bottom = 8.0
+scale = Vector2(0.25, 0.25)
 theme_override_styles/background = SubResource("StyleBoxEmpty_f6424")
 theme_override_styles/fill = SubResource("StyleBoxLine_uyn70")
 show_percentage = false
 
 [node name="TaskLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 5.0
-offset_right = 371.0
-offset_bottom = 24.0
-text = "* Scratch the couch"
+offset_right = 91.0
+offset_bottom = 7.0
+text = " * Scratch the couch"
 label_settings = SubResource("LabelSettings_cm6yq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_k4ad5")
 }
-
-[node name="TaskRichLabel" type="RichTextLabel" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 4.0
-offset_right = 432.0
-offset_bottom = 40.0
-theme_override_fonts/normal_font = ExtResource("2_f1783")
-theme_override_font_sizes/normal_font_size = 28
-bbcode_enabled = true
-fit_content = true
-autowrap_mode = 0
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false

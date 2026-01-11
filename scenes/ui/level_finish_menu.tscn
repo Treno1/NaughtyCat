@@ -1,8 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfsbgkp7pgb4y"]
+[gd_scene load_steps=13 format=3 uid="uid://cfsbgkp7pgb4y"]
 
 [ext_resource type="Script" uid="uid://jkc1i05d7pu8" path="res://scripts/level_finish_menu.gd" id="1_sh56e"]
+[ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="1_ytjtg"]
 [ext_resource type="Shader" uid="uid://bxlxhmemebodt" path="res://assets/shaders/pause_menu.gdshader" id="2_0sdxv"]
 [ext_resource type="FontFile" uid="uid://bpcpm71ca1l1j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_wnw14"]
+[ext_resource type="StyleBox" uid="uid://csd8rsne2r5x7" path="res://resources/ui_button.tres" id="5_f511c"]
+[ext_resource type="StyleBox" uid="uid://3qpdxf837kf7" path="res://resources/ui_button_pressed.tres" id="6_cnflx"]
+
+[sub_resource type="Theme" id="Theme_w5kjx"]
+default_font = ExtResource("1_ytjtg")
+default_font_size = 8
 
 [sub_resource type="Animation" id="Animation_wnw14"]
 length = 0.001
@@ -131,9 +138,8 @@ _data = {
 shader = ExtResource("2_0sdxv")
 shader_parameter/lod = 0.0
 
-[sub_resource type="Theme" id="Theme_fla4w"]
-default_font = ExtResource("3_wnw14")
-default_font_size = 32
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f511c"]
+bg_color = Color(0, 0, 0, 0.49019608)
 
 [node name="LevelFinishMenu" type="Control"]
 process_mode = 3
@@ -143,6 +149,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_w5kjx")
 script = ExtResource("1_sh56e")
 lose_text = "BUSTED"
 
@@ -169,29 +176,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -275.0
-offset_top = -244.5
-offset_right = 275.0
-offset_bottom = 244.5
+offset_left = -129.5
+offset_top = -70.0
+offset_right = 129.5
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f511c")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
-custom_minimum_size = Vector2(250, 0)
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(239, 114)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = SubResource("Theme_fla4w")
-theme_override_constants/separation = 140
+theme_override_constants/separation = 90
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "adw"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_wnw14")
+theme_override_styles/normal = ExtResource("5_f511c")
+theme_override_styles/pressed = ExtResource("6_cnflx")
+theme_override_styles/hover = ExtResource("5_f511c")
+theme_override_styles/disabled = ExtResource("5_f511c")
+theme_override_styles/focus = ExtResource("5_f511c")
 text = "button"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

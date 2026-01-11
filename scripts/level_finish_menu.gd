@@ -5,8 +5,8 @@ enum LevelFinishResult { WIN, FAIL }
 
 signal system_ready
 
-@onready var label: Label = $PanelContainer/VBoxContainer/Label
-@onready var button: Button = $PanelContainer/VBoxContainer/Button
+@onready var label: Label = $PanelContainer/MarginContainer/VBoxContainer/Label
+@onready var button: Button = $PanelContainer/MarginContainer/VBoxContainer/Button
 
 @export var win_text: String = "Level Complete!"
 @export var win_button_text: String = "Next Level"

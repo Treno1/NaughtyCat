@@ -2,12 +2,12 @@ extends CanvasLayer
 class_name IngameUI
 
 signal system_ready
+@onready var timer: Timer = $Control/MarginContainer3/TimerGridContainer/CountdownLabel/Timer
+@onready var pre_timer: Timer = $Control/MarginContainer3/TimerGridContainer/CountdownLabel/PreTimer
+@onready var countdown_label: Label = $Control/MarginContainer3/TimerGridContainer/CountdownLabel
+@onready var tasks_container: GridContainer = $Control/MarginContainer3/TasksGridContainer
 
-@onready var timer: Timer = $CountdownLabel/Timer
-@onready var pre_timer: Timer = $CountdownLabel/PreTimer
-@onready var countdown_label: Label = $CountdownLabel
-@onready var tasks_container: GridContainer = $MarginContainer/GridContainer
-var TaskControl := preload("res://scenes/task_control.tscn")
+var TaskControl := preload("res://scenes/ui/task_control.tscn")
 var tasksControls: Array[TaskUI] = []
 var red := Color.INDIAN_RED
 var white := Color.WHITE

@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvlgc2otxhfp0"]
+[gd_scene load_steps=12 format=3 uid="uid://cvlgc2otxhfp0"]
 
 [ext_resource type="Script" uid="uid://df408n1w047tj" path="res://scripts/pause_menu.gd" id="1_kukqi"]
 [ext_resource type="Shader" uid="uid://bxlxhmemebodt" path="res://assets/shaders/pause_menu.gdshader" id="1_myx47"]
 [ext_resource type="FontFile" uid="uid://bpcpm71ca1l1j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_n87rw"]
+[ext_resource type="StyleBox" uid="uid://csd8rsne2r5x7" path="res://resources/ui_button.tres" id="4_0bnpd"]
+[ext_resource type="StyleBox" uid="uid://3qpdxf837kf7" path="res://resources/ui_button_pressed.tres" id="5_4inpj"]
 
 [sub_resource type="Animation" id="Animation_7l7mv"]
 length = 0.001
@@ -131,9 +133,12 @@ _data = {
 shader = ExtResource("1_myx47")
 shader_parameter/lod = 0.0
 
-[sub_resource type="Theme" id="Theme_kukqi"]
+[sub_resource type="Theme" id="Theme_f6eus"]
 default_font = ExtResource("1_n87rw")
-default_font_size = 32
+default_font_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6eus"]
+bg_color = Color(0, 0, 0, 0.49019608)
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -164,50 +169,53 @@ grow_vertical = 2
 [node name="PanelContainer" type="PanelContainer" parent="."]
 process_mode = 2
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(259, 140)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -466.0
-offset_top = -244.5
-offset_right = 534.0
-offset_bottom = 355.5
+offset_left = -129.5
+offset_top = -70.0
+offset_right = 129.5
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_f6eus")
+theme_override_styles/panel = SubResource("StyleBoxFlat_f6eus")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = SubResource("Theme_kukqi")
-theme_override_constants/separation = 30
+theme_override_constants/separation = 16
 
 [node name="MarginContainer6" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_right = 20
 
 [node name="Restart" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer6"]
 layout_mode = 2
-text = "
-Restart
-
+theme_override_styles/normal = ExtResource("4_0bnpd")
+theme_override_styles/pressed = ExtResource("5_4inpj")
+theme_override_styles/hover = ExtResource("4_0bnpd")
+theme_override_styles/disabled = ExtResource("4_0bnpd")
+theme_override_styles/focus = ExtResource("4_0bnpd")
+text = "Restart
 "
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 90
-theme_override_constants/margin_right = 20
 
 [node name="Resume" type="Button" parent="PanelContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
-text = "
-Resume
-
+theme_override_styles/normal = ExtResource("4_0bnpd")
+theme_override_styles/pressed = ExtResource("5_4inpj")
+theme_override_styles/hover = ExtResource("4_0bnpd")
+theme_override_styles/disabled = ExtResource("4_0bnpd")
+theme_override_styles/focus = ExtResource("4_0bnpd")
+text = "Resume
 "
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer6/Restart" to="." method="_on_restart_pressed"]

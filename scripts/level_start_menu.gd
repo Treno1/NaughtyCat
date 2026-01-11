@@ -3,10 +3,10 @@ class_name LevelStartMenu
 
 signal system_ready
 
-@onready var task_1_label: Label = $PanelContainer/VBoxContainer/MarginContainer3/Task1Label
-@onready var task_2_label: Label = $PanelContainer/VBoxContainer/MarginContainer4/Task2Label
-@onready var task_3_label: Label = $PanelContainer/VBoxContainer/MarginContainer5/Task3Label
-@onready var task_4_label: Label = $PanelContainer/VBoxContainer/MarginContainer6/Task4Label
+@onready var task_1_label: Label = $PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/Task1Label
+@onready var task_2_label: Label = $PanelContainer/MarginContainer/VBoxContainer/MarginContainer4/Task2Label
+@onready var task_3_label: Label = $PanelContainer/MarginContainer/VBoxContainer/MarginContainer5/Task3Label
+@onready var task_4_label: Label = $PanelContainer/MarginContainer/VBoxContainer/MarginContainer6/Task4Label
 
 @onready var labels := [
 	task_1_label,

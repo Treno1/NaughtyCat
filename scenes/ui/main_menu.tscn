@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnryun3gojxlg"]
+[gd_scene load_steps=9 format=3 uid="uid://cnryun3gojxlg"]
 
 [ext_resource type="Texture2D" uid="uid://ciun11i67d0f4" path="res://assets/sprites/main_bg.png" id="1_l6cm7"]
 [ext_resource type="Script" uid="uid://cshwxvqum738g" path="res://scripts/main_menu.gd" id="1_wu84c"]
-[ext_resource type="FontFile" uid="uid://bpcpm71ca1l1j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_8ln24"]
+[ext_resource type="FontFile" uid="uid://bpcpm71ca1l1j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_m1kxf"]
 [ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="4_rtw2f"]
+[ext_resource type="StyleBox" uid="uid://csd8rsne2r5x7" path="res://resources/ui_button.tres" id="5_x2yvf"]
+[ext_resource type="StyleBox" uid="uid://3qpdxf837kf7" path="res://resources/ui_button_pressed.tres" id="6_uhagc"]
 
-[sub_resource type="Theme" id="Theme_oa1go"]
-default_font = ExtResource("3_8ln24")
-default_font_size = 32
+[sub_resource type="Theme" id="Theme_1g8jr"]
+default_font = ExtResource("4_rtw2f")
+default_font_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1kxf"]
+bg_color = Color(0, 0, 0, 0.49411765)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -27,60 +32,61 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_l6cm7")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-process_mode = 3
+[node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -244.5
-offset_right = 300.0
-offset_bottom = 244.5
+offset_left = -98.0
+offset_top = -57.0
+offset_right = 98.0
+offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_1g8jr")
+theme_override_styles/panel = SubResource("StyleBoxFlat_m1kxf")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2"]
+custom_minimum_size = Vector2(176, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = SubResource("Theme_oa1go")
-theme_override_constants/separation = 140
+theme_override_constants/separation = 27
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(250, 0)
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = SubResource("Theme_oa1go")
-theme_override_constants/separation = 20
+theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8884833, 0.17511895, 0.3886114, 1)
 theme_override_fonts/font = ExtResource("4_rtw2f")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 16
 text = "FURRY MENACE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/VBoxContainer2"]
+[node name="Label2" type="Label" parent="PanelContainer2/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_rtw2f")
-theme_override_font_sizes/font_size = 32
 text = "SoloDevelopment #10
 jam entry by @treno11"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="PanelContainer2/VBoxContainer"]
 layout_mode = 2
-text = "
-Start Game
-
+theme_override_fonts/font = ExtResource("4_m1kxf")
+theme_override_styles/normal = ExtResource("5_x2yvf")
+theme_override_styles/pressed = ExtResource("6_uhagc")
+theme_override_styles/hover = ExtResource("5_x2yvf")
+theme_override_styles/disabled = ExtResource("5_x2yvf")
+theme_override_styles/focus = ExtResource("5_x2yvf")
+text = "Start Game
 "
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer2/VBoxContainer/Button" to="." method="_on_button_pressed"]

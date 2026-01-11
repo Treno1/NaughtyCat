@@ -1,11 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://rn0vmqxk6m2u"]
 
-[ext_resource type="Texture2D" uid="uid://dmq0c7jcsiviw" path="res://assets/sprites/bg4ui.png" id="1_031h6"]
 [ext_resource type="Script" uid="uid://bc4uq8rlh5dhl" path="res://scripts/ingame_ui.gd" id="1_npobg"]
 [ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="1_v3yap"]
 [ext_resource type="FontFile" uid="uid://bpcpm71ca1l1j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_hifx3"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hifx3"]
+[ext_resource type="Texture2D" uid="uid://bhyj17jhyj7xa" path="res://assets/sprites/lvl_room/Room - Walls - 1.png" id="4_sj4bp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hifx3"]
 font = ExtResource("1_v3yap")
@@ -19,27 +17,10 @@ font_size = 50
 font = ExtResource("1_v3yap")
 font_size = 32
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hifx3"]
+
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_npobg")
-
-[node name="DISABLE TEST BG" type="TextureRect" parent="."]
-visible = false
-offset_right = 700.0
-offset_bottom = 180.0
-scale = Vector2(2, 2)
-texture = ExtResource("1_031h6")
-
-[node name="Label" type="Label" parent="DISABLE TEST BG"]
-layout_mode = 0
-offset_left = -102.5
-offset_top = 240.5
-offset_right = 1015.5
-offset_bottom = 409.5
-theme_override_font_sizes/font_size = 60
-theme_override_styles/focus = SubResource("StyleBoxTexture_hifx3")
-text = "THIS IS A TEST BACKGROUND
-DISABLE IT BEFORE RUN"
-horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 5
@@ -98,3 +79,34 @@ label_settings = SubResource("LabelSettings_cm6yq")
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DISABLE TEST BG" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("4_sj4bp")
+
+[node name="Label" type="Label" parent="Control/DISABLE TEST BG"]
+layout_mode = 0
+offset_left = -102.5
+offset_top = 240.5
+offset_right = 1015.5
+offset_bottom = 409.5
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxTexture_hifx3")
+text = "THIS IS A TEST BACKGROUND
+DISABLE IT BEFORE RUN"
+horizontal_alignment = 1

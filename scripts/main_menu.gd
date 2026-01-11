@@ -1,6 +1,6 @@
 extends Control
 
-var start_lvl_id = 2
+var start_lvl_id = 0
 
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_packed(GameManager.LEVELS[start_lvl_id])

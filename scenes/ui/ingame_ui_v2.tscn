@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1gvkyjuggj63"]
+
+[ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="1_7tv8g"]
+[ext_resource type="Script" uid="uid://bc4uq8rlh5dhl" path="res://scripts/ingame_ui.gd" id="1_hqx3h"]
+[ext_resource type="FontFile" uid="uid://bpcpm71ca1l1j" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_hqx3h"]
+
+[sub_resource type="Theme" id="Theme_7tv8g"]
+default_font = ExtResource("1_7tv8g")
+default_font_size = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_hqx3h"]
+font = ExtResource("2_hqx3h")
+font_size = 8
+font_color = Color(0.7539839, 0.75398386, 0.75398386, 1)
+
+[node name="IngameUI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_hqx3h")
+
+[node name="Control" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_7tv8g")
+
+[node name="MarginContainer3" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TasksGridContainer" type="GridContainer" parent="Control/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer3/TasksGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Active tasks:"
+
+[node name="Label2" type="Label" parent="Control/MarginContainer3/TasksGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "first task"
+
+[node name="TimerGridContainer" type="GridContainer" parent="Control/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="OwnersLabel" type="Label" parent="Control/MarginContainer3/TimerGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Owners return in"
+
+[node name="CountdownLabel" type="Label" parent="Control/MarginContainer3/TimerGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "02:15"
+label_settings = SubResource("LabelSettings_hqx3h")
+
+[node name="Timer" type="Timer" parent="Control/MarginContainer3/TimerGridContainer/CountdownLabel"]
+
+[node name="PreTimer" type="Timer" parent="Control/MarginContainer3/TimerGridContainer/CountdownLabel"]

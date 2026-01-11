@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b71qy4ushsdj6" path="res://assets/sprites/lvl_room/Room - Message tooltip - 1.png" id="3_q5w8r"]
 [ext_resource type="Script" uid="uid://dkl5kmjpqac8e" path="res://scripts/cloud.gd" id="4_t58dd"]
 [ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="5_q5w8r"]
-[ext_resource type="Texture2D" uid="uid://dmq0c7jcsiviw" path="res://assets/sprites/bg4ui.png" id="6_t58dd"]
+[ext_resource type="Texture2D" uid="uid://driwc2gv3hitc" path="res://assets/sprites/bg4ui2.png" id="6_xhyke"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2y8u"]
 atlas = ExtResource("1_la1wf")
@@ -153,7 +153,7 @@ animations = [{
 
 [sub_resource type="Theme" id="Theme_ju5n0"]
 default_font = ExtResource("5_q5w8r")
-default_font_size = 64
+default_font_size = 8
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kgbum"]
 
@@ -177,10 +177,17 @@ script = ExtResource("4_t58dd")
 
 [node name="OwnersMessageText" type="Label" parent="CanvasLayer"]
 z_index = 100
-offset_left = -28.0
-offset_top = 262.0
-offset_right = 2212.0
-offset_bottom = 390.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -31.0
+offset_right = 42.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("Theme_ju5n0")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "sdfghjklgfvhbnmkvbnm"
@@ -189,10 +196,10 @@ vertical_alignment = 1
 
 [node name="DISABLE TEST BG" type="TextureRect" parent="CanvasLayer"]
 visible = false
-offset_right = 964.0
-offset_bottom = 544.0
-scale = Vector2(2, 2)
-texture = ExtResource("6_t58dd")
+offset_right = 955.0
+offset_bottom = 536.0
+scale = Vector2(0.335, 0.335)
+texture = ExtResource("6_xhyke")
 
 [node name="Label" type="Label" parent="CanvasLayer/DISABLE TEST BG"]
 layout_mode = 0

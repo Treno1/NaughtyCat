@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://bsp0h6x4sa6w3"]
 
-[ext_resource type="PackedScene" uid="uid://rn0vmqxk6m2u" path="res://scenes/ui/ingame_ui.tscn" id="1_h86ek"]
+[ext_resource type="PackedScene" uid="uid://b1gvkyjuggj63" path="res://scenes/ui/ingame_ui_v2.tscn" id="2_q14oe"]
 [ext_resource type="PackedScene" uid="uid://bwfqattgqn8x2" path="res://scenes/ui/level_menus.tscn" id="4_oj86k"]
 [ext_resource type="PackedScene" uid="uid://b85qx5wl01ecj" path="res://scenes/ui/touch_controls.tscn" id="7_mc55s"]
 [ext_resource type="Script" uid="uid://xyjkgwsvi77o" path="res://scripts/level_data.gd" id="8_82ufk"]
@@ -84,7 +84,7 @@ _data = {
 
 [node name="Lvl0" type="Node2D"]
 
-[node name="IngameUI" parent="." instance=ExtResource("1_h86ek")]
+[node name="IngameUI" parent="." instance=ExtResource("2_q14oe")]
 
 [node name="Menus" parent="." instance=ExtResource("4_oj86k")]
 
@@ -112,7 +112,6 @@ position = Vector2(-90, 57)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, -36)
-zoom = Vector2(8, 8)
 process_callback = 0
 limit_left = -144
 limit_top = -47
