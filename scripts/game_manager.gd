@@ -89,7 +89,7 @@ func _on_system_ready() -> void:
 	
 	if _lvl_id == _max_lvl:
 		_lvl_finish_ui.win_text = "End of the game, thanks for playing!"
-		_lvl_finish_ui.win_button_text = "\nGo to first level\n\n"
+		_lvl_finish_ui.win_button_text = "Go to first level"
 	
 func _setup_task_trackers():
 	_task_trackers = []

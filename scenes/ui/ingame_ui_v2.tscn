@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1gvkyjuggj63"]
+[gd_scene load_steps=6 format=3 uid="uid://flwg0w2bfjrs"]
 
 [ext_resource type="FontFile" uid="uid://deukbkugbjex6" path="res://assets/fonts/PixelOperator8.ttf" id="1_7tv8g"]
 [ext_resource type="Script" uid="uid://bc4uq8rlh5dhl" path="res://scripts/ingame_ui.gd" id="1_hqx3h"]
@@ -50,12 +50,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Active tasks:"
 
-[node name="Label2" type="Label" parent="Control/MarginContainer3/TasksGridContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "first task"
-
 [node name="TimerGridContainer" type="GridContainer" parent="Control/MarginContainer3"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -68,6 +62,7 @@ size_flags_vertical = 0
 text = "Owners return in"
 
 [node name="CountdownLabel" type="Label" parent="Control/MarginContainer3/TimerGridContainer"]
+process_mode = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
